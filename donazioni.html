@@ -304,27 +304,54 @@
     </section>
     <section class="max-w-7xl mx-auto px-4 py-16 border-t border-primary/10">
         <h2 class="text-3xl font-bold text-center mb-10" data-i18n="modal_bank_title">Bonifico Bancario</h2>
-        <div
-            class="max-w-2xl mx-auto bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-primary/10 space-y-6">
-            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
-                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
-                <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">RO73 RNCB 0073 1234
-                    5678 9012</span>
-            </div>
-            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
-                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_bic">BIC/SWIFT</span>
-                <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">RNCRDROBU</span>
-            </div>
-            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
-                <span class="text-sm font-bold uppercase text-slate-500"
-                    data-i18n="modal_bank_holder">Intestatario</span>
-                <span class="font-bold text-right select-all text-slate-900 dark:text-white text-lg">Lions Club Emeritus
-                    Brașov</span>
-            </div>
-            <div class="flex justify-between items-center">
-                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_reason">Causale</span>
-                <span class="italic text-slate-500 select-all" data-i18n="modal_bank_reason_text">Donazione
-                    Liberale</span>
+        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-primary/10 space-y-6">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Informazioni Comuni -->
+                <div class="space-y-4">
+                    <div class="border-b border-primary/5 pb-4">
+                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_holder">Intestatario</span>
+                        <span class="font-bold text-slate-900 dark:text-white text-lg select-all">ASOCIATIA EMERITUS</span>
+                    </div>
+                    <div class="border-b border-primary/5 pb-4">
+                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_name">Banca</span>
+                        <span class="font-bold text-slate-900 dark:text-white text-lg select-all">EXIM BANCA ROMANEASCA</span>
+                    </div>
+                    <div class="border-b border-primary/5 pb-4">
+                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_bic">BIC/SWIFT</span>
+                        <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">BRMAROBUXXX</span>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_reason">Causale</span>
+                        <span class="italic text-slate-700 dark:text-slate-300 select-all" data-i18n="modal_bank_reason_text">Donazione Liberale</span>
+                    </div>
+                </div>
+
+                <!-- IBANs -->
+                <div class="space-y-4 flex flex-col justify-center">
+                    <div class="bg-blue-50/80 p-4 rounded-2xl border border-blue-100 hover:bg-blue-100 transition-colors">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="font-black text-blue-800 bg-blue-200/50 px-2 py-1 rounded text-xs">EUR</span>
+                            <span class="text-xs font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
+                        </div>
+                        <span class="font-mono font-black text-base md:text-lg select-all text-blue-900 block mt-1">RO39 BRMA 0811 0255 6327 EU01</span>
+                    </div>
+                    
+                    <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100 hover:bg-emerald-100 transition-colors">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="font-black text-emerald-800 bg-emerald-200/50 px-2 py-1 rounded text-xs">USD</span>
+                            <span class="text-xs font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
+                        </div>
+                        <span class="font-mono font-black text-base md:text-lg select-all text-emerald-900 block mt-1">RO96 BRMA 0811 0255 6327 US01</span>
+                    </div>
+
+                    <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100 hover:bg-amber-100 transition-colors">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="font-black text-amber-800 bg-amber-200/50 px-2 py-1 rounded text-xs">RON</span>
+                            <span class="text-xs font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
+                        </div>
+                        <span class="font-mono font-black text-base md:text-lg select-all text-amber-900 block mt-1">RO82 BRMA 0811 0255 6327 RO01</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
