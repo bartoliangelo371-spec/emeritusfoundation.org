@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Storia | EMERITUS FOUNDATION</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
+                        "emeritus-purple": "#6366f1"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b-4 border-emeritus-yellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain"></div>
+                    <span
+                        class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">EMERITUS</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                    <a class="text-sm font-medium text-primary border-b-2 border-primary" href="storia.html"
+                        data-i18n="nav_history">Storia</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="progetti.html"
+                        data-i18n="nav_projects">Progetti</a>
+                    
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="eventi.html"
+                        data-i18n="nav_events">Eventi</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="donazioni.html"
+                        data-i18n="nav_donate">Dona</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="contatti.html"
+                        data-i18n="nav_contact">Contatti</a>
+                </nav>
+                <div class="flex items-center gap-6">
+                    
+                    <div id="authNavBtn" class="hidden md:block">
+                        <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
+                            <span class="material-symbols-outlined text-sm">login</span> Accedi
+                        </a>
+                    </div>
+                    <button onclick="openDonateModal()"
+                        class="bg-emeritus-yellow hover-yellow text-blue-900 px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105"
+                        data-i18n="nav_donate_btn">
+                        DONA ORA
+                    </button>
+                    <div
+                        class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
+                        <button onclick="changeLanguage('it')"
+                            class="lang-btn hover:text-blue-900 transition">IT</button>
+                        <button onclick="changeLanguage('ro')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">RO</button>
+                        <button onclick="changeLanguage('en')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">EN</button>
+                    </div>
+                    <!-- Lions Logo -->
+                    <div class="h-14 w-14 ml-4 hidden md:flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/logo lions.jpg" alt="Lions International Logo" class="h-full w-full object-contain"></div>
+                    <!-- Hamburger Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-colors ml-4">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-xl flex-col divide-y divide-slate-100 transition-all z-40">
+            <a href="index.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
+            <a href="storia.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
+            <a href="progetti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
+            <a href="eventi.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
+            <a href="donazioni.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
+            <a href="contatti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+        </div>
+    </nav>
+    <main>
+        <!-- Hero Section -->
+        <section class="w-full flex flex-col md:flex-row min-h-[85vh] bg-slate-900 pt-20">
+            <!-- Colonna Testo -->
+            <div class="w-full md:w-[45%] lg:w-1/2 flex items-center p-8 sm:p-12 lg:p-24 bg-slate-900 text-white relative z-10 border-b-4 md:border-b-0 md:border-r-4 border-primary shadow-2xl">
+                <div class="max-w-xl mx-auto md:mr-0 md:ml-auto w-full">
+                    <div class="inline-block px-4 py-2 rounded-full bg-primary text-slate-900 text-xs font-black uppercase tracking-widest mb-6 shadow-lg" data-i18n="about_badge_genesis">
+                        La Nostra Genesi
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tighter uppercase text-primary drop-shadow-xl"
+                        data-i18n="about_title">Radici Profonde</h1>
+                    <p class="text-lg lg:text-xl font-light leading-relaxed text-slate-300"
+                        data-i18n="about_desc_1">Nati non su carta ma da esperienze umane profonde. Una struttura che parla la lingua della solidarietà concreta.</p>
+                </div>
+            </div>
+            <!-- Colonna Foto -->
+            <div class="w-full md:w-[55%] lg:w-1/2 min-h-[50vh] md:min-h-full relative overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-[center_35%]"
+                    data-alt="Sfondo Radici Profonde Emeritus"
+                    style="background-image: url('assets/images/41.jpeg')">
+                </div>
+            </div>
+        </section>
+        <!-- Stats Section -->
+        <section class="py-12 bg-white dark:bg-background-dark border-b border-primary/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center group">
+                        <p class="text-primary text-4xl font-black mb-1">12</p>
+                        <p class="text-slate-500 text-sm font-medium uppercase tracking-widest" data-i18n="stat_schools">Scuole Costruite</p>
+                    </div>
+                    <div class="text-center group">
+                        <p class="text-primary text-4xl font-black mb-1">4500+</p>
+                        <p class="text-slate-500 text-sm font-medium uppercase tracking-widest" data-i18n="stat_students">Studenti Supportati</p>
+                    </div>
+                    <div class="text-center group">
+                        <p class="text-primary text-4xl font-black mb-1">150</p>
+                        <p class="text-slate-500 text-sm font-medium uppercase tracking-widest" data-i18n="stat_volunteers">Volontari Attivi</p>
+                    </div>
+                    <div class="text-center group">
+                        <p class="text-primary text-4xl font-black mb-1">10</p>
+                        <p class="text-slate-500 text-sm font-medium uppercase tracking-widest" data-i18n="stat_years">Anni di Attività</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Mission & Vision Section -->
+        <section class="py-24 bg-background-light dark:bg-background-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-white dark:bg-slate-800/50 p-10 rounded-xl shadow-sm border-t-4 border-primary">
+                        <div
+                            class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
+                            <span class="material-symbols-outlined text-3xl">volunteer_activism</span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4"><span data-i18n="about_mission_title">La Nostra Missione</span></h2>
+                        <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                            <span data-i18n="about_mission_desc">Promuovere lo sviluppo sostenibile, l'educazione, la salute e l'integrazione sociale delle comunità vulnerabili a livello internazionale. Lavoriamo direttamente sul campo per abbattere le barriere che impediscono a individui e famiglie di costruire il proprio futuro in autonomia e dignità.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-slate-800/50 p-10 rounded-xl shadow-sm border-t-4 border-accent-yellow">
+                        <div
+                            class="w-14 h-14 bg-accent-yellow/10 rounded-full flex items-center justify-center text-accent-yellow mb-6">
+                            <span class="material-symbols-outlined text-3xl">visibility</span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4"><span data-i18n="about_vision_title">La Nostra Visione</span></h2>
+                        <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                            <span data-i18n="about_vision_desc">Un mondo in cui la solidarietà, la salute e l'istruzione siano i motori fondamentali del cambiamento sociale e dello sviluppo economico. Immaginiamo comunità resilienti, tutelate nei propri ecosistemi e guidate da individui capaci di cooperare verso un orizzonte prospero e sostenibile.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Values Section -->
+        <section class="py-24 bg-white dark:bg-background-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-black mb-4" data-i18n="about_values_title">I Nostri Valori Fondamentali</h2>
+                    <div class="h-1.5 w-24 bg-accent-yellow mx-auto rounded-full"></div>
+                </div>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="p-6 text-center">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-4">verified_user</span>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="val_1_title">Trasparenza</h3>
+                        <p class="text-slate-500 text-sm" data-i18n="val_1_desc">Ogni donazione è tracciata e utilizzata esclusivamente per l'impatto sul campo.</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-4">diversity_3</span>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="val_2_title">Collaborazione</h3>
+                        <p class="text-slate-500 text-sm"><span data-i18n="val_2_desc">Lavoriamo a stretto contatto con gli anziani del villaggio e le famiglie locali.</span></p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-4">school</span>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="val_3_title">Qualità</h3>
+                        <p class="text-slate-500 text-sm"><span data-i18n="val_3_desc">Non costruiamo solo scuole, formiamo insegnanti e forniamo materiali eccellenti.</span></p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-4">psychology_alt</span>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="val_4_title">Empatia</h3>
+                        <p class="text-slate-500 text-sm"><span data-i18n="val_4_desc">Mettiamo l'ascolto dei bisogni reali della comunità al centro di ogni decisione.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Team Section -->
+        <section class="py-24 bg-background-light dark:bg-background-dark/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-4xl font-black mb-2" data-i18n="team_title">Incontra il Team</h2>
+                        <p class="text-slate-500" data-i18n="team_subtitle">Le persone che rendono tutto questo possibile</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 max-w-5xl mx-auto gap-12">
+                    <!-- Team Member 1 -->
+                    <div class="group">
+                        <div
+                            class="relative aspect-[4/5] rounded-xl overflow-hidden mb-4 border-2 border-transparent group-hover:border-primary transition-all">
+                            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                data-alt="Ruggero Sbarra, Fondatore e Presidente"
+                                src="assets/images/ruggero.jpg" />
+                        </div>
+                        <h3 class="text-xl font-bold">Ruggero Sbarra</h3>
+                        <p class="text-primary font-medium text-sm uppercase tracking-wider mb-4" data-i18n="team_t1">Fondatore &amp; Presidente</p>
+                        <p class="text-slate-600 text-sm leading-relaxed text-justify"><span data-i18n="team_d1">Ruggero Sbarra è il fondatore e Presidente della Emeritus Philanthropic Foundation, un'organizzazione internazionale con sede a Brașov, in Romania. Imprenditore di professione e filantropo per vocazione, Sbarra ha canalizzato la sua vasta esperienza nei mercati globali e la sua profonda conoscenza delle aree svantaggiate in Asia e Africa per creare una realtà dedicata allo sviluppo delle comunità più fragili. Attraverso la fondazione e la sua affiliazione al Lions Club Emeritus Brașov, opera secondo i principi del District 124 Romania, promuovendo progetti che mirano a colmare il divario informativo e materiale delle popolazioni isolate. La sua figura si distingue per un approccio che unisce l'analisi antropologica alla pragmatica imprenditoriale, focalizzandosi su programmi di autosufficienza a lungo termine. Sotto la sua guida, l'associazione è diventata un punto di riferimento regionale per la cooperazione internazionale, documentando direttamente sul campo le necessità umanitarie. Sbarra integra la sua attività filantropica con un costante impegno intellettuale, partecipando a dibattiti su etica, tolleranza e storia delle organizzazioni di servizio, consolidando la reputazione della Emeritus come ente trasparente e orientato all'impatto sociale concreto nel territorio rumeno e oltre i confini europei.</span></p>
+                    </div>
+                    <!-- Team Member 2 -->
+                    <div class="group">
+                        <div
+                            class="relative aspect-[4/5] rounded-xl overflow-hidden mb-4 border-2 border-transparent group-hover:border-primary transition-all">
+                            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                data-alt="Claire Avakian, Cofondatrice e Coordinatrice Operativa"
+                                src="assets/images/claire foto.jpeg" />
+                        </div>
+                        <h3 class="text-xl font-bold">Claire Avakian</h3>
+                        <p class="text-primary font-medium text-sm uppercase tracking-wider mb-4" data-i18n="team_t2">Cofondatrice &amp; Coordinatrice Operativa</p>
+                        <p class="text-slate-600 text-sm leading-relaxed text-justify"><span data-i18n="team_d2">Claire Avakian è la cofondatrice della Emeritus Philanthropic Foundation, organizzazione internazionale con sede a Brașov, Romania. Di origini armene e nata ad Addis Abeba, ha unito la sua profonda esperienza multiculturale alla visione imprenditoriale di Ruggero Sbarra per dare vita a un ente dedicato allo sviluppo delle comunità isolate. Nel suo ruolo di vertice, Claire coordina la strategia operativa e la documentazione scientifica della fondazione, agendo come ponte tra i partner internazionali e le realtà locali in Africa ed Europa dell'Est. È la mente organizzativa dietro la Spring of Healing Academy in Kenya, dove supervisiona programmi decennali di istruzione e autosufficienza idrica nel villaggio di Mrima. Parallelamente, in Romania, guida iniziative pioniere per l'integrazione sociale dei lavoratori migranti asiatici, promuovendo il dialogo con le istituzioni di Brașov. Autrice di documenti programmatici chiave come "A STORY OF NO", Claire trasforma le necessità umanitarie in progetti strutturati e trasparenti. La sua leadership si focalizza sul superamento dell'assistenzialismo a favore della dignità e dell'indipendenza delle popolazioni fragili, consolidando Emeritus come un modello di eccellenza nella cooperazione internazionale contemporanea.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative bg-background-dark rounded-2xl p-12 overflow-hidden">
+                    <!-- Decorative element -->
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+                    <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-accent-yellow/10 rounded-full blur-3xl"></div>
+                    <div class="relative z-10 text-center max-w-2xl mx-auto">
+                        <h2 class="text-white text-4xl md:text-5xl font-black mb-6" data-i18n="cta_title">Unisciti alla nostra missione</h2>
+                        <p class="text-slate-300 text-lg mb-10">
+                            <span data-i18n="cta_desc">Ogni contributo, piccolo o grande, può fare la differenza nella vita delle persone in difficoltà. Insieme possiamo costruire un futuro più luminoso.</span>
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button
+                                class="bg-primary text-slate-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-opacity-90 transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined">favorite</span>
+                                <span data-i18n="cta_btn1">Dona Ora</span>
+                            </button>
+                            <button
+                                class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-10 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined">groups</span>
+                                <span data-i18n="cta_btn2">Diventa Volontario</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+        <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonna 1: Istituzionale & Social -->
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-4 text-white mb-6">
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain">
+                        </div>
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/logo lions.jpg" alt="Logo Lions" class="h-full w-full object-contain">
+                        </div>
+                        <span class="text-base font-bold tracking-tight uppercase leading-tight">EMERITUS<br><span class="text-xs text-primary font-black">Philanthropic Foundation</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4 font-medium text-slate-400" data-i18n="footer_org">
+                        An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
+                    </p>
+                    <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
+                    </p>
+                    
+                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
+                        </a>
+                        <a href="https://www.linkedin.com/in/ruggerosbarra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="LinkedIn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="w-8 h-8 rounded-md shadow-lg">
+                        </a>
+                        <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonna 2: Link Rapidi -->
+                <div class="md:pl-10">
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Link Rapidi</h5>
+                    <ul class="space-y-4 text-sm font-medium border-l-2 border-slate-800 pl-4">
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="storia.html" data-i18n="nav_history"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Storia</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="progetti.html" data-i18n="nav_projects"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Progetti</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="eventi.html" data-i18n="nav_events"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Eventi</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="donazioni.html" data-i18n="nav_donate"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Dona</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="contatti.html" data-i18n="nav_contact"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Contatti</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 3: Contatti -->
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contatti</h5>
+                    <ul class="space-y-5 text-sm w-full">
+                        <li class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+                            <a href="mailto:info@emeritusfoundation.org" class="hover:text-white transition-colors break-all">info@emeritusfoundation.org</a>
+                        </li>
+                        <li class="flex items-start gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-1">call</span>
+                            <a href="https://wa.me/40733833833" target="_blank" class="hover:text-white transition-colors leading-tight">
+                                <span class="flex items-center font-bold text-base tracking-wider"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5 mr-2"> +40 733 833 833</span>
+                                <span class="text-xs text-slate-500 font-bold block mt-1 uppercase tracking-widest">(Phone / WhatsApp)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div class="flex flex-col gap-2 text-center md:text-left">
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium">
+                    <div class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
+                      <span id="visitorCount" class="font-mono text-primary font-bold">Visite: ...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+
+</html>
+
+
+
+
+

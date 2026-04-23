@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Donazione - NGO Nome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cf17",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112111",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #17cf17;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg">
+<svg class="w-6 h-6 text-white" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">EcoSperanza</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Chi Siamo</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Progetti</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Trasparenza</a>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-primary/20">
+                        Sostienici
+                    </button>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+<div class="grid lg:grid-cols-2 gap-12 items-start">
+<!-- Left Column: Impact & Story -->
+<div class="space-y-8">
+<div class="space-y-4">
+<h1 class="text-4xl md:text-5xl font-bold leading-tight">Il tuo aiuto può <span class="text-primary">cambiare una vita</span> oggi stesso.</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400">Ogni donazione, piccola o grande, contribuisce a creare un futuro sostenibile per le comunità che serviamo. La tua generosità è il motore del cambiamento.</p>
+</div>
+<div class="rounded-2xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Bambini che sorridono a scuola" class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Children smiling together in a colorful classroom environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZRRfegnZjAqN8O7kbPlX8K7dCclXUvVe5YLyd4httMD94A4E8PzKjz0ctWQKvczbK0PYSVR4K1mFTjsOB-QlAUlrUpsowfDqOV5f4xsIZInGt4vaTgZp1JG4un-hR9ayC6_9vRxiUrbFi4wXC8RGgigcFPlqi3Wxr8fUVZI7kvXOooxjrIdYHeFueWZJPERw4mE6d_w_52Hk2DG0aZZ37rJ1CPROjAN-KS_HI9I1eA9cF4DS92X1ktPiRzgA31pgnZ_pA_pdVTp0"/>
+<div class="absolute bottom-4 left-6 z-20 text-white">
+<p class="text-sm font-medium uppercase tracking-widest opacity-80">Ultimo Progetto</p>
+<h3 class="text-xl font-bold">Scuole Verdi in Kenya</h3>
+</div>
+</div>
+<!-- Testimonials -->
+<div class="space-y-4">
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">favorite</span>
+                        Cosa dicono i nostri donatori
+                    </h3>
+<div class="grid gap-4">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-primary/10 shadow-sm">
+<p class="italic text-slate-600 dark:text-slate-300 text-sm">"Donare mensilmente mi fa sentire parte di una missione più grande. Vedere i report periodici mi dà fiducia."</p>
+<div class="mt-3 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">MA</div>
+<span class="text-xs font-bold">Marco A. - Donatore da 3 anni</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-primary/10 shadow-sm">
+<p class="italic text-slate-600 dark:text-slate-300 text-sm">"Ho scelto EcoSperanza per la loro trasparenza totale. So esattamente dove finiscono i miei 25€."</p>
+<div class="mt-3 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">LB</div>
+<span class="text-xs font-bold">Lucia B. - Sostenitrice</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Donation Form -->
+<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-primary/5 p-6 md:p-8">
+<div class="mb-8">
+<div class="flex p-1 bg-slate-100 dark:bg-slate-900 rounded-xl mb-6">
+<button class="flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-slate-800 shadow-sm text-primary">Donazione Singola</button>
+<button class="flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all text-slate-500 hover:text-slate-700">Donazione Mensile</button>
+</div>
+<h3 class="text-lg font-bold mb-4">Scegli l'importo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<!-- Option 10€ -->
+<label class="relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="amount" type="radio"/>
+<div class="h-full border-2 border-slate-100 dark:border-slate-700 rounded-xl p-4 transition-all peer-checked:border-primary peer-checked:bg-primary/5 hover:border-primary/50">
+<p class="text-2xl font-bold mb-1">10€</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Kit scolastico per un bambino</p>
+</div>
+<span class="absolute top-2 right-2 material-symbols-outlined text-primary opacity-0 peer-checked:opacity-100 text-sm">check_circle</span>
+</label>
+<!-- Option 25€ -->
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="amount" type="radio"/>
+<div class="h-full border-2 border-slate-100 dark:border-slate-700 rounded-xl p-4 transition-all peer-checked:border-primary peer-checked:bg-primary/5 hover:border-primary/50">
+<p class="text-2xl font-bold mb-1">25€</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Visita medica specialistica</p>
+</div>
+<span class="absolute top-2 right-2 material-symbols-outlined text-primary opacity-0 peer-checked:opacity-100 text-sm">check_circle</span>
+</label>
+<!-- Option 50€ -->
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="amount" type="radio"/>
+<div class="h-full border-2 border-slate-100 dark:border-slate-700 rounded-xl p-4 transition-all peer-checked:border-primary peer-checked:bg-primary/5 hover:border-primary/50">
+<p class="text-2xl font-bold mb-1">50€</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Sostegno alimentare famiglia</p>
+</div>
+<span class="absolute top-2 right-2 material-symbols-outlined text-primary opacity-0 peer-checked:opacity-100 text-sm">check_circle</span>
+</label>
+</div>
+<div class="relative mb-8">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
+<input class="w-full pl-8 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border-none rounded-xl focus:ring-2 focus:ring-primary text-lg font-medium" placeholder="Altro importo" type="number"/>
+</div>
+<!-- Payment Details -->
+<div class="space-y-4 border-t border-slate-100 dark:border-slate-700 pt-8">
+<h3 class="text-lg font-bold">Dati di Pagamento</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-500">Nome</label>
+<input class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary" placeholder="Mario" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-500">Cognome</label>
+<input class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary" placeholder="Rossi" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-500">Email</label>
+<input class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary" placeholder="mario.rossi@esempio.it" type="email"/>
+</div>
+<!-- Card Simulation -->
+<div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl space-y-3 mt-4">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-bold">Metodo di Pagamento</span>
+<div class="flex gap-2">
+<img alt="Visa" class="h-4 opacity-70" data-alt="Visa logo graphic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoCLbnDgffTG_8jlFTkb9l7OFr9B1KFtSMV1KKzRBWlPcqIlymHKn84mgiaKxYH9wqCxSENIQY9122si3PnTwqK-VjJfz8bc-UJGxU_00Td7ZC9gD-9POjE56U94ecnRopISAc-RTl_cl_0u3Uey6GhJZ1m5vS0RYawwosSL_Vi6QeI8lvb36uJMmK5g7_x-MUoz_yvUbYErPlfsII-tdlVuLY5ulqwRlJ2zyk3Lk2RHOdYHjjyuv4yGAg_5PSfztRL4Yi2zHr3pc"/>
+<img alt="Mastercard" class="h-4 opacity-70" data-alt="Mastercard logo graphic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABvu1J386sdsvRmkToTMNFzybkk8OJx-iqj8QN6nlVfg8BO2a1hosGAjVnWGtO3ibPfWMIpdjnFFjMn5dENJIi1p4taj7MaxUzwizfA8pwnyfSCUp1gUV1PcAWyStoSt5DckIfAd_FpdqTiBclZyjofezJcf_x5cFGsm4pgPaxX1GAQpT2SV6U62hXv8t8BFb0-RMye4LtK2M8VGKP5Vs16LxwkP7R_YYPnue4IZWvOtPRH3boXMjmr3AfiIRMIthhhGmFpEcwGMk"/>
+</div>
+</div>
+<div class="space-y-1">
+<input class="w-full px-4 py-2.5 bg-white dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="Numero Carta" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<input class="w-full px-4 py-2.5 bg-white dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="MM/AA" type="text"/>
+<input class="w-full px-4 py-2.5 bg-white dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="CVC" type="text"/>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 bg-primary text-white py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all shadow-xl shadow-primary/30 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">lock</span>
+                        Dona Ora in Sicurezza
+                    </button>
+<div class="mt-6 flex flex-wrap justify-center items-center gap-6 opacity-50 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">SSL Secure</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">shield_with_heart</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">PCI Compliant</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">100% Trasparente</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonna 1: Istituzionale & Social -->
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-4 text-white mb-6">
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain">
+                        </div>
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/logo lions.jpg" alt="Logo Lions" class="h-full w-full object-contain">
+                        </div>
+                        <span class="text-base font-bold tracking-tight uppercase leading-tight">EMERITUS<br><span class="text-xs text-primary font-black">Philanthropic Foundation</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4 font-medium text-slate-400" data-i18n="footer_org">
+                        An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
+                    </p>
+                    <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
+                    </p>
+                    
+                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
+                        </a>
+                        <a href="https://www.linkedin.com/in/ruggerosbarra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="LinkedIn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="w-8 h-8 rounded-md shadow-lg">
+                        </a>
+                        <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonna 2: Link Rapidi -->
+                <div class="md:pl-10">
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Link Rapidi</h5>
+                    <ul class="space-y-4 text-sm font-medium border-l-2 border-slate-800 pl-4">
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="storia.html" data-i18n="nav_history"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Storia</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="progetti.html" data-i18n="nav_projects"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Progetti</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="eventi.html" data-i18n="nav_events"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Eventi</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="donazioni.html" data-i18n="nav_donate"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Dona</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="contatti.html" data-i18n="nav_contact"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Contatti</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 3: Contatti -->
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contatti</h5>
+                    <ul class="space-y-5 text-sm w-full">
+                        <li class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+                            <a href="mailto:info@emeritusfoundation.org" class="hover:text-white transition-colors break-all">info@emeritusfoundation.org</a>
+                        </li>
+                        <li class="flex items-start gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-1">call</span>
+                            <a href="https://wa.me/40733833833" target="_blank" class="hover:text-white transition-colors leading-tight">
+                                <span class="flex items-center font-bold text-base tracking-wider"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5 mr-2"> +40 733 833 833</span>
+                                <span class="text-xs text-slate-500 font-bold block mt-1 uppercase tracking-widest">(Phone / WhatsApp)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div class="flex flex-col gap-2 text-center md:text-left">
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium">
+                    <div class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
+                      <span id="visitorCount" class="font-mono text-primary font-bold">Visite: ...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </body></html>
+
+

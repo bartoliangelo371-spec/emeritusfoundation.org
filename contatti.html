@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="nav_contact">Contatti | EMERITUS FOUNDATION</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
+                        "emeritus-purple": "#6366f1"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigazione -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b-4 border-emeritus-yellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain"></div>
+                    <span
+                        class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">EMERITUS</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="storia.html"
+                        data-i18n="nav_history">Storia</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="progetti.html"
+                        data-i18n="nav_projects">Progetti</a>
+                    
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="eventi.html"
+                        data-i18n="nav_events">Eventi</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="donazioni.html"
+                        data-i18n="nav_donate">Dona</a>
+                    <a class="text-sm font-medium text-primary border-b-2 border-primary" href="contatti.html"
+                        data-i18n="nav_contact">Contatti</a>
+                </nav>
+                <div class="flex items-center gap-6">
+                    
+                    <div id="authNavBtn" class="hidden md:block">
+                        <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
+                            <span class="material-symbols-outlined text-sm">login</span> Accedi
+                        </a>
+                    </div>
+                    <button onclick="openDonateModal()"
+                        class="bg-emeritus-yellow hover-yellow text-blue-900 px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105"
+                        data-i18n="nav_donate_btn">
+                        DONA ORA
+                    </button>
+                    <div
+                        class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
+                        <button onclick="changeLanguage('it')"
+                            class="lang-btn hover:text-blue-900 transition">IT</button>
+                        <button onclick="changeLanguage('ro')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">RO</button>
+                        <button onclick="changeLanguage('en')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">EN</button>
+                    </div>
+                    <!-- Lions Logo -->
+                    <div class="h-14 w-14 ml-4 hidden md:flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/logo lions.jpg" alt="Lions International Logo" class="h-full w-full object-contain"></div>
+                    <!-- Hamburger Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-colors ml-4">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-xl flex-col divide-y divide-slate-100 transition-all z-40">
+            <a href="index.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
+            <a href="storia.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
+            <a href="progetti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
+            <a href="eventi.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
+            <a href="donazioni.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
+            <a href="contatti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section con l'immagine di sfondo -->
+    <header class="hero-gradient h-[50vh] flex items-center justify-center text-center text-white px-4 relative">
+        <div class="max-w-4xl z-10">
+            <h1
+                class="text-5xl md:text-7xl font-black mb-4 leading-none tracking-tighter text-emeritus-yellow uppercase">
+                <span data-i18n="contact_page_title">NON ESITARE A</span> <span
+                    data-i18n="contact_page_subtitle">CONTATTARCI</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-emeritus-yellow font-light max-w-2xl mx-auto leading-relaxed opacity-90"
+                data-i18n="contact_page_desc">Siamo qui per rispondere a ogni tua domanda o per accoglierti nella nostra
+                squadra.</p>
+        </div>
+        <!-- Elemento decorativo inferiore -->
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
+    </header>
+
+    <!-- Sezione Statistiche Narrativa -->
+
+
+    <!-- Progetti Attivi -->
+    <!-- Contatti Section -->
+    <section id="contatti" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- Info Contatto -->
+                <div>
+                    <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter mb-8"
+                        data-i18n="contact_info_title">I Nostri Recapiti</h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-emeritus-yellow p-3 rounded-xl text-blue-900">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 uppercase tracking-wide text-sm mb-1"
+                                    data-i18n="contact_address_title">Sede Centrale</h4>
+                                <p class="text-gray-600">Matei Basarab 82 bloc B 5<br>Brasov – Romania</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-emeritus-yellow p-3 rounded-xl text-blue-900">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 uppercase tracking-wide text-sm mb-1"
+                                    data-i18n="contact_email_title">Email Ufficiale</h4>
+                                <p class="text-gray-600">info@emeritusfoundation.org</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-emeritus-yellow p-3 rounded-xl text-blue-900">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 uppercase tracking-wide text-sm mb-1"
+                                    data-i18n="contact_phone_title">Telefono / WhatsApp</h4>
+                                <a href="https://wa.me/40733833833" target="_blank" class="text-gray-600 hover:text-primary transition-colors block">+40 733 833 833</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Contatto -->
+                <div class="bg-gray-50 p-10 rounded-[2.5rem] shadow-xl border border-gray-100">
+                    <h3 class="text-2xl font-black text-blue-900 uppercase tracking-tighter mb-6"
+                        data-i18n="contact_form_title">Inviaci un Messaggio</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2"
+                                data-i18n="contact_form_name">Nome Completo</label>
+                            <input id="contactName" type="text" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emeritus-yellow focus:ring-2 focus:ring-yellow-100 outline-none transition"
+                                placeholder="Mario Rossi" data-i18n="contact_form_name">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2"
+                                data-i18n="contact_form_email">La tua Email</label>
+                            <input id="contactEmail" type="email" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emeritus-yellow focus:ring-2 focus:ring-yellow-100 outline-none transition"
+                                placeholder="mario@email.com" data-i18n="contact_form_email">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2"
+                                data-i18n="contact_form_msg">Messaggio</label>
+                            <textarea id="contactMessage" rows="4" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emeritus-yellow focus:ring-2 focus:ring-yellow-100 outline-none transition"
+                                placeholder="Scrivi qui il tuo messaggio..." data-i18n="contact_form_msg"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-blue-900 text-white py-4 rounded-xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-lg"
+                            data-i18n="contact_form_btn">Invia Richiesta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Booking Style Gallery Section -->
+    <section class="py-24 bg-white" id="gallery-section">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter mb-4" data-i18n="gallery_title">La Nostra Galleria</h2>
+                <p class="text-gray-500 text-lg" data-i18n="gallery_desc">Immagini e video dai nostri progetti sul campo.</p>
+                <div class="w-24 h-2 bg-emeritus-yellow mx-auto mt-6 rounded-full"></div>
+            </div>
+            <div class="bg-gray-100 rounded-[2rem] p-4 shadow-xl border border-gray-100">
+                <!-- Main Display -->
+                <div class="relative w-full h-[50vh] md:h-[70vh] rounded-2xl overflow-hidden mb-4 bg-black flex items-center justify-center">
+                    <img id="gallery-main-img" class="w-full h-full object-contain transition-opacity duration-300" src="assets/images/01.jpeg" alt="Galleria Emeritus">
+                    <video id="gallery-main-video" class="w-full h-full object-contain hidden transition-opacity duration-300" src="" controls></video>
+                    <!-- Left/Right Controls -->
+                    <button onclick="prevGalleryItem()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-blue-900 p-3 rounded-full shadow-lg backdrop-blur-sm transition-all">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button onclick="nextGalleryItem()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-blue-900 p-3 rounded-full shadow-lg backdrop-blur-sm transition-all">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+                <!-- Thumbnails -->
+                <div class="flex overflow-x-auto gap-3 pb-2 scroll-smooth snap-x thumbnails-container" id="gallery-thumbnails">
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 ring-4 ring-emeritus-yellow opacity-100" onclick="setGalleryItem(0, 'assets/images/01.jpeg', '.jpeg')" id="thumb-0">
+                        <img src="assets/images/01.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(1, 'assets/images/02.jpeg', '.jpeg')" id="thumb-1">
+                        <img src="assets/images/02.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(2, 'assets/images/03.jpeg', '.jpeg')" id="thumb-2">
+                        <img src="assets/images/03.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(3, 'assets/images/04.jpeg', '.jpeg')" id="thumb-3">
+                        <img src="assets/images/04.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(4, 'assets/images/05.jpeg', '.jpeg')" id="thumb-4">
+                        <img src="assets/images/05.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(5, 'assets/images/06.jpeg', '.jpeg')" id="thumb-5">
+                        <img src="assets/images/06.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(6, 'assets/images/07.jpeg', '.jpeg')" id="thumb-6">
+                        <img src="assets/images/07.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(7, 'assets/images/08.jpeg', '.jpeg')" id="thumb-7">
+                        <img src="assets/images/08.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(8, 'assets/images/09.jpeg', '.jpeg')" id="thumb-8">
+                        <img src="assets/images/09.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(9, 'assets/images/10.jpeg', '.jpeg')" id="thumb-9">
+                        <img src="assets/images/10.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(10, 'assets/images/11.jpeg', '.jpeg')" id="thumb-10">
+                        <img src="assets/images/11.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(11, 'assets/images/12.jpeg', '.jpeg')" id="thumb-11">
+                        <img src="assets/images/12.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(12, 'assets/images/13.jpeg', '.jpeg')" id="thumb-12">
+                        <img src="assets/images/13.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(13, 'assets/images/14.jpeg', '.jpeg')" id="thumb-13">
+                        <img src="assets/images/14.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(14, 'assets/images/15.jpeg', '.jpeg')" id="thumb-14">
+                        <img src="assets/images/15.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(15, 'assets/images/16.jpeg', '.jpeg')" id="thumb-15">
+                        <img src="assets/images/16.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(16, 'assets/images/17.jpeg', '.jpeg')" id="thumb-16">
+                        <img src="assets/images/17.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(17, 'assets/images/18.jpeg', '.jpeg')" id="thumb-17">
+                        <img src="assets/images/18.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(18, 'assets/images/19.jpeg', '.jpeg')" id="thumb-18">
+                        <img src="assets/images/19.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(19, 'assets/images/20.jpeg', '.jpeg')" id="thumb-19">
+                        <img src="assets/images/20.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(20, 'assets/images/21.jpeg', '.jpeg')" id="thumb-20">
+                        <img src="assets/images/21.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(21, 'assets/images/22.jpeg', '.jpeg')" id="thumb-21">
+                        <img src="assets/images/22.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(22, 'assets/images/23.jpeg', '.jpeg')" id="thumb-22">
+                        <img src="assets/images/23.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(23, 'assets/images/24.jpeg', '.jpeg')" id="thumb-23">
+                        <img src="assets/images/24.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(24, 'assets/images/25.jpeg', '.jpeg')" id="thumb-24">
+                        <img src="assets/images/25.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(25, 'assets/images/26.jpeg', '.jpeg')" id="thumb-25">
+                        <img src="assets/images/26.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(26, 'assets/images/27.jpeg', '.jpeg')" id="thumb-26">
+                        <img src="assets/images/27.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(27, 'assets/images/28.jpeg', '.jpeg')" id="thumb-27">
+                        <img src="assets/images/28.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(28, 'assets/images/29.jpeg', '.jpeg')" id="thumb-28">
+                        <img src="assets/images/29.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(29, 'assets/images/30.jpeg', '.jpeg')" id="thumb-29">
+                        <img src="assets/images/30.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(30, 'assets/images/31.jpeg', '.jpeg')" id="thumb-30">
+                        <img src="assets/images/31.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(31, 'assets/images/32.jpeg', '.jpeg')" id="thumb-31">
+                        <img src="assets/images/32.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(32, 'assets/images/33.jpeg', '.jpeg')" id="thumb-32">
+                        <img src="assets/images/33.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(33, 'assets/images/34.jpeg', '.jpeg')" id="thumb-33">
+                        <img src="assets/images/34.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(34, 'assets/images/35.jpeg', '.jpeg')" id="thumb-34">
+                        <img src="assets/images/35.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(35, 'assets/images/36.jpeg', '.jpeg')" id="thumb-35">
+                        <img src="assets/images/36.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(36, 'assets/images/37.jpeg', '.jpeg')" id="thumb-36">
+                        <img src="assets/images/37.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(37, 'assets/images/38.jpeg', '.jpeg')" id="thumb-37">
+                        <img src="assets/images/38.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(38, 'assets/images/39.jpeg', '.jpeg')" id="thumb-38">
+                        <img src="assets/images/39.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(39, 'assets/images/40.jpeg', '.jpeg')" id="thumb-39">
+                        <img src="assets/images/40.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(40, 'assets/images/41.jpeg', '.jpeg')" id="thumb-40">
+                        <img src="assets/images/41.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(41, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.23.jpeg', '.jpeg')" id="thumb-41">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.23.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(42, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.27 (1).jpeg', '.jpeg')" id="thumb-42">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.27 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(43, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.27 (2).jpeg', '.jpeg')" id="thumb-43">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.27 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(44, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.27.jpeg', '.jpeg')" id="thumb-44">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.27.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(45, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.28 (1).jpeg', '.jpeg')" id="thumb-45">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.28 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(46, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.28 (2).jpeg', '.jpeg')" id="thumb-46">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.28 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(47, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.28.jpeg', '.jpeg')" id="thumb-47">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.28.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(48, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.29 (1).jpeg', '.jpeg')" id="thumb-48">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.29 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(49, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.29.jpeg', '.jpeg')" id="thumb-49">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.29.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(50, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (1).jpeg', '.jpeg')" id="thumb-50">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(51, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (2).jpeg', '.jpeg')" id="thumb-51">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(52, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (3).jpeg', '.jpeg')" id="thumb-52">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(53, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30.jpeg', '.jpeg')" id="thumb-53">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.30.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(54, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.31.jpeg', '.jpeg')" id="thumb-54">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.31.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(55, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (1).jpeg', '.jpeg')" id="thumb-55">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(56, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (2).jpeg', '.jpeg')" id="thumb-56">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(57, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (3).jpeg', '.jpeg')" id="thumb-57">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(58, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32.jpeg', '.jpeg')" id="thumb-58">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.32.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(59, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.33 (1).jpeg', '.jpeg')" id="thumb-59">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.33 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(60, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.33.jpeg', '.jpeg')" id="thumb-60">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.33.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(61, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (1).jpeg', '.jpeg')" id="thumb-61">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(62, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (2).jpeg', '.jpeg')" id="thumb-62">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(63, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (3).jpeg', '.jpeg')" id="thumb-63">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(64, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34.jpeg', '.jpeg')" id="thumb-64">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.34.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(65, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.35 (1).jpeg', '.jpeg')" id="thumb-65">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.35 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(66, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.35 (2).jpeg', '.jpeg')" id="thumb-66">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.35 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(67, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.35.jpeg', '.jpeg')" id="thumb-67">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.35.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(68, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.36 (2).jpeg', '.jpeg')" id="thumb-68">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.36 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(69, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.36 (3).jpeg', '.jpeg')" id="thumb-69">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.36 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(70, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.36.jpeg', '.jpeg')" id="thumb-70">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.36.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(71, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.37 (1).jpeg', '.jpeg')" id="thumb-71">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.37 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(72, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.37 (2).jpeg', '.jpeg')" id="thumb-72">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.37 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(73, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.37.jpeg', '.jpeg')" id="thumb-73">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.37.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(74, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (1).jpeg', '.jpeg')" id="thumb-74">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(75, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (2).jpeg', '.jpeg')" id="thumb-75">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(76, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (3).jpeg', '.jpeg')" id="thumb-76">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(77, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38.jpeg', '.jpeg')" id="thumb-77">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.38.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(78, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.39 (1).jpeg', '.jpeg')" id="thumb-78">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.39 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(79, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.39 (2).jpeg', '.jpeg')" id="thumb-79">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.39 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(80, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.39.jpeg', '.jpeg')" id="thumb-80">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.39.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(81, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (1).jpeg', '.jpeg')" id="thumb-81">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(82, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (2).jpeg', '.jpeg')" id="thumb-82">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(83, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (3).jpeg', '.jpeg')" id="thumb-83">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(84, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40.jpeg', '.jpeg')" id="thumb-84">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.40.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(85, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.41 (1).jpeg', '.jpeg')" id="thumb-85">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.41 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(86, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.41.jpeg', '.jpeg')" id="thumb-86">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.41.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(87, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.42 (1).jpeg', '.jpeg')" id="thumb-87">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.42 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(88, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.42.jpeg', '.jpeg')" id="thumb-88">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.42.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(89, 'assets/images/WhatsApp Image 2026-02-05 at 18.36.43.jpeg', '.jpeg')" id="thumb-89">
+                        <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.43.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(90, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg', '.jpeg')" id="thumb-90">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(91, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.13.jpeg', '.jpeg')" id="thumb-91">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.13.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(92, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (1).jpeg', '.jpeg')" id="thumb-92">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(93, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (2).jpeg', '.jpeg')" id="thumb-93">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(94, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (3).jpeg', '.jpeg')" id="thumb-94">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(95, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (4).jpeg', '.jpeg')" id="thumb-95">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (4).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(96, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (5).jpeg', '.jpeg')" id="thumb-96">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (5).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(97, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (6).jpeg', '.jpeg')" id="thumb-97">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (6).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(98, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14.jpeg', '.jpeg')" id="thumb-98">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.14.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(99, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (1).jpeg', '.jpeg')" id="thumb-99">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(100, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (2).jpeg', '.jpeg')" id="thumb-100">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(101, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (3).jpeg', '.jpeg')" id="thumb-101">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(102, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (4).jpeg', '.jpeg')" id="thumb-102">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (4).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(103, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (5).jpeg', '.jpeg')" id="thumb-103">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (5).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(104, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (6).jpeg', '.jpeg')" id="thumb-104">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (6).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(105, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15.jpeg', '.jpeg')" id="thumb-105">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.15.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(106, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (1).jpeg', '.jpeg')" id="thumb-106">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(107, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (2).jpeg', '.jpeg')" id="thumb-107">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(108, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (3).jpeg', '.jpeg')" id="thumb-108">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(109, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (4).jpeg', '.jpeg')" id="thumb-109">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (4).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(110, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (5).jpeg', '.jpeg')" id="thumb-110">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (5).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(111, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (6).jpeg', '.jpeg')" id="thumb-111">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (6).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(112, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16.jpeg', '.jpeg')" id="thumb-112">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.16.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(113, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (1).jpeg', '.jpeg')" id="thumb-113">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(114, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (2).jpeg', '.jpeg')" id="thumb-114">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(115, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (3).jpeg', '.jpeg')" id="thumb-115">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(116, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (4).jpeg', '.jpeg')" id="thumb-116">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (4).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(117, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (5).jpeg', '.jpeg')" id="thumb-117">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (5).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(118, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (6).jpeg', '.jpeg')" id="thumb-118">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (6).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(119, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17.jpeg', '.jpeg')" id="thumb-119">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.17.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(120, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (1).jpeg', '.jpeg')" id="thumb-120">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(121, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (2).jpeg', '.jpeg')" id="thumb-121">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(122, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (3).jpeg', '.jpeg')" id="thumb-122">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(123, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (4).jpeg', '.jpeg')" id="thumb-123">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (4).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(124, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (5).jpeg', '.jpeg')" id="thumb-124">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (5).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(125, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (6).jpeg', '.jpeg')" id="thumb-125">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (6).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(126, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (7).jpeg', '.jpeg')" id="thumb-126">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (7).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(127, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18.jpeg', '.jpeg')" id="thumb-127">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.18.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(128, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (1).jpeg', '.jpeg')" id="thumb-128">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(129, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (2).jpeg', '.jpeg')" id="thumb-129">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(130, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (3).jpeg', '.jpeg')" id="thumb-130">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(131, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (4).jpeg', '.jpeg')" id="thumb-131">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (4).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(132, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (5).jpeg', '.jpeg')" id="thumb-132">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (5).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(133, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (6).jpeg', '.jpeg')" id="thumb-133">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (6).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(134, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19.jpeg', '.jpeg')" id="thumb-134">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.19.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(135, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (1).jpeg', '.jpeg')" id="thumb-135">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (1).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(136, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (2).jpeg', '.jpeg')" id="thumb-136">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (2).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(137, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (3).jpeg', '.jpeg')" id="thumb-137">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (3).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(138, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (4).jpeg', '.jpeg')" id="thumb-138">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (4).jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(139, 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20.jpeg', '.jpeg')" id="thumb-139">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 14.10.20.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(140, 'assets/images/WhatsApp Image 2026-02-13 at 18.33.45.jpeg', '.jpeg')" id="thumb-140">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.33.45.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(141, 'assets/images/WhatsApp Image 2026-02-13 at 18.33.47.jpeg', '.jpeg')" id="thumb-141">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.33.47.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(142, 'assets/images/WhatsApp Image 2026-02-13 at 18.33.50.jpeg', '.jpeg')" id="thumb-142">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.33.50.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(143, 'assets/images/WhatsApp Image 2026-02-13 at 18.33.51.jpeg', '.jpeg')" id="thumb-143">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.33.51.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(144, 'assets/images/WhatsApp Image 2026-02-13 at 18.33.57.jpeg', '.jpeg')" id="thumb-144">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.33.57.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(145, 'assets/images/WhatsApp Image 2026-02-13 at 18.33.59.jpeg', '.jpeg')" id="thumb-145">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.33.59.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(146, 'assets/images/WhatsApp Image 2026-02-13 at 18.34.00.jpeg', '.jpeg')" id="thumb-146">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.34.00.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(147, 'assets/images/WhatsApp Image 2026-02-13 at 18.34.02.jpeg', '.jpeg')" id="thumb-147">
+                        <img src="assets/images/WhatsApp Image 2026-02-13 at 18.34.02.jpeg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(148, 'assets/images/WhatsApp Video 2026-02-05 at 18.36.16 (1).mp4', '.mp4')" id="thumb-148">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-05 at 18.36.16 (1).mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(149, 'assets/images/WhatsApp Video 2026-02-05 at 18.36.16.mp4', '.mp4')" id="thumb-149">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-05 at 18.36.16.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(150, 'assets/images/WhatsApp Video 2026-02-05 at 18.36.17.mp4', '.mp4')" id="thumb-150">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-05 at 18.36.17.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(151, 'assets/images/WhatsApp Video 2026-02-05 at 18.36.18.mp4', '.mp4')" id="thumb-151">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-05 at 18.36.18.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(152, 'assets/images/WhatsApp Video 2026-02-05 at 18.36.22.mp4', '.mp4')" id="thumb-152">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-05 at 18.36.22.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(153, 'assets/images/WhatsApp Video 2026-02-13 at 14.10.02.mp4', '.mp4')" id="thumb-153">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 14.10.02.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(154, 'assets/images/WhatsApp Video 2026-02-13 at 14.10.04.mp4', '.mp4')" id="thumb-154">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 14.10.04.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(155, 'assets/images/WhatsApp Video 2026-02-13 at 14.10.07.mp4', '.mp4')" id="thumb-155">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 14.10.07.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(156, 'assets/images/WhatsApp Video 2026-02-13 at 14.10.10.mp4', '.mp4')" id="thumb-156">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 14.10.10.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(157, 'assets/images/WhatsApp Video 2026-02-13 at 14.10.13.mp4', '.mp4')" id="thumb-157">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 14.10.13.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(158, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.42.mp4', '.mp4')" id="thumb-158">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.42.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(159, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.43.mp4', '.mp4')" id="thumb-159">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.43.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(160, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.44.mp4', '.mp4')" id="thumb-160">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.44.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(161, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.46 (1).mp4', '.mp4')" id="thumb-161">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.46 (1).mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(162, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.46.mp4', '.mp4')" id="thumb-162">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.46.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(163, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.48.mp4', '.mp4')" id="thumb-163">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.48.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(164, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.49 (1).mp4', '.mp4')" id="thumb-164">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.49 (1).mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(165, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.49.mp4', '.mp4')" id="thumb-165">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.49.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(166, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.52.mp4', '.mp4')" id="thumb-166">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.52.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(167, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.53 (1).mp4', '.mp4')" id="thumb-167">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.53 (1).mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(168, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.53.mp4', '.mp4')" id="thumb-168">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.53.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(169, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.54.mp4', '.mp4')" id="thumb-169">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.54.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(170, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.55 (1).mp4', '.mp4')" id="thumb-170">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.55 (1).mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(171, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.55.mp4', '.mp4')" id="thumb-171">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.55.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(172, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.56.mp4', '.mp4')" id="thumb-172">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.56.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(173, 'assets/images/WhatsApp Video 2026-02-13 at 18.33.57.mp4', '.mp4')" id="thumb-173">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.33.57.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(174, 'assets/images/WhatsApp Video 2026-02-13 at 18.34.03.mp4', '.mp4')" id="thumb-174">
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center relative">
+                            <svg class="w-8 h-8 text-white absolute opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                            <video src="assets/images/WhatsApp Video 2026-02-13 at 18.34.03.mp4" class="w-full h-full object-cover opacity-50" preload="metadata"></video>
+                        </div>
+                    </div>
+                    <div class="flex-none w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden cursor-pointer snap-start transition-all duration-300 opacity-50 hover:opacity-100" onclick="setGalleryItem(175, 'assets/images/logo.jpg', '.jpg')" id="thumb-175">
+                        <img src="assets/images/logo.jpg" loading="lazy" class="w-full h-full object-cover" alt="Thumbnail">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            let currentGalleryIndex = 0;
+            const galleryItems = [{'path': 'assets/images/01.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/02.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/03.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/04.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/05.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/06.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/07.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/08.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/09.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/10.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/11.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/12.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/13.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/14.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/15.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/16.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/17.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/18.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/19.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/20.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/21.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/22.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/23.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/24.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/25.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/26.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/27.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/28.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/29.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/30.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/31.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/32.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/33.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/34.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/35.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/36.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/37.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/38.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/39.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/40.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/41.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.23.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.27 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.27 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.27.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.28 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.28 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.28.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.29 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.29.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.30.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.31.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.32.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.33 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.33.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.34.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.35 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.35 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.35.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.36 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.36 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.36.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.37 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.37 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.37.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.38.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.39 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.39 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.39.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.40.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.41 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.41.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.42 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.42.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-05 at 18.36.43.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.13.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (4).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (5).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14 (6).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.14.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (4).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (5).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15 (6).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.15.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (4).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (5).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16 (6).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.16.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (4).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (5).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17 (6).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.17.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (4).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (5).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (6).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18 (7).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.18.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (4).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (5).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19 (6).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.19.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (1).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (2).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (3).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20 (4).jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 14.10.20.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.33.45.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.33.47.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.33.50.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.33.51.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.33.57.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.33.59.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.34.00.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Image 2026-02-13 at 18.34.02.jpeg', 'ext': '.jpeg'}, {'path': 'assets/images/WhatsApp Video 2026-02-05 at 18.36.16 (1).mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-05 at 18.36.16.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-05 at 18.36.17.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-05 at 18.36.18.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-05 at 18.36.22.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 14.10.02.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 14.10.04.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 14.10.07.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 14.10.10.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 14.10.13.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.42.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.43.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.44.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.46 (1).mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.46.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.48.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.49 (1).mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.49.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.52.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.53 (1).mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.53.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.54.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.55 (1).mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.55.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.56.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.33.57.mp4', 'ext': '.mp4'}, {'path': 'assets/images/WhatsApp Video 2026-02-13 at 18.34.03.mp4', 'ext': '.mp4'}, {'path': 'assets/images/logo.jpg', 'ext': '.jpg'}];
+            
+            function setGalleryItem(index, path, ext) {
+                currentGalleryIndex = index;
+                const imgEl = document.getElementById("gallery-main-img");
+                const vidEl = document.getElementById("gallery-main-video");
+                
+                // Update main viewer
+                if(ext === ".mp4") {
+                    imgEl.classList.add("hidden");
+                    vidEl.classList.remove("hidden");
+                    vidEl.src = path;
+                    vidEl.play().catch(e => {});
+                } else {
+                    vidEl.classList.add("hidden");
+                    vidEl.pause();
+                    imgEl.classList.remove("hidden");
+                    imgEl.src = path;
+                }
+                
+                // Update thumbnails
+                document.querySelectorAll("#gallery-thumbnails > div").forEach((el, i) => {
+                    if(i === index) {
+                        el.classList.add("ring-4", "ring-emeritus-yellow", "opacity-100");
+                        el.classList.remove("opacity-50");
+                        el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                    } else {
+                        el.classList.remove("ring-4", "ring-emeritus-yellow", "opacity-100");
+                        el.classList.add("opacity-50");
+                    }
+                });
+            }
+            
+            function nextGalleryItem() {
+                let nextIdx = (currentGalleryIndex + 1) % galleryItems.length;
+                setGalleryItem(nextIdx, galleryItems[nextIdx].path, galleryItems[nextIdx].ext);
+            }
+            
+            function prevGalleryItem() {
+                let prevIdx = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
+                setGalleryItem(prevIdx, galleryItems[prevIdx].path, galleryItems[prevIdx].ext);
+            }
+        </script>
+    </section>
+
+    <!-- Sponsor Section -->
+    <section class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-16" data-i18n="sponsor_title">Aziende e Istituzioni che credono in noi</h2>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+                <!-- Sponsor Logos / Placeholders -->
+                <div class="text-3xl font-black text-slate-300 uppercase tracking-widest hover:text-blue-900 transition-colors cursor-default">Sponsor 1</div>
+                <div class="text-3xl font-black text-slate-300 uppercase tracking-widest hover:text-blue-900 transition-colors cursor-default">Logo 2</div>
+                <div class="text-3xl font-black text-slate-300 uppercase tracking-widest hover:text-blue-900 transition-colors cursor-default">Partner 3</div>
+                <div class="text-3xl font-black text-slate-300 uppercase tracking-widest hover:text-blue-900 transition-colors cursor-default">Company 4</div>
+            </div>
+            <p class="mt-16 text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed" data-i18n="sponsor_desc">Vuoi diventare nostro partner o sponsor? Utilizza i contatti qui sopra per scoprire come collaborare ai nostri progetti.</p>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonna 1: Istituzionale & Social -->
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-4 text-white mb-6">
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain">
+                        </div>
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/logo lions.jpg" alt="Logo Lions" class="h-full w-full object-contain">
+                        </div>
+                        <span class="text-base font-bold tracking-tight uppercase leading-tight">EMERITUS<br><span class="text-xs text-primary font-black">Philanthropic Foundation</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4 font-medium text-slate-400" data-i18n="footer_org">
+                        An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
+                    </p>
+                    <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
+                    </p>
+                    
+                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
+                        </a>
+                        <a href="https://www.linkedin.com/in/ruggerosbarra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="LinkedIn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="w-8 h-8 rounded-md shadow-lg">
+                        </a>
+                        <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonna 2: Link Rapidi -->
+                <div class="md:pl-10">
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Link Rapidi</h5>
+                    <ul class="space-y-4 text-sm font-medium border-l-2 border-slate-800 pl-4">
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="storia.html" data-i18n="nav_history"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Storia</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="progetti.html" data-i18n="nav_projects"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Progetti</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="eventi.html" data-i18n="nav_events"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Eventi</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="donazioni.html" data-i18n="nav_donate"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Dona</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="contatti.html" data-i18n="nav_contact"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Contatti</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 3: Contatti -->
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contatti</h5>
+                    <ul class="space-y-5 text-sm w-full">
+                        <li class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+                            <a href="mailto:info@emeritusfoundation.org" class="hover:text-white transition-colors break-all">info@emeritusfoundation.org</a>
+                        </li>
+                        <li class="flex items-start gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-1">call</span>
+                            <a href="https://wa.me/40733833833" target="_blank" class="hover:text-white transition-colors leading-tight">
+                                <span class="flex items-center font-bold text-base tracking-wider"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5 mr-2"> +40 733 833 833</span>
+                                <span class="text-xs text-slate-500 font-bold block mt-1 uppercase tracking-widest">(Phone / WhatsApp)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div class="flex flex-col gap-2 text-center md:text-left">
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium">
+                    <div class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
+                      <span id="visitorCount" class="font-mono text-primary font-bold">Visite: ...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Donazione -->
+    <div id="donateModal" class="modal items-center justify-center p-4">
+        <div class="bg-white rounded-[3rem] w-full max-w-lg overflow-hidden shadow-2xl relative">
+            <button onclick="closeDonateModal()"
+                class="absolute top-8 right-8 text-gray-400 hover:text-blue-900 transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+            <div class="p-12">
+                <div class="w-16 h-2 bg-emeritus-yellow mb-8 rounded-full"></div>
+                <h3 class="text-3xl font-black text-blue-900 mb-2 leading-none uppercase tracking-tighter"
+                    data-i18n="modal_title">Sostieni
+                    EMERITUS</h3>
+                <p class="text-gray-500 mb-10 font-medium" data-i18n="modal_subtitle">Unisciti ai nostri volontari sul
+                    campo.</p>
+
+                <div class="grid grid-cols-3 gap-4 mb-10">
+                    <button onclick="selectAmount(50)"
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€50</button>
+                    <button onclick="selectAmount(100)"
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€100</button>
+                    <button onclick="selectAmount(250)"
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€250</button>
+                </div>
+
+                <div class="mb-10">
+                    <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-3"
+                        data-i18n="modal_custom">Cifra
+                        Personalizzata (€)</label>
+                    <input type="number" id="customAmount" placeholder="Inserisci importo"
+                        class="w-full p-6 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-yellow-100 text-3xl font-black text-blue-900">
+                </div>
+
+                <button onclick="confirmDonation()"
+                    class="w-full py-6 bg-blue-900 text-white rounded-2xl font-black text-xl hover:bg-blue-800 transition-all shadow-2xl shadow-blue-200 uppercase tracking-widest"
+                    data-i18n="modal_btn">
+                    Invia Sostegno
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Message Box -->
+    <div id="messageBox"
+        class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-blue-900 text-white px-10 py-5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-[1100] font-black uppercase tracking-widest text-xs">
+        <p id="messageContent"></p>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+

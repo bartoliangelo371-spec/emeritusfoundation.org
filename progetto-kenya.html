@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progetto Kenya | EMERITUS FOUNDATION</title>
+    <meta name="description"
+        content="La Fondazione Filantropica Lions Club Emeritus opera da Brașov per il sviluppo sostenibile e l'innovazione sociale. Scopri i nostri progetti per rifugiati, giovani e anziani.">
+    <meta property="og:title" content="EMERITUS | Costruiamo il Nuovo">
+    <meta property="og:description"
+        content="Uniamo volontariato e management internazionale per supportare le comunità vulnerabili.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:type" content="website">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
+                        "emeritus-purple": "#6366f1"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
+</head>
+<body class="bg-gray-50 text-slate-900 font-sans antialiased overflow-x-hidden">
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b-4 border-emeritus-yellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain"></div>
+                    <span
+                        class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">EMERITUS</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium text-primary border-b-2 border-primary" href="index.html">Home</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="storia.html"
+                        data-i18n="nav_history">Storia</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="progetti.html"
+                        data-i18n="nav_projects">Progetti</a>
+                    
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="eventi.html"
+                        data-i18n="nav_events">Eventi</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="donazioni.html"
+                        data-i18n="nav_donate">Dona</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="contatti.html"
+                        data-i18n="nav_contact">Contatti</a>
+                </nav>
+                <div class="flex items-center gap-6">
+                    
+                    <div id="authNavBtn" class="hidden md:block">
+                        <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
+                            <span class="material-symbols-outlined text-sm">login</span> Accedi
+                        </a>
+                    </div>
+                    <button onclick="openDonateModal()"
+                        class="bg-emeritus-yellow hover-yellow text-blue-900 px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105"
+                        data-i18n="nav_donate_btn">
+                        DONA ORA
+                    </button>
+                    <div
+                        class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
+                        <button onclick="changeLanguage('it')"
+                            class="lang-btn hover:text-blue-900 transition">IT</button>
+                        <button onclick="changeLanguage('ro')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">RO</button>
+                        <button onclick="changeLanguage('en')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">EN</button>
+                    </div>
+                    <!-- Lions Logo -->
+                    <div class="h-14 w-14 ml-4 hidden md:flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/logo lions.jpg" alt="Lions International Logo" class="h-full w-full object-contain"></div>
+                    <!-- Hamburger Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-colors ml-4">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-xl flex-col divide-y divide-slate-100 transition-all z-40">
+            <a href="index.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
+            <a href="storia.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
+            <a href="progetti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
+            <a href="eventi.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
+            <a href="donazioni.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
+            <a href="contatti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+        </div>
+    </nav>
+<main>
+
+    <!-- Hero Section -->
+    <header class="h-[60vh] flex flex-col items-center justify-center text-center text-white px-4 relative pt-20" style="background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('assets/images/WhatsApp Image 2026-02-05 at 18.36.36 (1).jpeg'); background-size: cover; background-position: center;">
+        <span class="text-primary font-bold tracking-[0.2em] mb-6 uppercase text-sm bg-white/10 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-md" data-i18n="kenya_badge" data-i18n="kenya_badge">Brasov County, Romania To Kwale County, Kenya</span>
+        <h1 class="text-4xl md:text-7xl font-black mb-6 leading-none tracking-tighter text-white uppercase text-shadow-xl" data-i18n="kenya_title">
+            "SPRING OF HEALING" ACADEMY
+        </h1>
+        <p class="text-xl md:text-3xl text-emeritus-yellow font-light max-w-3xl mx-auto leading-relaxed italic" data-i18n="kenya_years">
+            2019 – 2026
+        </p>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-4 py-16 -mt-20 relative z-10">
+        <div class="bg-white rounded-[2rem] shadow-2xl p-8 md:p-16 border-t-[12px] border-primary text-center">
+            <h2 class="text-2xl md:text-3xl font-black text-blue-900 uppercase tracking-tighter mb-8" data-i18n="kenya_story_title" data-i18n="kenya_story_title">The story of this school was all about "NO"</h2>
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_food" data-i18n="kenya_no_food">NO Food</span>
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_water" data-i18n="kenya_no_water">NO Water</span>
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_lav" data-i18n="kenya_no_lav">NO Lavatories</span>
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_clothes" data-i18n="kenya_no_clothes">NO Clothes</span>
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_shoes" data-i18n="kenya_no_shoes">NO Shoes</span>
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_chairs" data-i18n="kenya_no_chairs">NO Chairs</span>
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_desks" data-i18n="kenya_no_desks">NO Desks</span>
+                <span class="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-bold uppercase text-sm border-2 border-red-100 shadow-sm" data-i18n="kenya_no_books" data-i18n="kenya_no_books">NO Books</span>
+                <span class="bg-slate-900 text-white px-6 py-3 rounded-xl font-black uppercase text-sm shadow-xl mt-2 md:mt-0" data-i18n="kenya_no_hope" data-i18n="kenya_no_hope">NO HOPE.</span>
+            </div>
+            <p class="text-lg text-slate-600 leading-relaxed font-medium">
+                Could we pretend it was not happening? <br>
+                <span class="text-primary font-black text-4xl uppercase inline-block my-6">NO! We couldn't!</span><br>
+                For us, this was the only acceptable negation in this story, so we did what was necessary so that all the "NO"s would turn into <span class="text-green-600 font-bold">YES</span>, because we knew that it is up to each and one of us, and together, we could be a family for these children and become their support and strength for a better future.
+            </p>
+        </div>
+    </section>
+
+    <!-- Project Goals -->
+    <section class="max-w-7xl mx-auto px-4 py-16">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter" data-i18n="kenya_goals_title" data-i18n="kenya_goals_title">Our Core Goals</h2>
+            <div class="w-24 h-1.5 bg-primary mx-auto mt-6 rounded-full"></div>
+            <p class="mt-6 text-slate-500 max-w-2xl mx-auto font-medium" data-i18n="kenya_goals_subtitle" data-i18n="kenya_goals_subtitle">Our project is structured on 4 phases that extended on a 7-years period.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:border-primary transition duration-300 group">
+                <span class="material-symbols-outlined text-5xl text-blue-900 mb-6 block group-hover:scale-110 transition-transform">school</span>
+                <h3 class="font-bold text-xl mb-3 text-slate-900" data-i18n="kenya_g1_title" data-i18n="kenya_g1_title">Education & Training</h3>
+                <p class="text-base text-slate-500" data-i18n="kenya_g1_desc" data-i18n="kenya_g1_desc">Providing quality basic education, training teachers, and supplying proper furniture and school materials.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:border-primary transition duration-300 group">
+                <span class="material-symbols-outlined text-5xl text-blue-900 mb-6 block group-hover:scale-110 transition-transform">health_and_safety</span>
+                <h3 class="font-bold text-xl mb-3 text-slate-900" data-i18n="kenya_g2_title" data-i18n="kenya_g2_title">Health & Hygiene</h3>
+                <p class="text-base text-slate-500" data-i18n="kenya_g2_desc" data-i18n="kenya_g2_desc">Educating children about proper hygiene, providing health check-ups, separate restrooms, and immunization.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:border-primary transition duration-300 group">
+                <span class="material-symbols-outlined text-5xl text-blue-900 mb-6 block group-hover:scale-110 transition-transform">diversity_3</span>
+                <h3 class="font-bold text-xl mb-3 text-slate-900" data-i18n="kenya_g3_title" data-i18n="kenya_g3_title">Community</h3>
+                <p class="text-base text-slate-500" data-i18n="kenya_g3_desc" data-i18n="kenya_g3_desc">Engaging the community in school management and creating safe, protective environments for learning and playing.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:border-primary transition duration-300 group">
+                <span class="material-symbols-outlined text-5xl text-blue-900 mb-6 block group-hover:scale-110 transition-transform">eco</span>
+                <h3 class="font-bold text-xl mb-3 text-slate-900" data-i18n="kenya_g4_title" data-i18n="kenya_g4_title">Sustainability</h3>
+                <p class="text-base text-slate-500" data-i18n="kenya_g4_desc" data-i18n="kenya_g4_desc">Creating the conditions necessary for the school complex to self-sustain, including water supply and animal farming.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Journey -->
+    <section class="max-w-4xl mx-auto px-4 py-24 mb-12">
+        <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter text-center mb-16" data-i18n="kenya_journey_title" data-i18n="kenya_journey_title">The Journey (2019 - 2026)</h2>
+        
+        <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-transparent before:via-emeritus-yellow before:to-transparent">
+
+            <!-- Phase 1 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">1</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-3xl border border-slate-100 shadow-xl hover:-translate-y-1 transition-transform">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                        <span class="font-bold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full text-xs uppercase tracking-widest inline-block w-max" data-i18n="kenya_p1_date" data-i18n="kenya_p1_date">Dec 2019 - Mar 2020</span>
+                        <div class="flex items-center gap-1.5 text-blue-900 bg-yellow-50 px-3 py-1 rounded-full"><span class="material-symbols-outlined text-sm">face</span><span class="font-black text-sm" data-i18n="kenya_p1_kids" data-i18n="kenya_p1_kids">14 Children</span></div>
+                    </div>
+                    <h3 class="font-black text-2xl mb-3 text-slate-900" data-i18n="kenya_p1_title" data-i18n="kenya_p1_title">The First Class</h3>
+                    <p class="text-base text-slate-600 leading-relaxed" data-i18n="kenya_p1_desc" data-i18n="kenya_p1_desc">Construction of the first class. Providing complete furniture, school uniforms, health services, and a 1-year feeding program with permanent presence on site.</p>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-white text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold border-primary">2</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-3xl border border-slate-100 shadow-xl hover:-translate-y-1 transition-transform">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                        <span class="font-bold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full text-xs uppercase tracking-widest w-max" data-i18n="kenya_p2_date" data-i18n="kenya_p2_date">2021 - 2022</span>
+                        <div class="flex items-center gap-1.5 text-blue-900 bg-yellow-50 px-3 py-1 rounded-full"><span class="material-symbols-outlined text-sm">face</span><span class="font-black text-sm" data-i18n="kenya_p2_kids" data-i18n="kenya_p2_kids">28 Children</span></div>
+                    </div>
+                    <h3 class="font-black text-2xl mb-3 text-slate-900" data-i18n="kenya_p2_title" data-i18n="kenya_p2_title">Covid-19 Era</h3>
+                    <p class="text-base text-slate-600 leading-relaxed" data-i18n="kenya_p2_desc" data-i18n="kenya_p2_desc">During the covid-19 pandemic, we provided distance support and kept permanently in touch with our friends from the site. The number of supported children doubled.</p>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-900 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">3</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-900 p-8 rounded-3xl border border-slate-800 shadow-2xl hover:-translate-y-1 transition-transform text-white">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                        <span class="font-bold text-slate-300 bg-slate-800 px-4 py-1.5 rounded-full text-xs uppercase tracking-widest w-max" data-i18n="kenya_p3_date" data-i18n="kenya_p3_date">Dec 2022 - Feb 2023</span>
+                        <div class="flex items-center gap-1.5 text-primary bg-primary/10 px-3 py-1 rounded-full"><span class="material-symbols-outlined text-sm">face</span><span class="font-black text-sm" data-i18n="kenya_p3_kids" data-i18n="kenya_p3_kids">51 Children</span></div>
+                    </div>
+                    <h3 class="font-black text-2xl mb-3 text-white" data-i18n="kenya_p3_title" data-i18n="kenya_p3_title">Massive Expansion</h3>
+                    <p class="text-base text-slate-300 leading-relaxed" data-i18n="kenya_p3_desc" data-i18n="kenya_p3_desc">Extension of the old structure into a school with 4 classrooms. Provided complete furniture, blackboards, science learning supplies, refurbished playground, and conducted an authorized hydro geological study.</p>
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold"><span class="material-symbols-outlined text-sm">water_drop</span></div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-blue-50 p-8 rounded-3xl border border-blue-100 shadow-xl hover:-translate-y-1 transition-transform text-center md:text-left">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                        <span class="font-bold text-blue-500 bg-blue-100 px-4 py-1.5 rounded-full text-xs uppercase tracking-widest w-max mx-auto md:mx-0" data-i18n="kenya_p4_date" data-i18n="kenya_p4_date">Feb 2023 - Mar 2024</span>
+                        <div class="flex items-center justify-center gap-1.5 text-blue-900 bg-white px-3 py-1 rounded-full"><span class="material-symbols-outlined text-sm">face</span><span class="font-black text-sm" data-i18n="kenya_p4_kids" data-i18n="kenya_p4_kids">82 Children</span></div>
+                    </div>
+                    <span class="material-symbols-outlined text-6xl text-blue-300 mb-2 block">water</span>
+                    <h3 class="font-black text-2xl text-blue-900 mb-3" data-i18n="kenya_p4_title" data-i18n="kenya_p4_title">Clean Water Arrives</h3>
+                    <p class="text-base text-blue-800 leading-relaxed" data-i18n="kenya_p4_desc" data-i18n="kenya_p4_desc">From the very first moment it was mandatory to provide clean water. Nowadays, all the village of Mrima has drinkable clean water! Water means life, healthy conditions, working the land, breeding animals, and absolute progress for the entire community.</p>
+                </div>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-green-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold"><span class="material-symbols-outlined text-sm">eco</span></div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-green-50 p-8 rounded-3xl border border-green-100 shadow-xl hover:-translate-y-1 transition-transform">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                        <span class="font-bold text-green-700 bg-green-100 px-4 py-1.5 rounded-full text-xs uppercase tracking-widest w-max" data-i18n="kenya_p5_date" data-i18n="kenya_p5_date">Dec 2024 - Mar 2026</span>
+                    </div>
+                    <h3 class="font-black text-2xl text-green-900 mb-3" data-i18n="kenya_p5_title" data-i18n="kenya_p5_title">Self-Sustainability</h3>
+                    <p class="text-base text-green-800 mb-6 leading-relaxed" data-i18n="kenya_p5_desc" data-i18n="kenya_p5_desc">LIONS plans to create conditions for the school complex to self-sustain without outside help, creating agricultural production and a small animal farm to support the nutrition of the children.</p>
+                    
+                    <div class="bg-white p-6 rounded-2xl border-2 border-green-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-green-500"></div>
+                        <span class="text-[10px] font-black text-green-600 uppercase tracking-widest block mb-2" data-i18n="kenya_p5_box1" data-i18n="kenya_p5_box1">Final Master Project</span>
+                        <p class="font-black text-lg text-slate-900 leading-tight" data-i18n="kenya_p5_box2" data-i18n="kenya_p5_box2">Irrigation Project for Capsicum Cultivation</p>
+                        <p class="text-sm text-slate-600 mt-2 font-medium" data-i18n="kenya_p5_box3" data-i18n="kenya_p5_box3">Lions Emeritus Brașov will support an irrigation system helping the community become completely self-sufficient through agriculture.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonna 1: Istituzionale & Social -->
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-4 text-white mb-6">
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain">
+                        </div>
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/logo lions.jpg" alt="Logo Lions" class="h-full w-full object-contain">
+                        </div>
+                        <span class="text-base font-bold tracking-tight uppercase leading-tight">EMERITUS<br><span class="text-xs text-primary font-black">Philanthropic Foundation</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4 font-medium text-slate-400" data-i18n="footer_org">
+                        An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
+                    </p>
+                    <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
+                    </p>
+                    
+                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
+                        </a>
+                        <a href="https://www.linkedin.com/in/ruggerosbarra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="LinkedIn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="w-8 h-8 rounded-md shadow-lg">
+                        </a>
+                        <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonna 2: Link Rapidi -->
+                <div class="md:pl-10">
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Link Rapidi</h5>
+                    <ul class="space-y-4 text-sm font-medium border-l-2 border-slate-800 pl-4">
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="storia.html" data-i18n="nav_history"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Storia</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="progetti.html" data-i18n="nav_projects"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Progetti</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="eventi.html" data-i18n="nav_events"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Eventi</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="donazioni.html" data-i18n="nav_donate"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Dona</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="contatti.html" data-i18n="nav_contact"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Contatti</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 3: Contatti -->
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contatti</h5>
+                    <ul class="space-y-5 text-sm w-full">
+                        <li class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+                            <a href="mailto:info@emeritusfoundation.org" class="hover:text-white transition-colors break-all">info@emeritusfoundation.org</a>
+                        </li>
+                        <li class="flex items-start gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-1">call</span>
+                            <a href="https://wa.me/40733833833" target="_blank" class="hover:text-white transition-colors leading-tight">
+                                <span class="flex items-center font-bold text-base tracking-wider"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5 mr-2"> +40 733 833 833</span>
+                                <span class="text-xs text-slate-500 font-bold block mt-1 uppercase tracking-widest">(Phone / WhatsApp)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div class="flex flex-col gap-2 text-center md:text-left">
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium">
+                    <div class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
+                      <span id="visitorCount" class="font-mono text-primary font-bold">Visite: ...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feedback Message Box -->
+    <div id="messageBox"
+        class="fixed bottom-12 right-12 bg-blue-900 text-white px-10 py-5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-[1100] font-black uppercase tracking-widest text-xs">
+        <p id="messageContent"></p>
+    </div>
+
+</body>
+</html>
+
+
+
+
+

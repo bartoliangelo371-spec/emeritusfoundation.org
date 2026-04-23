@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduKenya NGO | Insieme per il Futuro dell'Istruzione</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#facc15",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112111",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+    <script src="js/auth.js" defer></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-20 items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl">school</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">EduKenya</span>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Missione</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Progetti</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">News</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contatti</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                        Dona Ora
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10"></div>
+<img alt="Bambini sorridenti in una scuola keniota" class="w-full h-full object-cover" data-alt="Smiling Kenyan children in a bright classroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1QUKEeLpNQW9RAQEGgj2CZ3qxX5R_tA67VpnqnQtydNnsh7jC22HVhJHaHZjGLD5Iq-xIIr8EkqXTO0xm5RKBh82PONMWDVbO0BrokkP-eCiZshcAn0FVZTPNQweW_8DmWFNJnznKcP5W9e_0bQqDYpJ6fh8uJmAXSRwHowpqegUZ5-dkoEvQ8Blovyf_NfYQuaFZB0e7UeeRtMJeGfndpvZYWvNJ1-4Bys9G_g-7ebL6lxOChOjCKPANeO_BxUQ0rQQhz12NTEg"/>
+</div>
+<div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-2xl">
+<span class="inline-block bg-primary/20 border border-primary/30 text-yellow-100 font-semibold px-4 py-1.5 rounded-full text-sm mb-6">Insieme possiamo fare la differenza</span>
+<h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+                        Insieme per il Futuro dell'Istruzione in Kenya
+                    </h1>
+<p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed font-light">
+                        Costruiamo scuole per offrire a ogni bambino il diritto di sognare, imparare e costruire un futuro migliore per la propria comunità.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl text-base font-bold transition-all flex items-center justify-center gap-2 group">
+                            Dona Ora <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">favorite</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl text-base font-bold transition-all flex items-center justify-center gap-2">
+                            Scopri i Progetti <span class="material-symbols-outlined">explore</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Numbers Section -->
+<section class="py-12 -mt-16 relative z-30">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-primary/5 flex items-center gap-6">
+<div class="bg-primary/10 p-4 rounded-xl text-primary">
+<span class="material-symbols-outlined text-4xl">home_work</span>
+</div>
+<div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white">15</p>
+<p class="text-slate-500 text-sm font-medium uppercase tracking-wider">Scuole Costruite</p>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-primary/5 flex items-center gap-6">
+<div class="bg-primary/10 p-4 rounded-xl text-primary">
+<span class="material-symbols-outlined text-4xl">groups</span>
+</div>
+<div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white">2000+</p>
+<p class="text-slate-500 text-sm font-medium uppercase tracking-wider">Studenti Aiutati</p>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-primary/5 flex items-center gap-6">
+<div class="bg-primary/10 p-4 rounded-xl text-primary">
+<span class="material-symbols-outlined text-4xl">school</span>
+</div>
+<div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white">50</p>
+<p class="text-slate-500 text-sm font-medium uppercase tracking-wider">Insegnanti Formati</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission Section -->
+<section class="py-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<div class="relative">
+<div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
+<h2 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">La Nostra Missione</h2>
+<h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-8">
+                                Istruzione come seme della libertà e dello sviluppo.
+                            </h3>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                                Lavoriamo instancabilmente per garantire un'istruzione di qualità e strutture sicure alle comunità rurali del Kenya. Crediamo che ogni mattone posato sia un passo avanti verso l'autonomia economica e sociale.
+                            </p>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+                                Il nostro approccio è basato sulla sostenibilità: coinvolgiamo le comunità locali nella costruzione e nella gestione delle scuole, assicurando che i progetti crescano e prosperino nel tempo.
+                            </p>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium">Trasparenza 100%</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium">Gestione Locale</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium">Materiali Etici</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium">Supporto Continuo</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 relative">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Cantiere scuola in Kenya" class="w-full h-full object-cover aspect-square" data-alt="Local community building a new school foundation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXM2r293SDkWItA25lW2B73-4WdnMqQtxWHPXZ-nlppsVw-MCDRafXclXhWseUJHgOgHng35IWGpeifa_DZkGGlOUI6twJGL5ywqeAi5pxVNO07GK8jNOOeWOs5OFQsuSrG1YDIUqmSYG_XwwPTyav7uIZUJWjhOBCrk3pOqoSIjCUQJ0QIndiywrYh5DeFUKb2KE7l8AqfBGFFMyIpXdKfRflry0QSmR5lzovAgGLbZM0JLww2dI4VnufNFGFx1FWDzdpesO23kA"/>
+<div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-background-dark/90 backdrop-blur-sm p-6 rounded-xl border-l-4 border-primary">
+<p class="italic text-slate-700 dark:text-slate-300">"Non stiamo solo costruendo muri, stiamo costruendo possibilità."</p>
+<p class="mt-2 font-bold text-sm">— James K., Coordinatore Progetti</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- News Section -->
+<section class="py-24 bg-white dark:bg-background-dark/30">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Blog &amp; Aggiornamenti</h2>
+<h3 class="text-4xl font-extrabold text-slate-900 dark:text-white">Ultime Notizie dal Campo</h3>
+</div>
+<a class="hidden md:flex items-center gap-2 text-primary font-bold hover:underline" href="#">
+                        Vedi tutto <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- News Card 1 -->
+<article class="group bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-primary/5 hover:border-primary/20 transition-all hover:shadow-xl">
+<div class="aspect-video overflow-hidden">
+<img alt="Inaugurazione scuola" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Group of students outside a newly opened school" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXgIO09pZddwbCItJXuVmn1LW0IUSdePKl97if7iIvtTFEO_weATnVPDpB_TDQZDnAYEggVxssgC7qpkqqjb6KxiYiazqbjkHnI2MSM5BOOTWte0M637tMNqSBfOZv_XkrQDbL4kUPcT0xGjOskLBXHlGgXDG6zLP9HpXuXu4rB3svDP-wcqjd17Q4dvYRNa5QS_v1P1G1wNpwZOlVWTZ8HrQo61dD4Ao22awhwxHAk2Rkog4WMPtwcvNjN7QY3zOgQp57_dFox94"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<span class="text-xs font-bold text-primary uppercase">Progetto Nairobi</span>
+<span class="text-xs text-slate-400">12 Mag 2024</span>
+</div>
+<h4 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">Inaugurata la nuova ala della scuola "Sunlight"</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2 mb-6">Grazie alle donazioni ricevute lo scorso Natale, abbiamo completato 4 nuove aule e un laboratorio di informatica.</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white group-hover:gap-3 transition-all" href="#">
+                                Leggi di più <span class="material-symbols-outlined text-primary">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- News Card 2 -->
+<article class="group bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-primary/5 hover:border-primary/20 transition-all hover:shadow-xl">
+<div class="aspect-video overflow-hidden">
+<img alt="Materiale didattico" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Colorful school supplies and textbooks on a desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjJqCMGZpeKAqkWXGHTvK5L_A7uGkCrrUdmwrLo-N4dOmN-WhQI-YKs9R4ofyrsyaD7nugun5mvRjDM_7v6x_O6hw6nsTc0WX_9E8ucWZAr4_hJ4o4os2CDZv0J0JN9Q-GGvVMlQ-ugMXjqhG9bqcce1y8OpCnFMe6IZuoQWTRnhN8kOAmOxam-6J9OqgQ_B50QDRjcUwYH4nnUR_nREihlFcnVULWUSFknlcjVeeuz-YsIRl9k00iexdUQaGSKfSoM9noe1Myohw"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<span class="text-xs font-bold text-primary uppercase">Risorse</span>
+<span class="text-xs text-slate-400">05 Mag 2024</span>
+</div>
+<h4 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">Distribuiti 500 kit scolastici nelle zone rurali</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2 mb-6">Quaderni, penne e libri di testo sono stati consegnati agli studenti delle comunità più remote della Rift Valley.</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white group-hover:gap-3 transition-all" href="#">
+                                Leggi di più <span class="material-symbols-outlined text-primary">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- News Card 3 -->
+<article class="group bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-primary/5 hover:border-primary/20 transition-all hover:shadow-xl">
+<div class="aspect-video overflow-hidden">
+<img alt="Formazione insegnanti" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Teachers attending a training workshop in Kenya" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhZsdAFUb0QAr2ngpSWkdaz79dk8lsW5DOzetDblsySVaj_TkxDL_EzIt2kP4FF2Ibv4_HRPajYnyq_nKZ5DUjcwf5MWCoGXLzuiYdhBIiEOtp7pEbUWUjwdwSUugH1NAhK-6K0xdEYbERXBKJzsHZzg7jatwTmKyh1HWuZeYVrUYlv0RjN51xclkh0o64T9o4IMZq30tTNDpL72ZmIwG91vJOzUcOqV_Bj3JnO_Jkpc3kJIVlf9rciJTZk9YTrPVbeApBdmXemOM"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<span class="text-xs font-bold text-primary uppercase">Formazione</span>
+<span class="text-xs text-slate-400">28 Apr 2024</span>
+</div>
+<h4 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">Corso di aggiornamento per docenti locali</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2 mb-6">Abbiamo ospitato un seminario sulle nuove tecniche di insegnamento partecipativo per 25 maestri.</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white group-hover:gap-3 transition-all" href="#">
+                                Leggi di più <span class="material-symbols-outlined text-primary">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/10 -z-10"></div>
+<div class="max-w-4xl mx-auto px-4 text-center">
+<h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Sostieni il loro futuro oggi</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                    Ogni contributo, piccolo o grande, serve a costruire un mattone, formare un insegnante o donare un libro. Entra a far parte del nostro cambiamento.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-xl text-lg font-bold shadow-xl shadow-primary/20">
+                        Fai una Donazione
+                    </button>
+<button class="w-full sm:w-auto bg-white dark:bg-background-dark text-slate-900 dark:text-white border border-slate-200 dark:border-primary/20 px-10 py-4 rounded-xl text-lg font-bold">
+                        Diventa Volontario
+                    </button>
+</div>
+<div class="mt-12 flex items-center justify-center gap-6 text-slate-500 text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span>Donazione Sicura SSL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+<span>Trasparenza Fiscale</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonna 1: Istituzionale & Social -->
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-4 text-white mb-6">
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain">
+                        </div>
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/logo lions.jpg" alt="Logo Lions" class="h-full w-full object-contain">
+                        </div>
+                        <span class="text-base font-bold tracking-tight uppercase leading-tight">EMERITUS<br><span class="text-xs text-primary font-black">Philanthropic Foundation</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4 font-medium text-slate-400" data-i18n="footer_org">
+                        An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
+                    </p>
+                    <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
+                    </p>
+                    
+                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
+                        </a>
+                        <a href="https://www.linkedin.com/in/ruggerosbarra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="LinkedIn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="w-8 h-8 rounded-md shadow-lg">
+                        </a>
+                        <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonna 2: Link Rapidi -->
+                <div class="md:pl-10">
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Link Rapidi</h5>
+                    <ul class="space-y-4 text-sm font-medium border-l-2 border-slate-800 pl-4">
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="storia.html" data-i18n="nav_history"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Storia</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="progetti.html" data-i18n="nav_projects"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Progetti</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="eventi.html" data-i18n="nav_events"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Eventi</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="donazioni.html" data-i18n="nav_donate"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Dona</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="contatti.html" data-i18n="nav_contact"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Contatti</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 3: Contatti -->
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contatti</h5>
+                    <ul class="space-y-5 text-sm w-full">
+                        <li class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+                            <a href="mailto:info@emeritusfoundation.org" class="hover:text-white transition-colors break-all">info@emeritusfoundation.org</a>
+                        </li>
+                        <li class="flex items-start gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-1">call</span>
+                            <a href="https://wa.me/40733833833" target="_blank" class="hover:text-white transition-colors leading-tight">
+                                <span class="flex items-center font-bold text-base tracking-wider"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5 mr-2"> +40 733 833 833</span>
+                                <span class="text-xs text-slate-500 font-bold block mt-1 uppercase tracking-widest">(Phone / WhatsApp)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div class="flex flex-col gap-2 text-center md:text-left">
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium">
+                    <div class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
+                      <span id="visitorCount" class="font-mono text-primary font-bold">Visite: ...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </body></html>
+
+
+
+
+
+
+

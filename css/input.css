@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+    --color-emeritus-yellow: #FACC15;
+    --color-emeritus-purple: #6D28D9;
+    --font-sans: "Inter", sans-serif;
+}
+
+@layer utilities {
+    .hero-gradient {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+            url('../assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@layer components {
+    .modal {
+        @apply hidden fixed z-[1000] left-0 top-0 w-full h-full bg-black/80;
+    }
+
+    .progress-bar {
+        @apply transition-[width] duration-1000 ease-in-out;
+    }
+
+    /* Custom Color Utilities using Theme Variables */
+    .bg-emeritus-yellow {
+        background-color: var(--color-emeritus-yellow);
+    }
+
+    .text-emeritus-yellow {
+        color: var(--color-emeritus-yellow);
+    }
+
+    .bg-emeritus-purple {
+        background-color: var(--color-emeritus-purple);
+    }
+
+    .text-emeritus-purple {
+        color: var(--color-emeritus-purple);
+    }
+
+    .border-emeritus-yellow {
+        border-color: var(--color-emeritus-yellow);
+    }
+
+    .hover-yellow:hover {
+        background-color: #EAB308;
+    }
+}

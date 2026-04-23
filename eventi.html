@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventi | EMERITUS FOUNDATION</title>
+    <meta name="description"
+        content="La Fondazione Filantropica Lions Club Emeritus opera da Brașov per il sviluppo sostenibile e l'innovazione sociale. Scopri i nostri progetti per rifugiati, giovani e anziani.">
+    <meta property="og:title" content="EMERITUS | Costruiamo il Nuovo">
+    <meta property="og:description"
+        content="Uniamo volontariato e management internazionale per supportare le comunità vulnerabili.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:type" content="website">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
+                        "emeritus-purple": "#6366f1"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
+</head>
+<body class="bg-gray-50 text-slate-900 font-sans antialiased overflow-x-hidden">
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b-4 border-emeritus-yellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain"></div>
+                    <span
+                        class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">EMERITUS</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="storia.html"
+                        data-i18n="nav_history">Storia</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="progetti.html"
+                        data-i18n="nav_projects">Progetti</a>
+                    
+                    <a class="text-sm font-medium text-primary border-b-2 border-primary" href="eventi.html"
+                        data-i18n="nav_events">Eventi</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="donazioni.html"
+                        data-i18n="nav_donate">Dona</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="contatti.html"
+                        data-i18n="nav_contact">Contatti</a>
+                </nav>
+                <div class="flex items-center gap-6">
+                    
+                    <div id="authNavBtn" class="hidden md:block">
+                        <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
+                            <span class="material-symbols-outlined text-sm">login</span> Accedi
+                        </a>
+                    </div>
+                    <button onclick="openDonateModal()"
+                        class="bg-emeritus-yellow hover-yellow text-blue-900 px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105"
+                        data-i18n="nav_donate_btn">
+                        DONA ORA
+                    </button>
+                    <div
+                        class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
+                        <button onclick="changeLanguage('it')"
+                            class="lang-btn hover:text-blue-900 transition">IT</button>
+                        <button onclick="changeLanguage('ro')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">RO</button>
+                        <button onclick="changeLanguage('en')"
+                            class="lang-btn text-gray-400 hover:text-blue-900 transition">EN</button>
+                    </div>
+                    <!-- Lions Logo -->
+                    <div class="h-14 w-14 ml-4 hidden md:flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/logo lions.jpg" alt="Lions International Logo" class="h-full w-full object-contain"></div>
+                    <!-- Hamburger Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-colors ml-4">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-xl flex-col divide-y divide-slate-100 transition-all z-40">
+            <a href="index.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
+            <a href="storia.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
+            <a href="progetti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
+            <a href="eventi.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
+            <a href="donazioni.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
+            <a href="contatti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+        </div>
+    </nav>
+<main>
+<!-- Hero Section -->
+    <header class="h-[50vh] flex flex-col items-center justify-center text-center text-white px-4 relative pt-20" style="background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg'); background-size: cover; background-position: center;">
+        <span class="text-primary font-bold tracking-[0.2em] mb-4 uppercase text-sm bg-white/10 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-md" data-i18n="events_badge" data-i18n="events_badge">Il nostro impatto</span>
+        <h1 class="text-5xl md:text-7xl font-black mb-4 leading-none tracking-tighter text-white uppercase text-shadow-xl" data-i18n="events_title">
+            Campagne & Eventi
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed" data-i18n="events_subtitle">
+            Un archivio di tornei di solidarietà, iniziative sul campo e momenti indimenticabili dal 2019 ad oggi.
+        </p>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-4 py-20">
+        <!-- 2025 Section -->
+        <div class="mb-20">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-4xl font-black text-slate-900" data-i18n="ev_3_badge" data-i18n="ev_3_badge">2025</h2>
+                <div class="h-1 bg-slate-200 flex-grow rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1: Ranger -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-green-900 relative overflow-hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-8xl text-white/20 absolute transform -rotate-12 scale-150">nature</span>
+                        <h4 class="text-white font-black text-2xl relative z-10 text-center px-4">LUMO CONSERVANCY<br><span class="text-primary text-sm tracking-widest uppercase">Tsavo, Kenya</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-green-900 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_1_badge" data-i18n="ev_1_badge">Febbraio 2025</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_1_title" data-i18n="ev_1_title">Ranger Operation Center</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="ev_1_desc" data-i18n="ev_1_desc">Visita ufficiale alla LUMO Community Wildlife Conservancy. Celebrazione della costruzione di un RANGERS OPERATIONS CENTER, infrastruttura cruciale per rafforzare la lotta al bracconaggio e gestire la riserva consolidando la nostra visione di sostenibilità e tutela dell'ecosistema.</p>
+                        <a href="https://www.facebook.com/LumoConservancyKenya" target="_blank" class="mt-auto text-green-700 font-bold text-sm flex items-center gap-2 hover:text-green-800 transition">
+                            <span class="material-symbols-outlined text-lg">public</span> Scopri LUMO Conservancy
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Event 2: Integration -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-blue-900 relative overflow-hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-8xl text-white/20 absolute transform -rotate-12 scale-150">diversity_3</span>
+                        <h4 class="text-white font-black text-2xl relative z-10 text-center px-4">ARO PALACE<br><span class="text-primary text-sm tracking-widest uppercase">Brasov, Romania</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-blue-900 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_2_badge" data-i18n="ev_2_badge">Aprile 2025</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_2_title" data-i18n="ev_2_title">Integration Without Borders</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="ev_2_desc" data-i18n="ev_2_desc">In collaborazione con il Corpo Nazionale della Polizia, Ispettorato Generale Migrazioni e AJOFM. Un evento rivolto alle comunità di India, Nepal, Sri Lanka e Bangladesh per creare ponti inter-comunitari, promuovendo inclusione nel mondo del lavoro e fornendo lezioni su comportamento civico e sicurezza stradale.</p>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest shadow-sm" data-i18n="ev_2_tag1" data-i18n="ev_2_tag1">Integrazione</span>
+                            <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest shadow-sm" data-i18n="ev_2_tag2" data-i18n="ev_2_tag2">Lavoro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3: Kids Adventure -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-amber-500 relative overflow-hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-8xl text-white/20 absolute transform -rotate-12 scale-150">flight_takeoff</span>
+                        <h4 class="text-white font-black text-2xl relative z-10 text-center px-4">DIANI & BORA-BORA<br><span class="text-slate-900 text-sm tracking-widest uppercase">Kenya</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-amber-700 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_3_badge" data-i18n="ev_3_badge">2025</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_3_title" data-i18n="ev_3_title">Kids' Adventure: A Day of Discovery</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="ev_3_desc" data-i18n="ev_3_desc">Un viaggio speciale per i bambini: visita alla Bora-Bora Conservancy per scoprire gli animali nel loro habitat, prima volta in spiaggia a guardare l'oceano al Soul Breeze Resort e visita finale all'Aeroporto di Diani per vedere gli aerei da vicino!</p>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="bg-amber-50 text-amber-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest shadow-sm" data-i18n="ev_3_tag1" data-i18n="ev_3_tag1">Educazione</span>
+                            <span class="bg-amber-50 text-amber-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest shadow-sm" data-i18n="ev_3_tag2" data-i18n="ev_3_tag2">Emozioni</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2022 Section -->
+        <div class="mb-20">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-4xl font-black text-slate-900" data-i18n="ev_5_badge" data-i18n="ev_5_badge">2022</h2>
+                <div class="h-1 bg-slate-200 flex-grow rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 4: Calcio -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full lg:col-span-2 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-start px-8">
+                        <span class="material-symbols-outlined text-8xl text-white/10 absolute transform -translate-y-4 right-10 scale-[2.5]">sports_soccer</span>
+                        <h4 class="text-white font-black text-3xl md:text-4xl relative z-10 w-full mb-2">LOVESTE DOAR MINGEA!<br><span class="text-primary text-xl font-medium tracking-widest uppercase">EDIZIONE 2</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/10 backdrop-blur text-white border border-white/20 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_4_badge" data-i18n="ev_4_badge">Giugno 2022 • Romania</div>
+                    </div>
+                    <div class="p-8 flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_4_title" data-i18n="ev_4_title">Torneo Caritabile</h3>
+                            <p class="text-slate-600 text-base leading-relaxed mb-4" data-i18n="ev_4_desc1" data-i18n="ev_4_desc1">"Quando lo sport incontra la solidarietà". Presso la Sala Sporturilor abbiamo dedicato questa seconda edizione a regalare sorrisi ai bambini sfortunati, promuovendo puro spirito di squadra e solidarietà.</p>
+                            <p class="text-slate-600 text-sm font-medium" data-i18n="ev_4_desc2" data-i18n="ev_4_desc2">L'evento ha visto sfidarsi categorie professionali in accoppiamenti divertenti ed emblematici:</p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm uppercase" data-i18n="ev_4_t1" data-i18n="ev_4_t1">Polizia vs Pompieri</span>
+                                <span class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm uppercase" data-i18n="ev_4_t2" data-i18n="ev_4_t2">Avvocati vs Pubblici Ministeri</span>
+                                <span class="bg-red-50 text-red-700 px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm uppercase" data-i18n="ev_4_t3" data-i18n="ev_4_t3">Medici vs Preti</span>
+                                <span class="bg-green-50 text-green-700 px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm uppercase" data-i18n="ev_4_t4" data-i18n="ev_4_t4">ANAF vs Imprenditori</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5: Zambia -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-red-800 relative overflow-hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-8xl text-white/20 absolute transform -rotate-12 scale-150">sports_mma</span>
+                        <h4 class="text-white font-black text-2xl relative z-10 text-center px-4">KABWE<br><span class="text-primary text-sm tracking-widest uppercase">Zambia</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-red-900 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_5_badge" data-i18n="ev_5_badge">2022</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_5_title" data-i18n="ev_5_title">K1 / Boxe per il riscatto sociale</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="ev_5_desc" data-i18n="ev_5_desc">Rivolto ai ragazzi a rischio a Kabwe. Abbiamo organizzato corsi di sport da combattimento (K1/Boxe) per sviluppare disciplina e fiducia in sé stessi come alternativa alla strada. Oltre 1.000 spettatori hanno presenziato al torneo, dimostrando un calore umano straordinario.</p>
+                        <div class="flex items-center gap-2 text-red-700 mt-auto text-sm font-bold uppercase tracking-widest">
+                            <span class="material-symbols-outlined">local_fire_department</span> Passione e Sport
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2019-2020 Section -->
+        <div class="mb-10">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-4xl font-black text-slate-900">2019 - 2020</h2>
+                <div class="h-1 bg-slate-200 flex-grow rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 6: Pazeste -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-teal-600 relative overflow-hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-8xl text-white/20 absolute transform -rotate-12 scale-150">healing</span>
+                        <h4 class="text-white font-black text-2xl relative z-10 text-center px-4">PĂZEȘTE UN ÎNGER<br><span class="text-teal-200 text-sm tracking-widest uppercase">Romania</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-teal-800 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_6_badge" data-i18n="ev_6_badge">Covid-19 • 2020</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_6_title" data-i18n="ev_6_title">La Maratona di Solidarietà in Casa</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="ev_6_desc" data-i18n="ev_6_desc">In piena pandemia, abbiamo organizzato due incredibili "LIVE ONLINE MARATHON" (Zumba e Move) di 4 ore l'una invitando le persone ad allenarsi da casa. Con soli 25 lei di iscrizione, i fondi raccolti hanno fornito centinaia di dispositivi medici d'urgenza per l'Ospedale di Malattie Infettive di Brașov.</p>
+                        <div class="flex items-center gap-2 text-teal-600 mt-auto text-xs font-bold uppercase tracking-widest">
+                            <span class="material-symbols-outlined text-sm">favorite</span> Salute Pubblica
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 7: Caravana -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-purple-700 relative overflow-hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-8xl text-white/20 absolute transform scale-150">local_shipping</span>
+                        <h4 class="text-white font-black text-2xl relative z-10 text-center px-4">CARAVANA BINELUI<br><span class="text-purple-300 text-sm tracking-widest uppercase">Romania</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-purple-900 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_7_badge" data-i18n="ev_7_badge">Dicembre 2019</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_7_title" data-i18n="ev_7_title">La Carovana del Bene</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="ev_7_desc" data-i18n="ev_7_desc">Per la festa di San Nicola, abbiamo trasformato una fredda giornata in un ponte di calore umano per i villaggi più remoti e dimenticati della Romania. Un viaggio instancabile per distribuire dolci, vestiti, preziosi giocattoli e materiali scolastici ai bambini, ricordando che nessuna distanza logistica è troppo grande per l'umanità.</p>
+                    </div>
+                </div>
+
+                <!-- Event 8: Loveste 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+                        <span class="material-symbols-outlined text-8xl text-white/20 absolute transform -rotate-12 scale-150">sports_soccer</span>
+                        <h4 class="text-white font-black text-2xl relative z-10 text-center px-4">LOVESTE DOAR MINGEA!<br><span class="text-primary text-sm tracking-widest uppercase">EDIZIONE 1</span></h4>
+                        <div class="absolute top-4 left-4 bg-white/10 backdrop-blur text-white border border-white/20 text-xs font-black px-3 py-1 rounded-full uppercase" data-i18n="ev_8_badge" data-i18n="ev_8_badge">2019 • Romania</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-black text-xl mb-3 text-slate-900 uppercase" data-i18n="ev_8_title" data-i18n="ev_8_title">Stop Violenza Domestica</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="ev_8_desc" data-i18n="ev_8_desc">Il motto? "Colpisci solo il pallone!". Parte focale del progetto "La prima sberla non è anche l'ultima". Un torneo emblematico con partite mozzafiato tra Poliziotti vs Detenuti e Medici vs Preti per raccogliere fondi. L'obiettivo? Costruire un vero rifugio sicuro e moderno per le vittime di violenza domestica includendo supporto psicologico totale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonna 1: Istituzionale & Social -->
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-4 text-white mb-6">
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain">
+                        </div>
+                        <div class="h-14 w-14 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-sm shrink-0 p-1">
+                            <img src="assets/images/logo lions.jpg" alt="Logo Lions" class="h-full w-full object-contain">
+                        </div>
+                        <span class="text-base font-bold tracking-tight uppercase leading-tight">EMERITUS<br><span class="text-xs text-primary font-black">Philanthropic Foundation</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4 font-medium text-slate-400" data-i18n="footer_org">
+                        An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
+                    </p>
+                    <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
+                    </p>
+                    
+                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
+                        </a>
+                        <a href="https://www.linkedin.com/in/ruggerosbarra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="LinkedIn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="w-8 h-8 rounded-md shadow-lg">
+                        </a>
+                        <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonna 2: Link Rapidi -->
+                <div class="md:pl-10">
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Link Rapidi</h5>
+                    <ul class="space-y-4 text-sm font-medium border-l-2 border-slate-800 pl-4">
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="storia.html" data-i18n="nav_history"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Storia</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="progetti.html" data-i18n="nav_projects"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Progetti</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="eventi.html" data-i18n="nav_events"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Eventi</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="donazioni.html" data-i18n="nav_donate"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Dona</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="contatti.html" data-i18n="nav_contact"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Contatti</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 3: Contatti -->
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contatti</h5>
+                    <ul class="space-y-5 text-sm w-full">
+                        <li class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+                            <a href="mailto:info@emeritusfoundation.org" class="hover:text-white transition-colors break-all">info@emeritusfoundation.org</a>
+                        </li>
+                        <li class="flex items-start gap-4 border-t border-slate-800 pt-4">
+                            <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-1">call</span>
+                            <a href="https://wa.me/40733833833" target="_blank" class="hover:text-white transition-colors leading-tight">
+                                <span class="flex items-center font-bold text-base tracking-wider"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-5 h-5 mr-2"> +40 733 833 833</span>
+                                <span class="text-xs text-slate-500 font-bold block mt-1 uppercase tracking-widest">(Phone / WhatsApp)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div class="flex flex-col gap-2 text-center md:text-left">
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium">
+                    <div class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
+                      <span id="visitorCount" class="font-mono text-primary font-bold">Visite: ...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feedback Message Box -->
+    <div id="messageBox"
+        class="fixed bottom-12 right-12 bg-blue-900 text-white px-10 py-5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-[1100] font-black uppercase tracking-widest text-xs">
+        <p id="messageContent"></p>
+    </div>
+
+</body>
+</html>
+
+
+
+
+

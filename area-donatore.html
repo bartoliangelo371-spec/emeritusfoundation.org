@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="light" lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard Donatore | EMERITUS FOUNDATION</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
+                        "emeritus-purple": "#6366f1",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    }
+                }
+            }
+        }
+    </script>
+    <style> body { font-family: 'Lexend', sans-serif; } </style>
+    <!-- TRANSLATIONS -->
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" type="module"></script>
+    <!-- AUTH FLOW -->
+    <script src="js/auth.js" type="module"></script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pb-12" id="donorDashboardView">
+    <!-- Navbar Superiore -->
+    <nav class="bg-blue-900 text-white shadow-md relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+                    <span class="text-xl font-bold tracking-tight uppercase" data-i18n="dash_title">Dashboard Donatore</span>
+                </div>
+                <!-- LANGUAGE SELECTOR -->
+                <div class="hidden md:flex space-x-4 text-xs font-bold uppercase tracking-widest mr-4">
+                    <button onclick="changeLanguage('it')" class="lang-btn hover:text-primary transition">IT</button>
+                    <button onclick="changeLanguage('ro')" class="lang-btn text-blue-300 hover:text-primary transition">RO</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-blue-300 hover:text-primary transition">EN</button>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="text-sm text-blue-200 hover:text-white transition hidden md:block" data-i18n="dash_back">Torna al Sito</a>
+                    <button onclick="logoutUser()" class="bg-blue-800 hover:bg-blue-700 px-4 py-2 rounded-lg font-bold text-sm transition flex items-center gap-2">
+                        <span data-i18n="dash_logout">Esci</span> <span class="material-symbols-outlined text-sm">logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="max-w-7xl mx-auto px-4 mt-8">
+        
+        <!-- Welcome Header -->
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+            <div class="flex items-center gap-6">
+                <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-blue-900 border-4 border-yellow-50 shadow-inner">
+                    <span class="material-symbols-outlined text-4xl">person</span>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-slate-800 dark:text-white">
+                        <span data-i18n="dash_welcome">Bentornato</span>, <span id="donorName">Donatore</span>!
+                    </h1>
+                    <p class="text-slate-500 mt-1 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                        <span id="donorEmail">email@example.com</span>
+                    </p>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-xs uppercase font-bold text-slate-500 tracking-widest mb-1" data-i18n="dash_level">Livello Sostenitore</p>
+                <div class="inline-flex items-center gap-2 bg-yellow-50 text-yellow-800 px-4 py-2 rounded-full font-bold">
+                    <span class="material-symbols-outlined text-primary text-xl">star</span> <span data-i18n="dash_user_level_gold">Gold Donor</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Col 1: Progetti Finanziati -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between h-full">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-primary">analytics</span> <span data-i18n="dash_projects_title">Progetti Correnti</span>
+                        </h2>
+                        <div id="projectsProgressContainer" class="space-y-4">
+                            <!-- Progress JS injected here -->
+                            <p class="text-sm text-slate-400" data-i18n="dash_loading">Caricamento in corso...</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700 text-center">
+                        <a href="donazioni.html" class="w-full inline-block bg-primary text-blue-900 font-bold py-3 rounded-xl hover:brightness-105 transition" data-i18n="dash_new_donation">Nuova Donazione</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 2: Storico Donazioni -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100">
+                    <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-6">
+                        <span class="material-symbols-outlined text-primary">history</span> <span data-i18n="dash_history_title">Storico e Ricevute</span>
+                    </h2>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-200 dark:border-slate-700">
+                                    <th class="pb-3 px-4" data-i18n="dash_th_date">Data</th>
+                                    <th class="pb-3 px-4 text-center" data-i18n="dash_th_amount">Importo</th>
+                                    <th class="pb-3 px-4 text-center" data-i18n="dash_th_status">Stato</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donationsTableBody" class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                                <!-- Data injected here via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-6 flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-slate-400">receipt_long</span>
+                            <span class="text-sm font-semibold text-slate-600" data-i18n="dash_tax_summary_full">Riepilogo Fiscale 2026</span>
+                        </div>
+                        <button class="text-sm font-bold text-blue-600 hover:text-blue-800 transition" data-i18n="dash_download_pdf">Scarica PDF</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
+
+
