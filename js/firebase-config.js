@@ -5,7 +5,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.1/firebase
 
 // CONFIGURAZIONE REALE FIREBASE - Fondazione Emeritus
 const firebaseConfig = {
-  apiKey: "AIzaSyBunoeJv7jLa7l35qJnxH6NOOsmft0iw20",
+  apiKey: "AIzaSyD8_FvKQXU_tPDYnARajBxFWhTCFuTGJdQ",
   authDomain: "emeritusfoundation-c23a4.firebaseapp.com",
   projectId: "emeritusfoundation-c23a4",
   storageBucket: "emeritusfoundation-c23a4.firebasestorage.app",
