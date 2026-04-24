@@ -873,3 +873,28 @@ window.translations = {
         "sponsor_click_link": "Faceți clic aici pentru a vedea linkul"
     }
 };
+
+window.changeLanguage = function(lang) {
+    if (!window.translations || !window.translations[lang]) return;
+    localStorage.setItem('emeritus_lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (window.translations[lang][key]) {
+            if (el.tagName === 'INPUT' && el.getAttribute('placeholder')) {
+                el.placeholder = window.translations[lang][key];
+            } else {
+                el.innerHTML = window.translations[lang][key];
+            }
+        }
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('font-bold', 'text-blue-900');
+        btn.classList.add('text-gray-400');
+        if (btn.innerText.toLowerCase() === lang) {
+            btn.classList.add('font-bold', 'text-blue-900');
+            btn.classList.remove('text-gray-400');
+        }
+    });
+};
