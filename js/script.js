@@ -95,41 +95,6 @@ async function confirmDonation() {
     }
 }
 
-// --- GESTIONE MESSAGGI CONTATTI ---
-async function handleContactForm(e) {
-    if(e) e.preventDefault();
-    
-    const name = document.getElementById('contactName')?.value;
-    const email = document.getElementById('contactEmail')?.value;
-    const message = document.getElementById('contactMessage')?.value;
-    const btn = e.target.querySelector('button[type="submit"]');
-    
-    if(!name || !email || !message) return;
-    
-    const originalText = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerText = "Inviando...";
-
-    try {
-        await addDoc(collection(db, "messages"), {
-            senderName: name,
-            senderEmail: email,
-            messageContent: message,
-            timestamp: new Date().toISOString(),
-            status: "new"
-        });
-
-        showMessage("Messaggio inviato con successo! Ti risponderemo al più presto.");
-        e.target.reset();
-    } catch (error) {
-        console.error("Contact Form Error:", error);
-        alert("Errore nell'invio del messaggio. Riprova più tardi.");
-    } finally {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-    }
-}
-
 // --- UTILITY UI ---
 function showMessage(text) {
     if(!msgBox || !msgContent) return;
@@ -196,6 +161,56 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', handleContactForm);
     }
     
+    // Inizializzazione EmailJS
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("mirJZLLUfJv4xCxxg");
+    }
+
     // Default selection
     selectAmount(100);
 });
+
+async function handleContactForm(e) {
+    if(e) e.preventDefault();
+    
+    const name = document.getElementById('contactName')?.value;
+    const email = document.getElementById('contactEmail')?.value;
+    const message = document.getElementById('contactMessage')?.value;
+    const btn = e.target.querySelector('button[type="submit"]');
+    
+    if(!name || !email || !message) return;
+    
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerText = "Inviando...";
+
+    try {
+        // 1. Salvataggio su Firestore
+        await addDoc(collection(db, "messages"), {
+            senderName: name,
+            senderEmail: email,
+            messageContent: message,
+            timestamp: new Date().toISOString(),
+            status: "new"
+        });
+
+        // 2. Invio Email tramite EmailJS (se disponibile)
+        if (typeof emailjs !== 'undefined') {
+            const templateParams = {
+                senderName: name,
+                senderEmail: email,
+                messageContent: message
+            };
+            await emailjs.send("service_6gormxq", "template_b0k2lzj", templateParams);
+        }
+
+        showMessage("Messaggio inviato con successo! Ti risponderemo al più presto.");
+        e.target.reset();
+    } catch (error) {
+        console.error("Contact Form Error:", error);
+        alert("Errore nell'invio del messaggio. Riprova più tardi.");
+    } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }
+}
