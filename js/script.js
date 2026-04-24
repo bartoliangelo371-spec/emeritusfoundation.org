@@ -201,6 +201,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Default selection
     selectAmount(100);
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+    }
 });
 
 async function handleContactForm(e) {
