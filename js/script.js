@@ -84,7 +84,8 @@ async function confirmDonation() {
 
         // 2. Invio automatico notifica via EmailJS
         if (typeof emailjs !== 'undefined') {
-            const donationDetails = `NUOVA PROMESSA DI DONAZIONE\n--------------------------\nDonatore: ${dName} ${dSurname}\nEmail: ${dEmail}\nImporto: €${finalAmount}\nArea: ${selectedArea}\nData: ${new Date().toLocaleString('it-IT')}`;
+            console.log("Tentativo invio EmailJS...");
+            const donationDetails = `NUOVA PROMESSA DI DONAZIONE\nImporto: €${finalAmount}\nArea: ${selectedArea}\nDonatore: ${dName} ${dSurname}\nEmail: ${dEmail}`;
             
             const templateParams = {
                 senderName: `${dName} ${dSurname}`,
@@ -92,8 +93,9 @@ async function confirmDonation() {
                 messageContent: donationDetails
             };
 
-            // Usiamo lo stesso servizio/template dei contatti per semplicità
-            await emailjs.send("service_6gormxq", "template_b0k2lzj", templateParams);
+            await emailjs.send("service_6gormxq", "template_b0k2lzj", templateParams)
+                .then(() => console.log("Email inviata con successo!"))
+                .catch((err) => console.error("Errore invio EmailJS:", err));
         }
 
         // Feedback Successo
