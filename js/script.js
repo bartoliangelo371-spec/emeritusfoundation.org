@@ -15,7 +15,12 @@ let selectedArea = 'childhood';
 
 // --- GESTIONE MODALE DONAZIONI ---
 function openDonateModal() {
-    window.location.href = 'donazioni.html';
+    const modal = document.getElementById('donateModal');
+    if (modal) {
+        modal.style.display = 'flex';
+    } else {
+        window.location.href = 'donazioni.html';
+    }
 }
 
 function closeDonateModal() { 
@@ -25,9 +30,9 @@ function closeDonateModal() {
 function selectAmount(val) {
     selectedAmount = val;
     document.querySelectorAll('.amount-btn').forEach(btn => {
-        btn.classList.remove('bg-primary', 'text-white', 'shadow-lg');
+        btn.classList.remove('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
         if (parseInt(btn.innerText.replace('€', '')) === val) {
-            btn.classList.add('bg-primary', 'text-white', 'shadow-lg');
+            btn.classList.add('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
         }
     });
     const customAmt = document.getElementById('customAmount');
@@ -37,9 +42,9 @@ function selectAmount(val) {
 function selectArea(area) {
     selectedArea = area;
     document.querySelectorAll('.area-btn').forEach(btn => {
-        btn.classList.remove('bg-primary', 'text-white', 'shadow-lg');
+        btn.classList.remove('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
         if (btn.dataset.area === area) {
-            btn.classList.add('bg-primary', 'text-white', 'shadow-lg');
+            btn.classList.add('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
         }
     });
 }
@@ -122,10 +127,10 @@ function changeLanguage(lang) {
     });
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('font-black', 'text-primary');
+        btn.classList.remove('font-bold', 'text-blue-900');
         btn.classList.add('text-gray-400');
         if (btn.innerText.toLowerCase() === lang) {
-            btn.classList.add('font-black', 'text-primary');
+            btn.classList.add('font-bold', 'text-blue-900');
             btn.classList.remove('text-gray-400');
         }
     });

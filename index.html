@@ -26,7 +26,8 @@
                     colors: {
                         "primary": "#facc15",
                         "emeritus-yellow": "#facc15",
-                        "emeritus-purple": "#a78bfa"
+                        "emeritus-purple": "#6366f1",
+                        "emeritus-violet": "#a78bfa"
                     }
                 }
             }
@@ -41,6 +42,18 @@
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/29.jpeg');
             background-size: cover;
             background-position: center;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
         }
     </style>
     <script src="js/translations.js" defer></script>
@@ -206,8 +219,8 @@
                         <img src="assets/images/05.jpeg"
                             class="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-110"
                             alt="Scuola">
-                        <div class="absolute inset-0 bg-emeritus-purple/10"></div>
-                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-emeritus-purple uppercase tracking-widest shadow-lg"
+                        <div class="absolute inset-0 bg-blue-900/10"></div>
+                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-blue-900 uppercase tracking-widest shadow-lg"
                             data-i18n="proj_school_tag">
                             Edilizia</div>
                     </div>
@@ -221,13 +234,13 @@
                             <div
                                 class="flex justify-between text-xs font-bold mb-3 uppercase tracking-widest text-gray-400">
                                 <span data-i18n="fundraising">Raccolta Fondi</span>
-                                <span class="text-emeritus-purple">45%</span>
+                                <span class="text-blue-900">45%</span>
                             </div>
                             <div class="w-full bg-gray-100 h-3 rounded-full mb-8">
-                                <div class="bg-emeritus-purple h-3 rounded-full progress-bar" style="width: 45%"></div>
+                                <div class="bg-blue-900 h-3 rounded-full progress-bar" style="width: 45%"></div>
                             </div>
                             <button onclick="openDonateModal()"
-                                class="w-full py-4 bg-emeritus-purple text-white rounded-2xl font-black hover:bg-purple-800 transition shadow-lg shadow-purple-100"
+                                class="w-full py-4 bg-blue-900 text-white rounded-2xl font-black hover:bg-blue-800 transition shadow-lg shadow-blue-200"
                                 data-i18n="btn_support_edu">Sostieni
                                 l'Istruzione</button>
                         </div>
@@ -277,27 +290,26 @@
                         <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.23.jpeg"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="IT Training">
-                        <div class="absolute inset-0 bg-blue-900/10"></div>
-                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-blue-900 uppercase tracking-widest shadow-lg"
-                            data-i18n="proj_it_tag">
-                            Tech</div>
+                        <div class="absolute inset-0 bg-emeritus-violet/10"></div>
+                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-emeritus-violet uppercase tracking-widest shadow-lg"
+                        data-i18n="proj_it_tag">
+                            Sostieni l'Istruzione</div>
                     </div>
                     <div class="p-10 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-black mb-4 text-blue-900" data-i18n="proj_it_title">IT Training</h3>
-                        <p class="text-gray-600 text-sm mb-8 leading-relaxed" data-i18n="proj_it_desc">Corsi di
-                            informatica.</p>
+                        <h3 class="text-2xl font-black mb-4 text-blue-900" data-i18n="proj_it_title">Oltre i Confini</h3>
+                        <p class="text-gray-600 text-sm mb-8 leading-relaxed" data-i18n="proj_it_desc">Spring Of Healing Academy. A Mrima, in Kenya, sosteniamo l'educazione dei bambini meno fortunati. Abbattiamo il divario digitale insegnando l'informatica ai giovani.</p>
                         <div class="mt-auto">
                             <div
                                 class="flex justify-between text-xs font-bold mb-3 uppercase tracking-widest text-gray-400">
                                 <span data-i18n="fundraising">Raccolta Fondi</span>
-                                <span class="text-blue-900">45%</span>
+                                <span class="text-emeritus-violet">45%</span>
                             </div>
                             <div class="w-full bg-gray-100 h-3 rounded-full mb-8">
-                                <div class="bg-blue-900 h-3 rounded-full progress-bar" style="width: 45%"></div>
+                                <div class="bg-emeritus-violet h-3 rounded-full progress-bar" style="width: 45%"></div>
                             </div>
                             <button onclick="openDonateModal()"
-                                class="w-full py-4 bg-blue-900 text-white rounded-2xl font-black hover:bg-blue-800 transition shadow-lg shadow-blue-200"
-                                data-i18n="btn_support_it">Sostieni</button>
+                                class="w-full py-4 bg-emeritus-violet text-white rounded-2xl font-black hover:bg-violet-500 transition shadow-lg shadow-violet-200"
+                                data-i18n="btn_support_it">Sostieni l'Istruzione</button>
                         </div>
                     </div>
                 </div>
@@ -429,7 +441,7 @@
                         Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
                     </p>
                     
-                    <h5 class="text-primary font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
                     <div class="flex gap-4">
                         <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
@@ -539,27 +551,46 @@
                 <div class="mt-8 pt-8 border-t border-gray-100">
                     <h4 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-4"
                         data-i18n="modal_bank_title">Bonifico Bancario</h4>
-                    <div class="bg-gray-50 p-6 rounded-2xl space-y-3 text-sm text-blue-900 border border-gray-100">
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
-                                data-i18n="modal_bank_iban">IBAN</span>
-                            <span class="font-mono font-black text-lg select-all">RO73 RNCB 0073 1234 5678 9012</span>
+                    
+                    <div class="space-y-4">
+                        <!-- RON -->
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-black text-blue-900 bg-primary/20 px-2 py-0.5 rounded">RON</span>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest" data-i18n="bank_ron">Moneta Rumena</span>
+                            </div>
+                            <span class="font-mono font-black text-[13px] select-all text-blue-900">RO82BRMA081102556327RO01</span>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
-                                data-i18n="modal_bank_bic">BIC/SWIFT</span>
-                            <span class="font-mono font-black select-all">RNCRDROBU</span>
+                        <!-- EUR -->
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-black text-blue-900 bg-primary/20 px-2 py-0.5 rounded">EUR</span>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest" data-i18n="bank_eur">Euro</span>
+                            </div>
+                            <span class="font-mono font-black text-[13px] select-all text-blue-900">RO39BRMA081102556327EU01</span>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
-                                data-i18n="modal_bank_holder">Intestatario</span>
-                            <span class="font-bold text-right select-all">Lions Club Emeritus Brașov</span>
+                        <!-- USD -->
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-black text-blue-900 bg-primary/20 px-2 py-0.5 rounded">USD</span>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest" data-i18n="bank_usd">Dollari</span>
+                            </div>
+                            <span class="font-mono font-black text-[13px] select-all text-blue-900">RO96BRMA081102556327US01</span>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
-                                data-i18n="modal_bank_reason">Causale</span>
-                            <span class="italic text-gray-500 select-all" data-i18n="modal_bank_reason_text">Donazione
-                                Liberale</span>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-blue-900/5 rounded-xl space-y-2 text-[11px]">
+                        <div class="flex justify-between">
+                            <span class="font-bold text-gray-400 uppercase" data-i18n="modal_bank_holder">Intestatario</span>
+                            <span class="font-black text-blue-900 uppercase">ASOCIATIA EMERITUS</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-bold text-gray-400 uppercase" data-i18n="bank_name_label">Banca</span>
+                            <span class="font-bold text-blue-900">EXIM BANCA ROMANEASCA</span>
+                        </div>
+                        <div class="flex justify-between border-t border-blue-900/10 pt-2">
+                            <span class="font-bold text-gray-400 uppercase">SWIFT</span>
+                            <span class="font-black text-blue-900">BRMAROBUXXX</span>
                         </div>
                     </div>
                 </div>

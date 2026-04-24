@@ -22,7 +22,8 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#a78bfa",
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
                         "emeritus-purple": "#6366f1"
                     }
                 }
@@ -32,6 +33,18 @@
     <style>
         body {
             font-family: 'Lexend', sans-serif;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
         }
 
         .text-shadow-xl {
@@ -45,7 +58,7 @@
             left: 1.25rem;
             height: 100%;
             width: 2px;
-            background: linear-gradient(to bottom, transparent, #a78bfa, transparent);
+            background: linear-gradient(to bottom, transparent, #6366f1, transparent);
         }
         
         @media (min-width: 768px) {
@@ -83,7 +96,9 @@
                             <span class="material-symbols-outlined text-sm">login</span> Accedi
                         </a>
                     </div>
-                    <button onclick="openDonateModal()" class="hidden md:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105" data-i18n="nav_donate_btn">
+                    <button onclick="openDonateModal()"
+                        class="hidden md:block bg-primary hover:bg-primary/90 text-blue-900 px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105"
+                        data-i18n="nav_donate_btn">
                         DONA ORA
                     </button>
                     <div class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
@@ -115,7 +130,9 @@
                         <span class="material-symbols-outlined text-sm">login</span> <span data-i18n="auth_login_btn">Accedi</span>
                     </a>
                 </div>
-                <button onclick="openDonateModal()" class="w-full py-4 bg-primary text-white rounded-xl font-black shadow-lg transform active:scale-95 transition-transform" data-i18n="nav_donate_btn">
+                <button onclick="openDonateModal()"
+                    class="w-full py-4 bg-primary text-blue-900 rounded-xl font-black shadow-lg transform active:scale-95 transition-transform"
+                    data-i18n="nav_donate_btn">
                     DONA ORA
                 </button>
                 <div class="flex items-center justify-center gap-10 pt-4 border-t border-slate-200">
@@ -360,6 +377,97 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal Donazione -->
+    <div id="donateModal" class="modal items-center justify-center p-4">
+        <div class="bg-white rounded-[3rem] w-full max-w-lg overflow-hidden shadow-2xl relative">
+            <button onclick="closeDonateModal()"
+                class="absolute top-8 right-8 text-gray-400 hover:text-blue-900 transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+            <div class="p-12">
+                <div class="w-16 h-2 bg-emeritus-yellow mb-8 rounded-full"></div>
+                <h3 class="text-3xl font-black text-blue-900 mb-2 leading-none uppercase tracking-tighter"
+                    data-i18n="modal_title">Sostieni
+                    EMERITUS</h3>
+                <p class="text-gray-500 mb-10 font-medium" data-i18n="modal_subtitle">Unisciti ai nostri volontari sul
+                    campo.</p>
+
+                <div class="grid grid-cols-3 gap-4 mb-10">
+                    <button onclick="selectAmount(5)"
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€5</button>
+                    <button onclick="selectAmount(10)"
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€10</button>
+                    <button onclick="selectAmount(50)"
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€50</button>
+                </div>
+
+                <div class="mb-10">
+                    <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-3"
+                        data-i18n="modal_custom">Cifra
+                        Personalizzata (€)</label>
+                    <input type="number" id="customAmount" placeholder="Inserisci importo"
+                        class="w-full p-6 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-yellow-100 text-3xl font-black text-blue-900">
+                </div>
+
+                <button onclick="confirmDonation()"
+                    class="w-full py-6 bg-blue-900 text-white rounded-2xl font-black text-xl hover:bg-blue-800 transition-all shadow-2xl shadow-blue-200 uppercase tracking-widest"
+                    data-i18n="modal_btn">
+                    Invia Sostegno
+                </button>
+
+                <div class="mt-8 pt-8 border-t border-gray-100">
+                    <h4 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-4"
+                        data-i18n="modal_bank_title">Bonifico Bancario</h4>
+                    
+                    <div class="space-y-4">
+                        <!-- RON -->
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-black text-blue-900 bg-primary/20 px-2 py-0.5 rounded">RON</span>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest" data-i18n="bank_ron">Moneta Rumena</span>
+                            </div>
+                            <span class="font-mono font-black text-[13px] select-all text-blue-900">RO82BRMA081102556327RO01</span>
+                        </div>
+                        <!-- EUR -->
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-black text-blue-900 bg-primary/20 px-2 py-0.5 rounded">EUR</span>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest" data-i18n="bank_eur">Euro</span>
+                            </div>
+                            <span class="font-mono font-black text-[13px] select-all text-blue-900">RO39BRMA081102556327EU01</span>
+                        </div>
+                        <!-- USD -->
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-black text-blue-900 bg-primary/20 px-2 py-0.5 rounded">USD</span>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest" data-i18n="bank_usd">Dollari</span>
+                            </div>
+                            <span class="font-mono font-black text-[13px] select-all text-blue-900">RO96BRMA081102556327US01</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-blue-900/5 rounded-xl space-y-2 text-[11px]">
+                        <div class="flex justify-between">
+                            <span class="font-bold text-gray-400 uppercase" data-i18n="modal_bank_holder">Intestatario</span>
+                            <span class="font-black text-blue-900 uppercase">ASOCIATIA EMERITUS</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-bold text-gray-400 uppercase" data-i18n="bank_name_label">Banca</span>
+                            <span class="font-bold text-blue-900">EXIM BANCA ROMANEASCA</span>
+                        </div>
+                        <div class="flex justify-between border-t border-blue-900/10 pt-2">
+                            <span class="font-bold text-gray-400 uppercase">SWIFT</span>
+                            <span class="font-black text-blue-900">BRMAROBUXXX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Feedback Message Box -->
     <div id="messageBox"

@@ -14,7 +14,8 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#a78bfa",
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
                         "emeritus-purple": "#6366f1"
                     }
                 }
@@ -26,8 +27,8 @@
             font-family: 'Lexend', sans-serif;
         }
         .area-btn.active {
-            border-color: #a78bfa !important;
-            background-color: rgba(167, 139, 250, 0.05);
+            border-color: #6366f1 !important;
+            background-color: rgba(99, 102, 241, 0.05);
         }
     </style>
     <script src="js/translations.js" defer></script>
@@ -59,7 +60,9 @@
                             <span class="material-symbols-outlined text-sm">login</span> Accedi
                         </a>
                     </div>
-                    <button onclick="openDonateModal()" class="hidden md:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105" data-i18n="nav_donate_btn">
+                    <button onclick="openDonateModal()"
+                        class="hidden md:block bg-primary hover:bg-primary/90 text-blue-900 px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105"
+                        data-i18n="nav_donate_btn">
                         DONA ORA
                     </button>
                     <div class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
@@ -91,7 +94,9 @@
                         <span class="material-symbols-outlined text-sm">login</span> <span data-i18n="auth_login_btn">Accedi</span>
                     </a>
                 </div>
-                <button onclick="openDonateModal()" class="w-full py-4 bg-primary text-white rounded-xl font-black shadow-lg transform active:scale-95 transition-transform" data-i18n="nav_donate_btn">
+                <button onclick="openDonateModal()"
+                    class="w-full py-4 bg-primary text-blue-900 rounded-xl font-black shadow-lg transform active:scale-95 transition-transform"
+                    data-i18n="nav_donate_btn">
                     DONA ORA
                 </button>
                 <div class="flex items-center justify-center gap-10 pt-4 border-t border-slate-200">
@@ -285,22 +290,82 @@
 
     <section class="max-w-7xl mx-auto px-4 py-16 border-t border-slate-200">
         <h2 class="text-3xl font-black text-center mb-12 uppercase tracking-tighter" data-i18n="modal_bank_title">Bonifico Bancario</h2>
-        <div class="max-w-2xl mx-auto bg-white p-10 rounded-[3rem] shadow-2xl border border-primary/10 space-y-6">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-5">
-                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_iban">IBAN</span>
-                <span class="font-mono text-lg font-black select-all text-slate-900">RO73 RNCB 0073 1234 5678 9012</span>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- IBAN RON -->
+            <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-primary/10 space-y-4 hover:border-primary/40 transition-all">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-primary/20 p-2 rounded-lg">
+                        <span class="font-black text-blue-900">RON</span>
+                    </div>
+                    <h3 class="font-black text-slate-900 uppercase tracking-tighter" data-i18n="bank_ron">Moneta Rumena</h3>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_iban">IBAN</span>
+                        <span class="font-mono text-[15px] font-black select-all text-slate-900">RO82BRMA081102556327RO01</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="bank_name_label">Banca</span>
+                        <span class="font-bold text-slate-700 text-xs">EXIM BANCA ROMANEASCA</span>
+                    </div>
+                </div>
             </div>
-            <div class="flex justify-between items-center border-b border-slate-100 pb-5">
-                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_bic">BIC/SWIFT</span>
-                <span class="font-mono text-lg font-black select-all text-slate-900">RNCRDROBU</span>
+
+            <!-- IBAN EUR -->
+            <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-primary/10 space-y-4 hover:border-primary/40 transition-all scale-105 z-10 ring-4 ring-primary/5">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-primary/20 p-2 rounded-lg">
+                        <span class="font-black text-blue-900">EUR</span>
+                    </div>
+                    <h3 class="font-black text-slate-900 uppercase tracking-tighter" data-i18n="bank_eur">Euro</h3>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_iban">IBAN</span>
+                        <span class="font-mono text-[15px] font-black select-all text-slate-900">RO39BRMA081102556327EU01</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="bank_name_label">Banca</span>
+                        <span class="font-bold text-slate-700 text-xs">EXIM BANCA ROMANEASCA</span>
+                    </div>
+                </div>
             </div>
-            <div class="flex justify-between items-center border-b border-slate-100 pb-5">
+
+            <!-- IBAN USD -->
+            <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-primary/10 space-y-4 hover:border-primary/40 transition-all">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-primary/20 p-2 rounded-lg">
+                        <span class="font-black text-blue-900">USD</span>
+                    </div>
+                    <h3 class="font-black text-slate-900 uppercase tracking-tighter" data-i18n="bank_usd">Dollari</h3>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_iban">IBAN</span>
+                        <span class="font-mono text-[15px] font-black select-all text-slate-900">RO96BRMA081102556327US01</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="bank_name_label">Banca</span>
+                        <span class="font-bold text-slate-700 text-xs">EXIM BANCA ROMANEASCA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Common Details -->
+        <div class="max-w-2xl mx-auto mt-12 bg-slate-50 p-8 rounded-3xl border border-slate-100 flex flex-col md:flex-row justify-between gap-8">
+            <div class="space-y-1">
                 <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_holder">Intestatario</span>
-                <span class="font-bold text-right select-all text-slate-900 text-lg">Lions Club Emeritus Brașov</span>
+                <p class="font-black text-blue-900 select-all">ASOCIATIA EMERITUS</p>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="space-y-1">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_bic">BIC/SWIFT</span>
+                <p class="font-black text-blue-900 select-all">BRMAROBUXXX</p>
+            </div>
+            <div class="space-y-1">
                 <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_reason">Causale</span>
-                <span class="italic text-slate-500 font-medium select-all" data-i18n="modal_bank_reason_text">Donazione Liberale - Lions Emeritus</span>
+                <p class="italic text-slate-500 font-bold text-sm select-all" data-i18n="modal_bank_reason_text">Donazione Liberale - Lions Emeritus</p>
             </div>
         </div>
     </section>
@@ -345,7 +410,7 @@
                 <div class="md:pl-10">
                     <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Link Rapidi</h5>
                     <ul class="space-y-4 text-sm font-medium border-l-2 border-slate-800 pl-4">
-                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
+                        <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html" data-i18n="nav_home"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Home</a></li>
                         <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="storia.html" data-i18n="nav_history"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Storia</a></li>
                         <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="progetti.html" data-i18n="nav_projects"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Progetti</a></li>
                         <li><a class="hover:text-primary transition-colors flex items-center gap-2 group" href="eventi.html" data-i18n="nav_events"><span class="material-symbols-outlined text-[16px] text-slate-600 group-hover:text-primary transition-colors">chevron_right</span> Eventi</a></li>
