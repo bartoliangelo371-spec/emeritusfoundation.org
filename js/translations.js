@@ -79,7 +79,7 @@ window.translations = {
         "kenya_p5_desc": "LIONS prevede di creare le condizioni affinché il complesso scolastico si autosostenga senza aiuti esterni, creando una produzione agricola e una piccola fattoria di animali per sostenere la nutrizione dei bambini.",
         "kenya_p5_box1": "Progetto Master Finale",
         "kenya_p5_box2": "Progetto di Irrigazione per la Coltivazione del Peperoncino",
-        "kenya_p5_box3": "Lions Emeritus Brașov sosterrà un sistema di irrigazione aiutando la comunità a diventare completamente autosufficiente attraverso l'agricoltura."lture.",
+        "kenya_p5_box3": "Lions Emeritus Brașov sosterrà un sistema di irrigazione aiutando la comunità a diventare completamente autosufficiente attraverso l'agricoltura.",
         "events_badge": "Il nostro impatto",
         "events_title": "Campagne & Eventi",
         "events_subtitle": "Un archivio di tornei di solidarietà, iniziative sul campo e momenti indimenticabili dal 2019 ad oggi.",

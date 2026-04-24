@@ -112,7 +112,7 @@ function showMessage(text) {
 }
 
 function changeLanguage(lang) {
-    if (!window.translations[lang]) return;
+    if (!window.translations || !window.translations[lang]) return;
     localStorage.setItem('emeritus_lang', lang);
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
