@@ -4,7 +4,7 @@
  * Project: Fondazione Emeritus
  */
 
-import { auth, db } from './firebase-config.js';
+import { auth, db } from './firebase-config.js?v=3';
 import { 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
@@ -51,21 +51,11 @@ async function loginUser(email, password) {
 
         // CONTROLLO CRITICO: Verifica Email
         if (!user.emailVerified) {
-            await signOut(auth);
+            await signOut(auth); // Effettua il logout se non verificato
             return { 
                 success: false, 
-                message: "Devi verificare la tua email prima di poter accedere.",
+                message: "Devi verificare la tua email prima di poter accedere. Controlla la tua casella di posta.",
                 needsVerification: true 
-            };
-        }
-
-        // CONTROLLO ADMIN: Verifica se il profilo esiste ancora su Firestore
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        if (!userDoc.exists()) {
-            await signOut(auth);
-            return { 
-                success: false, 
-                message: "Il tuo accesso è stato revocato dall'amministratore. Contatta la fondazione per maggiori informazioni." 
             };
         }
 
@@ -90,17 +80,25 @@ async function logoutUser() {
 // --- MONITORAGGIO STATO UTENTE (UI UPDATES) ---
 onAuthStateChanged(auth, async (user) => {
     const authNavBtn = document.getElementById('authNavBtn');
+    const authMobileBtn = document.getElementById('authMobileBtn');
     
     if (user && user.emailVerified) {
         // Utente loggato e verificato
-        if (authNavBtn) {
-            authNavBtn.innerHTML = `
-                <a href="area-donatore.html" class="flex items-center gap-2 bg-primary/20 text-blue-900 px-4 py-2 rounded-full font-bold shadow-sm transition hover:bg-primary/30 text-sm">
-                    <span class="material-symbols-outlined text-sm">person</span>
-                    Area Donatore
-                </a>
-            `;
-        }
+        const loggedInHtml = `
+            <a href="area-donatore.html" class="flex items-center gap-2 bg-primary/20 text-blue-900 px-4 py-2 rounded-full font-bold shadow-sm transition hover:bg-primary/30 text-sm">
+                <span class="material-symbols-outlined text-sm">person</span>
+                Area Donatore
+            </a>
+        `;
+        const loggedInMobileHtml = `
+            <a href="area-donatore.html" class="flex items-center justify-center gap-2 w-full py-3 bg-primary/20 text-blue-900 rounded-xl font-bold text-sm">
+                <span class="material-symbols-outlined text-sm">person</span>
+                Area Donatore
+            </a>
+        `;
+
+        if (authNavBtn) authNavBtn.innerHTML = loggedInHtml;
+        if (authMobileBtn) authMobileBtn.innerHTML = loggedInMobileHtml;
         
         // Se siamo nella dashboard, carica i dati reali
         if (document.getElementById('donorDashboardView')) {
@@ -108,13 +106,19 @@ onAuthStateChanged(auth, async (user) => {
         }
     } else {
         // Utente non loggato
-        if (authNavBtn) {
-            authNavBtn.innerHTML = `
-                <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
-                    <span class="material-symbols-outlined text-sm">login</span> Accedi
-                </a>
-            `;
-        }
+        const loggedOutHtml = `
+            <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
+                <span class="material-symbols-outlined text-sm">login</span> Accedi
+            </a>
+        `;
+        const loggedOutMobileHtml = `
+            <a href="accesso-donatore.html" class="flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-700 rounded-xl font-bold text-sm">
+                <span class="material-symbols-outlined text-sm">login</span> <span data-i18n="auth_login_btn">Accedi</span>
+            </a>
+        `;
+
+        if (authNavBtn) authNavBtn.innerHTML = loggedOutHtml;
+        if (authMobileBtn) authMobileBtn.innerHTML = loggedOutMobileHtml;
     }
 });
 

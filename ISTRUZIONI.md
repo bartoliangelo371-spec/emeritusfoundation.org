@@ -30,44 +30,36 @@ Tutte queste piattaforme sono sicure, molto veloci e offrono hosting gratuito a 
 
 ---
 
-## Integrazione Backend / Firebase per Area Donatori
+## Integrazione Backend / Firebase per Area Donatori (PRODUZIONE)
 
-Al momento l'**Area Donatori** (Login, Registrazione e Dashboard) funziona in maniera "Simulata" (*Mock*). I dati vengono salvati temporaneamente nel browser tramite `localStorage`. Questo serve per testare il flusso utente ("User Flow") visivamente e senza costi server o ritardi. 
+L'**Area Donatori** (Login, Registrazione) è ora integrata **ufficialmente con Firebase in modalità reale** (produzione). Non è più una simulazione. Gli utenti vengono registrati realmente nel database di Firebase e devono verificare la loro email per poter accedere.
 
-Per rendere le pagine reali e attive in futuro, ti consigliamo di utilizzare **Firebase** di Google. Ecco i passaggi dettagliati per lo sviluppatore:
+### Configurazione per la Pubblicazione Online (Obbligatoria)
 
-### 1. Setup Progetto Firebase
-- Vai su [Firebase Console](https://console.firebase.google.com/) e crea un nuovo progetto (es. *Emeritus-Portal*).
-- Clicca sull'icona Web (`</>`) per registrare l'app Web e copia la configurazione SDK (il blocco `firebaseConfig`).
+Poiché l'Autenticazione è stata configurata per funzionare con chiavi API protette, per garantire che il login funzioni anche quando il sito è pubblicato sul dominio finale (`https://www.emeritusfoundation.org`), è assolutamente necessario eseguire due passaggi di autorizzazione nelle console di Google e Firebase.
 
-### 2. Attivazione Autenticazione (Auth)
-- Nel menu di sinistra di Firebase, clicca su **Authentication** -> **Get Started**.
-- Abilita il provider **Email/Password**.
-- Nelle impostazioni (Settings), abilita (se richiesto) l'opzione per l'invio del link di *Email Verification* per la sicurezza.
+#### 1. Autorizzare il dominio su Google Cloud Console (Restrizioni Chiave API)
+Questo passaggio serve per evitare che altri siti rubino e usino la tua chiave API.
+1. Vai su [Google Cloud Console](https://console.cloud.google.com/) e assicurati di aver selezionato il progetto `emeritusfoundation-c23a4`.
+2. Vai su **API e Servizi** > **Credenziali**.
+3. Clicca sulla chiave API associata a Firebase (solitamente chiamata "Browser key (auto created by Firebase)").
+4. Scorri fino alla sezione **Limitazioni dell'applicazione** e assicurati che sia selezionato **Referrer HTTP (siti web)**.
+5. Sotto la voce "Limitazioni per siti web", clicca su **Aggiungi un elemento** e inserisci esattamente:
+   * `https://www.emeritusfoundation.org/*`
+   * `https://emeritusfoundation.org/*`
+   * (Mantieni anche `http://localhost:5500/*` e `http://localhost:5500` se vuoi continuare a testare in locale).
+6. Clicca su **Salva**. (Nota: le modifiche possono impiegare fino a 10 minuti per propagarsi).
 
-### 3. Sostituzione Codice (Frontend)
-- Apri `js/auth.js`.
-- Importa l'SDK di Firebase in testa al file (o tramite `<script type="module">` su `accesso-donatore.html`).
-- Sostituisci il nostro finto `registerUser()` con il vero comando Firebase:
-  ```javascript
-  import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
-  
-  // Nella logica del form di registrazione:
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Invia la mail di conferma
-      sendEmailVerification(userCredential.user);
-      // Mostra messaggio "Controlla la posta"
-    });
-  ```
-- Sostituisci `loginUser()` con `signInWithEmailAndPassword(auth, email, password)`.
+#### 2. Autorizzare il dominio su Firebase Console (Authentication)
+Questo passaggio serve per dire a Firebase di accettare le richieste di login provenienti da questo dominio.
+1. Vai su [Firebase Console](https://console.firebase.google.com/) e apri il progetto `emeritusfoundation-c23a4`.
+2. Nel menu a sinistra, clicca su **Authentication** (sotto "Build" o "Crea").
+3. Vai sulla scheda **Settings** (Impostazioni) e seleziona **Authorized domains** (Domini autorizzati).
+4. Clicca sul pulsante **Add domain** (Aggiungi dominio).
+5. Inserisci il dominio: `www.emeritusfoundation.org` (e poi ripeti l'operazione per inserire anche `emeritusfoundation.org` senza "www" per sicurezza, e NON inserire "https://" o gli "/").
+6. Clicca su **Add**.
 
-### 4. Gestione Dati e Progetti (Firestore)
-- Per salvare lo storico donazioni e l'avanzamento dei progetti, vai su **Firestore Database** e crea un database di produzione in *Cloud Firestore*.
-- Crea due collezioni ("Tabelle"):
-  - `users`: con ID utente, Nome, ecc.
-  - `donations`: con storico donazioni e ID dei progetti finanziati.
-- Recupera i dati nella dashboard usando i metodi `getDocs` di Firestore invece che array statici.
+Una volta completati questi due passaggi, le funzioni di Registrazione e Accesso dell'Area Donatori saranno pienamente operative e sicure sul sito pubblico `https://www.emeritusfoundation.org`.
 
 ---
 

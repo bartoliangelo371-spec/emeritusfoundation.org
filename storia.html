@@ -18,7 +18,7 @@
                     colors: {
                         "primary": "#facc15",
                         "emeritus-yellow": "#facc15",
-                        "emeritus-purple": "#a78bfa"
+                        "emeritus-purple": "#6366f1"
                     }
                 }
             }
@@ -32,7 +32,6 @@
     <script src="js/translations.js" defer></script>
     <script src="js/script.js" type="module"></script>
     <script src="js/auth.js" type="module"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
@@ -89,14 +88,30 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-xl flex-col divide-y divide-slate-100 transition-all z-40">
-            <a href="index.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
-            <a href="storia.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
-            <a href="progetti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
-            <a href="eventi.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
-            <a href="donazioni.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
-            <a href="contatti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+                <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-2xl flex-col divide-y divide-slate-100 transition-all z-40 overflow-hidden">
+            <a href="index.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
+            <a href="storia.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
+            <a href="progetti.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
+            <a href="eventi.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
+            <a href="donazioni.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
+            <a href="contatti.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+            
+            <div class="px-6 py-8 bg-slate-50 space-y-4">
+                <div id="authMobileBtn">
+                    <a href="accesso-donatore.html" class="flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-700 rounded-xl font-bold text-sm">
+                        <span class="material-symbols-outlined text-sm">login</span> <span data-i18n="auth_login_btn">Accedi</span>
+                    </a>
+                </div>
+                <button onclick="openDonateModal()" class="w-full py-4 bg-emeritus-yellow text-blue-900 rounded-xl font-black shadow-lg transform active:scale-95 transition-transform" data-i18n="nav_donate_btn">
+                    DONA ORA
+                </button>
+                <div class="flex items-center justify-center gap-10 pt-4 border-t border-slate-200">
+                    <button onclick="changeLanguage('it')" class="lang-btn text-sm font-black hover:text-blue-900 transition-colors">IT</button>
+                    <button onclick="changeLanguage('ro')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">RO</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">EN</button>
+                </div>
+            </div>
         </div>
     </nav>
     <main>
@@ -160,10 +175,10 @@
                         </p>
                     </div>
                     <div
-                        class="bg-white dark:bg-slate-800/50 p-10 rounded-xl shadow-sm border-t-4 border-emeritus-purple">
+                        class="bg-white dark:bg-slate-800/50 p-10 rounded-xl shadow-sm border-t-4 border-accent-yellow">
                         <div
-                            class="w-14 h-14 bg-emeritus-purple/10 rounded-full flex items-center justify-center text-emeritus-purple mb-6">
-                            <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                            class="w-14 h-14 bg-accent-yellow/10 rounded-full flex items-center justify-center text-accent-yellow mb-6">
+                            <span class="material-symbols-outlined text-3xl">visibility</span>
                         </div>
                         <h2 class="text-3xl font-bold mb-4"><span data-i18n="about_vision_title">La Nostra Visione</span></h2>
                         <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
@@ -303,12 +318,6 @@
                         <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
                         </a>
-                        <a href="https://brasov-emeritus.lionsclubro.org" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Lions Romania">
-                            <img src="assets/images/lions romania.png" alt="Lions Romania" class="w-8 h-8 rounded-full object-contain bg-white shadow-lg">
-                        </a>
-                        <a href="https://youtube.com/@ruggerosbarra?si=5BpjhH5jk1GhI6BR" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Ruggero Sbarra">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube Personal" class="w-8 h-8 shadow-lg">
-                        </a>
                     </div>
                 </div>
 
@@ -367,7 +376,6 @@
     </body>
 
 </html>
-
 
 
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Role: Senior Frontend Engineer
  * Context: Firestore Integration for Donations and Contacts
  * Project: Fondazione Emeritus
@@ -46,18 +46,8 @@ function selectArea(area) {
 
 // --- SALVATAGGIO DONAZIONE SU FIRESTORE ---
 async function confirmDonation() {
-    const custom = document.getElementById('customAmount')?.value;
+    const custom = document.getElementById('customAmount').value;
     const finalAmount = custom || selectedAmount;
-    
-    // Raccolta dati donatore
-    const dName = document.getElementById('donorName')?.value || "";
-    const dSurname = document.getElementById('donorSurname')?.value || "";
-    const dEmail = document.getElementById('donorEmail')?.value || "";
-    
-    if(!dName || !dEmail) {
-        alert("Per favore, inserisci almeno il nome e l'email.");
-        return;
-    }
     
     const btn = document.querySelector('button[onclick="confirmDonation()"]');
     const originalText = btn.innerHTML;
@@ -70,11 +60,10 @@ async function confirmDonation() {
     try {
         const user = auth.currentUser;
         
-        // 1. Salvataggio nel Database Firestore
+        // Salvataggio nel Database
         await addDoc(collection(db, "donations"), {
             userId: user ? user.uid : "guest",
-            donorName: `${dName} ${dSurname}`,
-            userEmail: dEmail,
+            userEmail: user ? user.email : "anonymous",
             amount: parseFloat(finalAmount),
             area: selectedArea,
             status: "pending",
@@ -82,43 +71,21 @@ async function confirmDonation() {
             currency: "EUR"
         });
 
-        // 2. Invio automatico notifica via EmailJS
-        if (typeof emailjs !== 'undefined') {
-            console.log("Tentativo invio EmailJS...");
-            const donationDetails = `NUOVA PROMESSA DI DONAZIONE\nImporto: €${finalAmount}\nArea: ${selectedArea}\nDonatore: ${dName} ${dSurname}\nEmail: ${dEmail}`;
-            
-            const templateParams = {
-                senderName: `${dName} ${dSurname}`,
-                senderEmail: dEmail,
-                messageContent: donationDetails
-            };
-
-            await emailjs.send("service_6gormxq", "template_b0k2lzj", templateParams)
-                .then(() => console.log("Email inviata con successo!"))
-                .catch((err) => console.error("Errore invio EmailJS:", err));
-        }
-
         // Feedback Successo
         setTimeout(() => {
+            closeDonateModal();
             btn.innerHTML = originalText;
             btn.disabled = false;
             
             let areaText = window.translations[lang] ? (window.translations[lang][`area_${selectedArea}`] || selectedArea) : selectedArea;
             
             let msg = "";
-            if(lang === 'it') msg = `Grazie ${dName}! La tua promessa (€${finalAmount}) è stata inviata con successo. Riceverai presto le istruzioni via email.`;
-            else if(lang === 'en') msg = `Thank you ${dName}! Your pledge (€${finalAmount}) was sent successfully. You will receive instructions via email soon.`;
-            else if(lang === 'ro') msg = `Mulțumim ${dName}! Promisiunea ta (€${finalAmount}) è stata trimisă cu succes. Vei primi instrucțiunile prin e-mail în curând.`;
+            if(lang === 'it') msg = `Grazie! La tua promessa di donazione (€${finalAmount}) per l'area ${areaText} è stata registrata. Riceverai un'email con i dettagli del bonifico.`;
+            else if(lang === 'en') msg = `Thank you! Your donation pledge (€${finalAmount}) for ${areaText} has been recorded. You will receive an email with bank details.`;
+            else if(lang === 'ro') msg = `Mulțumim! Promisiunea de donație (€${finalAmount}) per aria ${areaText} a fost înregistrată. Veți primi un email cu detaliile transferului.`;
             
             showMessage(msg);
-            
-            // Opzionale: Reset campi
-            document.getElementById('donorName').value = "";
-            document.getElementById('donorSurname').value = "";
-            document.getElementById('donorEmail').value = "";
-            if(document.getElementById('customAmount')) document.getElementById('customAmount').value = "";
-            
-        }, 800);
+        }, 1000);
 
     } catch (error) {
         console.error("Firestore Error:", error);
@@ -199,10 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         emailjs.init("mirJZLLUfJv4xCxxg");
     }
 
-    // Default selection
-    selectAmount(10);
-
-    // Mobile Menu Toggle
+    // Mobile menu logic
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenuBtn && mobileMenu) {
@@ -211,6 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.toggle('flex');
         });
     }
+
+    // Default selection
+    selectAmount(10);
 });
 
 async function handleContactForm(e) {
@@ -257,4 +224,3 @@ async function handleContactForm(e) {
         btn.disabled = false;
     }
 }
-

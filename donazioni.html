@@ -18,7 +18,7 @@
                     colors: {
                         "primary": "#facc15",
                         "emeritus-yellow": "#facc15",
-                        "emeritus-purple": "#a78bfa"
+                        "emeritus-purple": "#6366f1"
                     }
                 }
             }
@@ -32,7 +32,6 @@
     <script src="js/translations.js" defer></script>
     <script src="js/script.js" type="module"></script>
     <script src="js/auth.js" type="module"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
@@ -88,14 +87,30 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-xl flex-col divide-y divide-slate-100 transition-all z-40">
-            <a href="index.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
-            <a href="storia.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
-            <a href="progetti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
-            <a href="eventi.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
-            <a href="donazioni.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
-            <a href="contatti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+                <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-2xl flex-col divide-y divide-slate-100 transition-all z-40 overflow-hidden">
+            <a href="index.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
+            <a href="storia.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
+            <a href="progetti.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
+            <a href="eventi.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
+            <a href="donazioni.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
+            <a href="contatti.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+            
+            <div class="px-6 py-8 bg-slate-50 space-y-4">
+                <div id="authMobileBtn">
+                    <a href="accesso-donatore.html" class="flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-700 rounded-xl font-bold text-sm">
+                        <span class="material-symbols-outlined text-sm">login</span> <span data-i18n="auth_login_btn">Accedi</span>
+                    </a>
+                </div>
+                <button onclick="openDonateModal()" class="w-full py-4 bg-emeritus-yellow text-blue-900 rounded-xl font-black shadow-lg transform active:scale-95 transition-transform" data-i18n="nav_donate_btn">
+                    DONA ORA
+                </button>
+                <div class="flex items-center justify-center gap-10 pt-4 border-t border-slate-200">
+                    <button onclick="changeLanguage('it')" class="lang-btn text-sm font-black hover:text-blue-900 transition-colors">IT</button>
+                    <button onclick="changeLanguage('ro')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">RO</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">EN</button>
+                </div>
+            </div>
         </div>
     </nav>
     <main class="max-w-7xl mx-auto px-4 pt-32 pb-12">
@@ -135,7 +150,7 @@
                         </div>
                         <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-primary/10 shadow-sm">
                             <p class="italic text-slate-600 dark:text-slate-300 text-sm">"Ho scelto EMERITUS per la
-                                loro trasparenza totale. So esattamente dove finiscono i miei 25â‚¬."</p>
+                                loro trasparenza totale. So esattamente dove finiscono i miei 50â‚¬."</p>
                             <div class="mt-3 flex items-center gap-3">
                                 <div
                                     class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-slate-900 text-xs font-bold">
@@ -202,20 +217,20 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
                                 <label class="text-xs font-bold uppercase text-slate-500" data-i18n="donate_form_name" data-i18n="donate_form_name">Nome</label>
-                                <input id="donorName"
+                                <input
                                     class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary"
                                     placeholder="Mario" type="text" />
                             </div>
                             <div class="space-y-1">
                                 <label class="text-xs font-bold uppercase text-slate-500" data-i18n="donate_form_surname" data-i18n="donate_form_surname">Cognome</label>
-                                <input id="donorSurname"
+                                <input
                                     class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary"
                                     placeholder="Rossi" type="text" />
                             </div>
                         </div>
                         <div class="space-y-1">
                             <label class="text-xs font-bold uppercase text-slate-500" data-i18n="donate_form_email" data-i18n="donate_form_email">Email</label>
-                            <input id="donorEmail"
+                            <input
                                 class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary"
                                 placeholder="mario.rossi@esempio.it" type="email" />
                         </div>
@@ -305,54 +320,27 @@
     </section>
     <section class="max-w-7xl mx-auto px-4 py-16 border-t border-primary/10">
         <h2 class="text-3xl font-bold text-center mb-10" data-i18n="modal_bank_title">Bonifico Bancario</h2>
-        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-primary/10 space-y-6">
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Informazioni Comuni -->
-                <div class="space-y-4">
-                    <div class="border-b border-primary/5 pb-4">
-                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_holder">Intestatario</span>
-                        <span class="font-bold text-slate-900 dark:text-white text-lg select-all">ASOCIATIA EMERITUS</span>
-                    </div>
-                    <div class="border-b border-primary/5 pb-4">
-                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_name">Banca</span>
-                        <span class="font-bold text-slate-900 dark:text-white text-lg select-all">EXIM BANCA ROMANEASCA</span>
-                    </div>
-                    <div class="border-b border-primary/5 pb-4">
-                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_bic">BIC/SWIFT</span>
-                        <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">BRMAROBUXXX</span>
-                    </div>
-                    <div>
-                        <span class="text-xs font-bold uppercase text-slate-500 block mb-1" data-i18n="modal_bank_reason">Causale</span>
-                        <span class="italic text-slate-700 dark:text-slate-300 select-all" data-i18n="modal_bank_reason_text">Donazione Liberale</span>
-                    </div>
-                </div>
-
-                <!-- IBANs -->
-                <div class="space-y-4 flex flex-col justify-center">
-                    <div class="bg-blue-50/80 p-4 rounded-2xl border border-blue-100 hover:bg-blue-100 transition-colors">
-                        <div class="flex items-center gap-3 mb-1">
-                            <span class="font-black text-blue-800 bg-blue-200/50 px-2 py-1 rounded text-xs">EUR</span>
-                            <span class="text-xs font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
-                        </div>
-                        <span class="font-mono font-black text-base md:text-lg select-all text-blue-900 block mt-1">RO39 BRMA 0811 0255 6327 EU01</span>
-                    </div>
-                    
-                    <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100 hover:bg-emerald-100 transition-colors">
-                        <div class="flex items-center gap-3 mb-1">
-                            <span class="font-black text-emerald-800 bg-emerald-200/50 px-2 py-1 rounded text-xs">USD</span>
-                            <span class="text-xs font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
-                        </div>
-                        <span class="font-mono font-black text-base md:text-lg select-all text-emerald-900 block mt-1">RO96 BRMA 0811 0255 6327 US01</span>
-                    </div>
-
-                    <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100 hover:bg-amber-100 transition-colors">
-                        <div class="flex items-center gap-3 mb-1">
-                            <span class="font-black text-amber-800 bg-amber-200/50 px-2 py-1 rounded text-xs">RON</span>
-                            <span class="text-xs font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
-                        </div>
-                        <span class="font-mono font-black text-base md:text-lg select-all text-amber-900 block mt-1">RO82 BRMA 0811 0255 6327 RO01</span>
-                    </div>
-                </div>
+        <div
+            class="max-w-2xl mx-auto bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-primary/10 space-y-6">
+            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
+                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
+                <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">RO73 RNCB 0073 1234
+                    5678 9012</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
+                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_bic">BIC/SWIFT</span>
+                <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">RNCRDROBU</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
+                <span class="text-sm font-bold uppercase text-slate-500"
+                    data-i18n="modal_bank_holder">Intestatario</span>
+                <span class="font-bold text-right select-all text-slate-900 dark:text-white text-lg">Lions Club Emeritus
+                    BraÈ™ov</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_reason">Causale</span>
+                <span class="italic text-slate-500 select-all" data-i18n="modal_bank_reason_text">Donazione
+                    Liberale</span>
             </div>
         </div>
     </section>
@@ -389,12 +377,6 @@
                         </a>
                         <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
-                        </a>
-                        <a href="https://brasov-emeritus.lionsclubro.org" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Lions Romania">
-                            <img src="assets/images/lions romania.png" alt="Lions Romania" class="w-8 h-8 rounded-full object-contain bg-white shadow-lg">
-                        </a>
-                        <a href="https://youtube.com/@ruggerosbarra?si=5BpjhH5jk1GhI6BR" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Ruggero Sbarra">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube Personal" class="w-8 h-8 shadow-lg">
                         </a>
                     </div>
                 </div>
@@ -459,7 +441,6 @@
 </body>
 
 </html>
-
 
 
 

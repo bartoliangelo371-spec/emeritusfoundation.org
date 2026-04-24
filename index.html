@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -11,7 +11,7 @@
     <meta property="og:description"
         content="Uniamo volontariato e management internazionale per supportare le comunitÃ  vulnerabili.">
     <meta property="og:image"
-        content="https://www.emeritusfoundation.org/assets/images/29.jpeg">
+        content="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:type" content="website">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
@@ -26,7 +26,7 @@
                     colors: {
                         "primary": "#facc15",
                         "emeritus-yellow": "#facc15",
-                        "emeritus-purple": "#a78bfa"
+                        "emeritus-purple": "#6366f1"
                     }
                 }
             }
@@ -107,14 +107,30 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-xl flex-col divide-y divide-slate-100 transition-all z-40">
-            <a href="index.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
-            <a href="storia.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
-            <a href="progetti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
-            <a href="eventi.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
-            <a href="donazioni.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
-            <a href="contatti.html" class="px-6 py-4 text-sm font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+                <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-2xl flex-col divide-y divide-slate-100 transition-all z-40 overflow-hidden">
+            <a href="index.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
+            <a href="storia.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
+            <a href="progetti.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
+            <a href="eventi.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_events">Eventi</a>
+            <a href="donazioni.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_donate">Dona</a>
+            <a href="contatti.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_contact">Contatti</a>
+            
+            <div class="px-6 py-8 bg-slate-50 space-y-4">
+                <div id="authMobileBtn">
+                    <a href="accesso-donatore.html" class="flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-700 rounded-xl font-bold text-sm">
+                        <span class="material-symbols-outlined text-sm">login</span> <span data-i18n="auth_login_btn">Accedi</span>
+                    </a>
+                </div>
+                <button onclick="openDonateModal()" class="w-full py-4 bg-emeritus-yellow text-blue-900 rounded-xl font-black shadow-lg transform active:scale-95 transition-transform" data-i18n="nav_donate_btn">
+                    DONA ORA
+                </button>
+                <div class="flex items-center justify-center gap-10 pt-4 border-t border-slate-200">
+                    <button onclick="changeLanguage('it')" class="lang-btn text-sm font-black hover:text-blue-900 transition-colors">IT</button>
+                    <button onclick="changeLanguage('ro')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">RO</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">EN</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -138,9 +154,9 @@
                 <a href="progetti.html"
                     class="bg-emeritus-yellow text-blue-900 px-8 py-4 rounded-full font-black text-lg hover:bg-yellow-400 transition shadow-lg shadow-yellow-900/20"
                     data-i18n="hero_btn_projects">I Nostri Progetti</a>
-                <a href="contatti.html#gallery-section"
-                    class="bg-emeritus-purple text-white px-8 py-4 rounded-full font-black text-lg hover:bg-indigo-600 transition shadow-lg shadow-indigo-900/20"
-                    data-i18n="hero_btn_history">Galleria Foto</a>
+                <a href="#storia"
+                    class="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition"
+                    data-i18n="hero_btn_history">La Nostra Storia</a>
             </div>
         </div>
         <!-- Elemento decorativo inferiore -->
@@ -190,8 +206,8 @@
                         <img src="assets/images/05.jpeg"
                             class="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-110"
                             alt="Scuola">
-                        <div class="absolute inset-0 bg-blue-600/10"></div>
-                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-blue-600 uppercase tracking-widest shadow-lg"
+                        <div class="absolute inset-0 bg-emeritus-purple/10"></div>
+                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-emeritus-purple uppercase tracking-widest shadow-lg"
                             data-i18n="proj_school_tag">
                             Edilizia</div>
                     </div>
@@ -205,13 +221,13 @@
                             <div
                                 class="flex justify-between text-xs font-bold mb-3 uppercase tracking-widest text-gray-400">
                                 <span data-i18n="fundraising">Raccolta Fondi</span>
-                                <span class="text-blue-600">45%</span>
+                                <span class="text-emeritus-purple">45%</span>
                             </div>
                             <div class="w-full bg-gray-100 h-3 rounded-full mb-8">
-                                <div class="bg-blue-600 h-3 rounded-full progress-bar" style="width: 45%"></div>
+                                <div class="bg-emeritus-purple h-3 rounded-full progress-bar" style="width: 45%"></div>
                             </div>
                             <button onclick="openDonateModal()"
-                                class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black hover:bg-blue-700 transition shadow-lg shadow-blue-100"
+                                class="w-full py-4 bg-emeritus-purple text-white rounded-2xl font-black hover:bg-purple-800 transition shadow-lg shadow-purple-100"
                                 data-i18n="btn_support_edu">Sostieni
                                 l'Istruzione</button>
                         </div>
@@ -261,8 +277,8 @@
                         <img src="assets/images/WhatsApp Image 2026-02-05 at 18.36.23.jpeg"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="IT Training">
-                        <div class="absolute inset-0 bg-emeritus-purple/10"></div>
-                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-emeritus-purple uppercase tracking-widest shadow-lg"
+                        <div class="absolute inset-0 bg-blue-900/10"></div>
+                        <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-blue-900 uppercase tracking-widest shadow-lg"
                             data-i18n="proj_it_tag">
                             Tech</div>
                     </div>
@@ -274,13 +290,13 @@
                             <div
                                 class="flex justify-between text-xs font-bold mb-3 uppercase tracking-widest text-gray-400">
                                 <span data-i18n="fundraising">Raccolta Fondi</span>
-                                <span class="text-emeritus-purple">45%</span>
+                                <span class="text-blue-900">45%</span>
                             </div>
                             <div class="w-full bg-gray-100 h-3 rounded-full mb-8">
-                                <div class="bg-emeritus-purple h-3 rounded-full progress-bar" style="width: 45%"></div>
+                                <div class="bg-blue-900 h-3 rounded-full progress-bar" style="width: 45%"></div>
                             </div>
                             <button onclick="openDonateModal()"
-                                class="w-full py-4 bg-emeritus-purple text-white rounded-2xl font-black hover:bg-purple-800 transition shadow-lg shadow-purple-200"
+                                class="w-full py-4 bg-blue-900 text-white rounded-2xl font-black hover:bg-blue-800 transition shadow-lg shadow-blue-200"
                                 data-i18n="btn_support_it">Sostieni</button>
                         </div>
                     </div>
@@ -325,22 +341,13 @@
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
             <div>
                 <h2 class="text-4xl font-black mb-8 uppercase tracking-tighter" data-i18n="transp_title">La nostra parola Ã¨ la Trasparenza.</h2>
-                <p class="text-blue-100 text-lg leading-relaxed mb-8" data-i18n="transp_text">
-                    EMERITUS opera con una filosofia basata sull'onestÃ  e la rendicontazione puntuale. Garantiamo che
+                <p class="text-blue-100 text-lg leading-relaxed mb-6" data-i18n="transp_text">
+                    EMERITUS opera con una filosofia basata sull''onestÃ  e la rendicontazione puntuale. Garantiamo che
                     ogni intervento sia sottoposto a audit indipendenti, mantenendo i
                     costi di gestione ridotti al minimo assoluto, pari al 5% del totale raccolto. Questo approccio ci
-                    permette di assicurare che l'85% dei fondi sia destinato direttamente ai progetti sul campo, con
+                    permette di assicurare che l''85% dei fondi sia destinato direttamente ai progetti sul campo, con
                     report di impatto periodici inviati tempestivamente a ogni nostro sostenitore.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="assets/images/certificato_ong.jpg.png" target="_blank" class="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 px-6 py-3 rounded-2xl transition-all hover:scale-105 active:scale-95 group shadow-xl backdrop-blur-sm">
-                        <span class="material-symbols-outlined text-emeritus-yellow group-hover:rotate-12 transition-transform">verified_user</span>
-                        <div class="text-left">
-                            <span class="block text-xs font-black uppercase tracking-widest text-emeritus-yellow/80 leading-none mb-1" data-i18n="transp_cert_badge">Documento Ufficiale</span>
-                            <span class="block text-sm font-bold text-white" data-i18n="transp_cert_title">Certificato Fiscale ONG (ANAF)</span>
-                        </div>
-                    </a>
-                </div>
             </div>
             <div class="relative">
                 <div class="absolute -inset-4 bg-emeritus-yellow/10 rounded-[3rem] blur-2xl"></div>
@@ -368,27 +375,11 @@
     <section class="py-16 bg-gray-50 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h3 class="text-sm font-black uppercase tracking-widest text-slate-400 mb-8" data-i18n="sponsor_title">I Nostri Sostenitori</h3>
-            <div class="flex justify-center items-center gap-12 md:gap-24 flex-wrap">
+            <div class="flex justify-center items-center">
                 <a href="https://share.google/Qg2mzXsGg3l4BG9zc" target="_blank" class="group flex flex-col items-center cursor-pointer">
                     <img src="assets/images/amanda logo.jpeg" alt="Amanda Sponsor" class="h-20 w-auto object-contain mix-blend-multiply opacity-60 filter grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:-translate-y-1">
                     <span class="text-xs mt-3 font-bold text-slate-400 group-hover:text-amber-500 transition-colors uppercase tracking-wider" data-i18n="sponsor_click_link">Clicca qui per vedere il link</span>
                 </a>
-                <a href="https://unobrasov.ro/" target="_blank" class="group flex flex-col items-center cursor-pointer">
-                    <img src="assets/images/uno.png" alt="Uno Italian Lifestyle" class="h-20 w-auto object-contain mix-blend-multiply opacity-60 filter grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:-translate-y-1">
-                    <span class="text-xs mt-3 font-bold text-slate-400 group-hover:text-amber-500 transition-colors uppercase tracking-wider" data-i18n="sponsor_click_link">Clicca qui per vedere il link</span>
-                </a>
-                <div class="group flex flex-col items-center">
-                    <img src="assets/images/atrani.png" alt="Atrani Sponsor" class="h-20 w-auto object-contain mix-blend-multiply opacity-60 filter grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:-translate-y-1">
-                </div>
-                <div class="group flex flex-col items-center">
-                    <img src="assets/images/HBI.png" alt="HBI Sponsor" class="h-20 w-auto object-contain mix-blend-multiply opacity-60 filter grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:-translate-y-1">
-                </div>
-                <div class="group flex flex-col items-center">
-                    <img src="assets/images/gatto rosso.png" alt="Gatto Rosso Sponsor" class="h-20 w-auto object-contain mix-blend-multiply opacity-60 filter grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:-translate-y-1">
-                </div>
-                <div class="group flex flex-col items-center">
-                    <img src="assets/images/agg.sponsor.jpeg" alt="Sponsor" class="h-20 w-auto object-contain mix-blend-multiply opacity-60 filter grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:-translate-y-1">
-                </div>
             </div>
         </div>
     </section>
@@ -425,12 +416,6 @@
                         </a>
                         <a href="https://youtube.com/@emeritusphilanthropicfound?si=__XS0cjeNXjRbNxW" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Emeritus">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="w-8 h-8 shadow-lg">
-                        </a>
-                        <a href="https://brasov-emeritus.lionsclubro.org" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Lions Romania">
-                            <img src="assets/images/lions romania.png" alt="Lions Romania" class="w-8 h-8 rounded-full object-contain bg-white shadow-lg">
-                        </a>
-                        <a href="https://youtube.com/@ruggerosbarra?si=5BpjhH5jk1GhI6BR" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="YouTube Ruggero Sbarra">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube Personal" class="w-8 h-8 shadow-lg">
                         </a>
                     </div>
                 </div>
@@ -507,11 +492,11 @@
 
                 <div class="grid grid-cols-3 gap-4 mb-10">
                     <button onclick="selectAmount(5)"
-                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€5</button>
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">â‚¬5</button>
                     <button onclick="selectAmount(10)"
-                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€10</button>
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">â‚¬10</button>
                     <button onclick="selectAmount(50)"
-                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€50</button>
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">â‚¬50</button>
                 </div>
 
                 <div class="mb-10">
@@ -531,38 +516,27 @@
                 <div class="mt-8 pt-8 border-t border-gray-100">
                     <h4 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-4"
                         data-i18n="modal_bank_title">Bonifico Bancario</h4>
-                    
-                    <div class="bg-gray-50 p-5 rounded-2xl text-sm text-blue-900 border border-gray-100 mb-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold text-gray-400 text-xs uppercase" data-i18n="modal_bank_holder">Intestatario</span>
-                            <span class="font-bold text-right select-all">ASOCIATIA EMERITUS</span>
-                        </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold text-gray-400 text-xs uppercase" data-i18n="modal_bank_name">Banca</span>
-                            <span class="font-bold text-right select-all">EXIM BANCA ROMANEASCA</span>
-                        </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold text-gray-400 text-xs uppercase" data-i18n="modal_bank_bic">BIC/SWIFT</span>
-                            <span class="font-mono font-bold select-all">BRMAROBUXXX</span>
+                    <div class="bg-gray-50 p-6 rounded-2xl space-y-3 text-sm text-blue-900 border border-gray-100">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
+                                data-i18n="modal_bank_iban">IBAN</span>
+                            <span class="font-mono font-black text-lg select-all">RO73 RNCB 0073 1234 5678 9012</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-gray-400 text-xs uppercase" data-i18n="modal_bank_reason">Causale</span>
-                            <span class="italic text-gray-500 select-all" data-i18n="modal_bank_reason_text">Donazione Liberale</span>
+                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
+                                data-i18n="modal_bank_bic">BIC/SWIFT</span>
+                            <span class="font-mono font-black select-all">RNCRDROBU</span>
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 gap-3">
-                        <div class="bg-blue-50/80 p-3 rounded-xl border border-blue-100 flex justify-between items-center hover:bg-blue-100 transition-colors">
-                            <span class="font-black text-blue-800 bg-blue-200/50 px-2 py-1 rounded text-xs">EUR</span>
-                            <span class="font-mono font-bold text-sm select-all">RO39 BRMA 0811 0255 6327 EU01</span>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
+                                data-i18n="modal_bank_holder">Intestatario</span>
+                            <span class="font-bold text-right select-all">Lions Club Emeritus BraÈ™ov</span>
                         </div>
-                        <div class="bg-emerald-50/80 p-3 rounded-xl border border-emerald-100 flex justify-between items-center hover:bg-emerald-100 transition-colors">
-                            <span class="font-black text-emerald-800 bg-emerald-200/50 px-2 py-1 rounded text-xs">USD</span>
-                            <span class="font-mono font-bold text-sm select-all">RO96 BRMA 0811 0255 6327 US01</span>
-                        </div>
-                        <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-100 flex justify-between items-center hover:bg-amber-100 transition-colors">
-                            <span class="font-black text-amber-800 bg-amber-200/50 px-2 py-1 rounded text-xs">RON</span>
-                            <span class="font-mono font-bold text-sm select-all">RO82 BRMA 0811 0255 6327 RO01</span>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-400 text-xs uppercase tracking-wider"
+                                data-i18n="modal_bank_reason">Causale</span>
+                            <span class="italic text-gray-500 select-all" data-i18n="modal_bank_reason_text">Donazione
+                                Liberale</span>
                         </div>
                     </div>
                 </div>
@@ -579,7 +553,6 @@
 </body>
 
 </html>
-
 
 
 
