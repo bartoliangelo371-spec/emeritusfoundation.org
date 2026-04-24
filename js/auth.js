@@ -51,11 +51,21 @@ async function loginUser(email, password) {
 
         // CONTROLLO CRITICO: Verifica Email
         if (!user.emailVerified) {
-            await signOut(auth); // Effettua il logout se non verificato
+            await signOut(auth);
             return { 
                 success: false, 
-                message: "Devi verificare la tua email prima di poter accedere. Controlla la tua casella di posta.",
+                message: "Devi verificare la tua email prima di poter accedere.",
                 needsVerification: true 
+            };
+        }
+
+        // CONTROLLO ADMIN: Verifica se il profilo esiste ancora su Firestore
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (!userDoc.exists()) {
+            await signOut(auth);
+            return { 
+                success: false, 
+                message: "Il tuo accesso è stato revocato dall'amministratore. Contatta la fondazione per maggiori informazioni." 
             };
         }
 
