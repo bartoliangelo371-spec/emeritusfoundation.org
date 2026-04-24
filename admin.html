@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -133,7 +133,7 @@
         }
 
         async function deleteUser(uid, name) {
-            if (confirm(`Sei sicuro di voler revocare l'accesso a ${name}? L'utente non potrà più accedere alla sua area riservata.`)) {
+            if (confirm(`Sei sicuro di voler revocare l'accesso a ${name}? L'utente non potrÃ  piÃ¹ accedere alla sua area riservata.`)) {
                 try {
                     await deleteDoc(doc(db, "users", uid));
                     alert("Accesso revocato con successo.");
@@ -150,3 +150,4 @@
     <script src="js/auth.js" type="module"></script>
 </body>
 </html>
+
