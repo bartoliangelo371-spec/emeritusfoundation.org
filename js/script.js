@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Role: Senior Frontend Engineer
  * Context: Firestore Integration for Donations and Contacts
  * Project: Fondazione Emeritus
@@ -10,7 +10,7 @@ import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.1/fi
 const modal = document.getElementById('donateModal');
 const msgBox = document.getElementById('messageBox');
 const msgContent = document.getElementById('messageContent');
-let selectedAmount = 100;
+let selectedAmount = 10;
 let selectedArea = 'childhood';
 
 // --- GESTIONE MODALE DONAZIONI ---
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Default selection
-    selectAmount(100);
+    selectAmount(10);
 
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -257,3 +257,4 @@ async function handleContactForm(e) {
         btn.disabled = false;
     }
 }
+
