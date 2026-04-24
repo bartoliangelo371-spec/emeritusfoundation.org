@@ -46,8 +46,18 @@ function selectArea(area) {
 
 // --- SALVATAGGIO DONAZIONE SU FIRESTORE ---
 async function confirmDonation() {
-    const custom = document.getElementById('customAmount').value;
+    const custom = document.getElementById('customAmount')?.value;
     const finalAmount = custom || selectedAmount;
+    
+    // Raccolta dati donatore
+    const dName = document.getElementById('donorName')?.value || "";
+    const dSurname = document.getElementById('donorSurname')?.value || "";
+    const dEmail = document.getElementById('donorEmail')?.value || "";
+    
+    if(!dName || !dEmail) {
+        alert("Per favore, inserisci almeno il nome e l'email.");
+        return;
+    }
     
     const btn = document.querySelector('button[onclick="confirmDonation()"]');
     const originalText = btn.innerHTML;
@@ -60,10 +70,11 @@ async function confirmDonation() {
     try {
         const user = auth.currentUser;
         
-        // Salvataggio nel Database
+        // 1. Salvataggio nel Database Firestore
         await addDoc(collection(db, "donations"), {
             userId: user ? user.uid : "guest",
-            userEmail: user ? user.email : "anonymous",
+            donorName: `${dName} ${dSurname}`,
+            userEmail: dEmail,
             amount: parseFloat(finalAmount),
             area: selectedArea,
             status: "pending",
@@ -71,21 +82,41 @@ async function confirmDonation() {
             currency: "EUR"
         });
 
+        // 2. Invio automatico notifica via EmailJS
+        if (typeof emailjs !== 'undefined') {
+            const donationDetails = `NUOVA PROMESSA DI DONAZIONE\n--------------------------\nDonatore: ${dName} ${dSurname}\nEmail: ${dEmail}\nImporto: €${finalAmount}\nArea: ${selectedArea}\nData: ${new Date().toLocaleString('it-IT')}`;
+            
+            const templateParams = {
+                senderName: `${dName} ${dSurname}`,
+                senderEmail: dEmail,
+                messageContent: donationDetails
+            };
+
+            // Usiamo lo stesso servizio/template dei contatti per semplicità
+            await emailjs.send("service_6gormxq", "template_b0k2lzj", templateParams);
+        }
+
         // Feedback Successo
         setTimeout(() => {
-            closeDonateModal();
             btn.innerHTML = originalText;
             btn.disabled = false;
             
             let areaText = window.translations[lang] ? (window.translations[lang][`area_${selectedArea}`] || selectedArea) : selectedArea;
             
             let msg = "";
-            if(lang === 'it') msg = `Grazie! La tua promessa di donazione (€${finalAmount}) per l'area ${areaText} è stata registrata. Riceverai un'email con i dettagli del bonifico.`;
-            else if(lang === 'en') msg = `Thank you! Your donation pledge (€${finalAmount}) for ${areaText} has been recorded. You will receive an email with bank details.`;
-            else if(lang === 'ro') msg = `Mulțumim! Promisiunea de donație (€${finalAmount}) per aria ${areaText} a fost înregistrată. Veți primi un email cu detaliile transferului.`;
+            if(lang === 'it') msg = `Grazie ${dName}! La tua promessa (€${finalAmount}) è stata inviata con successo. Riceverai presto le istruzioni via email.`;
+            else if(lang === 'en') msg = `Thank you ${dName}! Your pledge (€${finalAmount}) was sent successfully. You will receive instructions via email soon.`;
+            else if(lang === 'ro') msg = `Mulțumim ${dName}! Promisiunea ta (€${finalAmount}) è stata trimisă cu succes. Vei primi instrucțiunile prin e-mail în curând.`;
             
             showMessage(msg);
-        }, 1000);
+            
+            // Opzionale: Reset campi
+            document.getElementById('donorName').value = "";
+            document.getElementById('donorSurname').value = "";
+            document.getElementById('donorEmail').value = "";
+            if(document.getElementById('customAmount')) document.getElementById('customAmount').value = "";
+            
+        }, 800);
 
     } catch (error) {
         console.error("Firestore Error:", error);
