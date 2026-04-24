@@ -1,7 +1,5 @@
-﻿<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html class="light" lang="it">
-
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -16,8 +14,7 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#facc15",
-                        "emeritus-yellow": "#facc15",
+                        "primary": "#a78bfa",
                         "emeritus-purple": "#6366f1"
                     }
                 }
@@ -28,67 +25,59 @@
         body {
             font-family: 'Lexend', sans-serif;
         }
+        .area-btn.active {
+            border-color: #a78bfa !important;
+            background-color: rgba(167, 139, 250, 0.05);
+        }
     </style>
     <script src="js/translations.js" defer></script>
     <script src="js/script.js" type="module"></script>
     <script src="js/auth.js" type="module"></script>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b-4 border-emeritus-yellow">
+<body class="bg-gray-50 text-slate-900 min-h-screen">
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b-4 border-primary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex h-20 items-center justify-between">
                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain"></div>
-                    <span
-                        class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">EMERITUS</span>
+                    <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm p-1">
+                        <img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain">
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 uppercase leading-none">EMERITUS</span>
                 </a>
                 <nav class="hidden md:flex items-center gap-10">
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="storia.html"
-                        data-i18n="nav_history">Storia</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="progetti.html"
-                        data-i18n="nav_projects">Progetti</a>
-                    
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="eventi.html"
-                        data-i18n="nav_events">Eventi</a>
-                    <a class="text-sm font-medium text-primary border-b-2 border-primary" href="donazioni.html"
-                        data-i18n="nav_donate">Dona</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="contatti.html"
-                        data-i18n="nav_contact">Contatti</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="storia.html" data-i18n="nav_history">Storia</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="progetti.html" data-i18n="nav_projects">Progetti</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="eventi.html" data-i18n="nav_events">Eventi</a>
+                    <a class="text-sm font-medium text-primary border-b-2 border-primary" href="donazioni.html" data-i18n="nav_donate">Dona</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="contatti.html" data-i18n="nav_contact">Contatti</a>
                 </nav>
                 <div class="flex items-center gap-6">
-                    
                     <div id="authNavBtn" class="hidden md:block">
-                        <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
+                        <a href="accesso-donatore.html" class="flex items-center gap-2 text-slate-500 hover:text-primary transition font-bold text-sm bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg">
                             <span class="material-symbols-outlined text-sm">login</span> Accedi
                         </a>
                     </div>
-                    <button onclick="openDonateModal()"
-                        class="hidden md:block bg-emeritus-yellow hover-yellow text-blue-900 px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105"
-                        data-i18n="nav_donate_btn">
+                    <button onclick="openDonateModal()" class="hidden md:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-black shadow-lg transition-all transform hover:scale-105" data-i18n="nav_donate_btn">
                         DONA ORA
                     </button>
-                    <div
-                        class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
-                        <button onclick="changeLanguage('it')"
-                            class="lang-btn hover:text-blue-900 transition">IT</button>
-                        <button onclick="changeLanguage('ro')"
-                            class="lang-btn text-gray-400 hover:text-blue-900 transition">RO</button>
-                        <button onclick="changeLanguage('en')"
-                            class="lang-btn text-gray-400 hover:text-blue-900 transition">EN</button>
+                    <div class="hidden md:flex space-x-4 border-l pl-4 border-gray-300 text-xs font-bold uppercase tracking-widest">
+                        <button onclick="changeLanguage('it')" class="lang-btn hover:text-primary transition">IT</button>
+                        <button onclick="changeLanguage('ro')" class="lang-btn text-gray-400 hover:text-primary transition">RO</button>
+                        <button onclick="changeLanguage('en')" class="lang-btn text-gray-400 hover:text-primary transition">EN</button>
                     </div>
-                    <!-- Lions Logo -->
-                    <div class="h-14 w-14 ml-4 hidden md:flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/logo lions.jpg" alt="Lions International Logo" class="h-full w-full object-contain"></div>
-                    <!-- Hamburger Menu Button -->
+                    <div class="h-14 w-14 ml-4 hidden md:flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm p-1">
+                        <img src="assets/images/logo lions.jpg" alt="Lions International Logo" class="h-full w-full object-contain">
+                    </div>
                     <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-colors ml-4">
                         <span class="material-symbols-outlined text-3xl">menu</span>
                     </button>
                 </div>
             </div>
         </div>
-                <!-- Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-emeritus-yellow shadow-2xl flex-col divide-y divide-slate-100 transition-all z-40 overflow-hidden">
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b-4 border-primary shadow-2xl flex-col divide-y divide-slate-100 transition-all z-40 overflow-hidden">
             <a href="index.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50">Home</a>
             <a href="storia.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_history">Storia</a>
             <a href="progetti.html" class="px-6 py-4 text-base font-bold hover:text-primary transition-colors hover:bg-slate-50" data-i18n="nav_projects">Progetti</a>
@@ -102,155 +91,147 @@
                         <span class="material-symbols-outlined text-sm">login</span> <span data-i18n="auth_login_btn">Accedi</span>
                     </a>
                 </div>
-                <button onclick="openDonateModal()" class="w-full py-4 bg-emeritus-yellow text-blue-900 rounded-xl font-black shadow-lg transform active:scale-95 transition-transform" data-i18n="nav_donate_btn">
+                <button onclick="openDonateModal()" class="w-full py-4 bg-primary text-white rounded-xl font-black shadow-lg transform active:scale-95 transition-transform" data-i18n="nav_donate_btn">
                     DONA ORA
                 </button>
                 <div class="flex items-center justify-center gap-10 pt-4 border-t border-slate-200">
-                    <button onclick="changeLanguage('it')" class="lang-btn text-sm font-black hover:text-blue-900 transition-colors">IT</button>
-                    <button onclick="changeLanguage('ro')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">RO</button>
-                    <button onclick="changeLanguage('en')" class="lang-btn text-sm font-black text-gray-400 hover:text-blue-900 transition-colors">EN</button>
+                    <button onclick="changeLanguage('it')" class="lang-btn text-sm font-black hover:text-primary transition-colors">IT</button>
+                    <button onclick="changeLanguage('ro')" class="lang-btn text-sm font-black text-gray-400 hover:text-primary transition-colors">RO</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-sm font-black text-gray-400 hover:text-primary transition-colors">EN</button>
                 </div>
             </div>
         </div>
     </nav>
+
     <main class="max-w-7xl mx-auto px-4 pt-32 pb-12">
         <div class="grid lg:grid-cols-2 gap-12 items-start">
             <!-- Left Column: Impact & Story -->
             <div class="space-y-8">
                 <div class="space-y-4">
-                    <h1 class="text-4xl md:text-5xl font-bold leading-tight" data-i18n="donate_page_title"><span data-i18n="donate_page_title">Il tuo aiuto puÃ² <span class="text-primary bg-primary/20">cambiare una vita</span> oggi stesso.</span> <span class="text-primary bg-primary/20">cambiare una vita</span> oggi stesso.</h1>
-                    <p class="text-lg text-slate-600 dark:text-slate-400" data-i18n="donate_page_desc">Ogni donazione, piccola o grande, contribuisce a creare un futuro sostenibile per le comunitÃ  che serviamo. La tua generositÃ  Ã¨ il motore del cambiamento.</p>
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight" data-i18n="donate_page_title">
+                        Il tuo aiuto può <span class="text-primary bg-primary/20 px-2 rounded-lg">cambiare una vita</span> oggi stesso.
+                    </h1>
+                    <p class="text-lg text-slate-600" data-i18n="donate_page_desc">Ogni donazione, piccola o grande, contribuisce a creare un futuro sostenibile per le comunità che serviamo. La tua generosità è il motore del cambiamento.</p>
                 </div>
-                <div class="rounded-2xl overflow-hidden relative group">
+                <div class="rounded-2xl overflow-hidden relative group shadow-xl">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                     <img alt="Bambini che sorridono a scuola"
                         class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
                         src="assets/images/WhatsApp Image 2026-02-05 at 18.36.37 (2).jpeg" />
                     <div class="absolute bottom-4 left-6 z-20 text-white">
-                        <p class="text-sm font-medium uppercase tracking-widest opacity-80" data-i18n="donate_last_project"><span data-i18n="donate_last_project">Ultimo Progetto</span></p>
+                        <p class="text-sm font-medium uppercase tracking-widest opacity-80" data-i18n="donate_last_project">Ultimo Progetto</p>
                         <h3 class="text-xl font-bold" data-i18n="donate_project_name">Scuole Verdi in Kenya</h3>
                     </div>
                 </div>
                 <!-- Testimonials -->
                 <div class="space-y-4">
                     <h3 class="text-xl font-bold flex items-center gap-2" data-i18n="donate_testimonials_title">
-                        <span class="material-symbols-outlined text-slate-900 bg-primary rounded-full p-0.5">favorite</span>
-                        <span data-i18n="donate_testimonials_title">Cosa dicono i nostri donatori</span>
+                        <span class="material-symbols-outlined text-white bg-primary rounded-full p-1 shadow-md">favorite</span>
+                        <span>Cosa dicono i nostri donatori</span>
                     </h3>
                     <div class="grid gap-4">
-                        <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-primary/10 shadow-sm">
-                            <p class="italic text-slate-600 dark:text-slate-300 text-sm">"Donare mensilmente mi fa
-                                sentire parte di una missione piÃ¹ grande. Vedere i report periodici mi dÃ  fiducia."</p>
-                            <div class="mt-3 flex items-center gap-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-slate-900 text-xs font-bold">
-                                    MA</div>
-                                <span class="text-xs font-bold">Marco A. - Donatore da 3 anni</span>
+                        <div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm">
+                            <p class="italic text-slate-600 text-sm">"Donare mensilmente mi fa sentire parte di una missione più grande. Vedere i report periodici mi dà fiducia."</p>
+                            <div class="mt-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold shadow-sm">MA</div>
+                                <span class="text-xs font-bold text-slate-500">Marco A. - Donatore da 3 anni</span>
                             </div>
                         </div>
-                        <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-primary/10 shadow-sm">
-                            <p class="italic text-slate-600 dark:text-slate-300 text-sm">"Ho scelto EMERITUS per la
-                                loro trasparenza totale. So esattamente dove finiscono i miei 50â‚¬."</p>
-                            <div class="mt-3 flex items-center gap-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-slate-900 text-xs font-bold">
-                                    LB</div>
-                                <span class="text-xs font-bold">Lucia B. - Sostenitrice</span>
+                        <div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm">
+                            <p class="italic text-slate-600 text-sm">"Ho scelto EMERITUS per la loro trasparenza totale. So esattamente dove finiscono i miei 50€."</p>
+                            <div class="mt-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold shadow-sm">LB</div>
+                                <span class="text-xs font-bold text-slate-500">Lucia B. - Sostenitrice</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Right Column: Donation Form -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-primary/5 p-6 md:p-8">
+            <div class="bg-white rounded-2xl shadow-2xl border border-primary/5 p-6 md:p-8">
                 <div class="mb-8">
-                    <div class="flex p-1 bg-slate-100 dark:bg-slate-900 rounded-xl mb-6">
-                        <button type="button" onclick="this.classList.add('bg-primary', 'text-slate-900', 'shadow-sm'); this.classList.remove('text-slate-500'); this.nextElementSibling.classList.remove('bg-primary', 'text-slate-900', 'shadow-sm'); this.nextElementSibling.classList.add('text-slate-500');"
-                            class="flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all bg-primary text-slate-900 shadow-sm"><span data-i18n="donate_single">Donazione Singola</span></button>
-                        <button type="button" onclick="this.classList.add('bg-primary', 'text-slate-900', 'shadow-sm'); this.classList.remove('text-slate-500'); this.previousElementSibling.classList.remove('bg-primary', 'text-slate-900', 'shadow-sm'); this.previousElementSibling.classList.add('text-slate-500');"
-                            class="flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all text-slate-500 hover:text-slate-700"><span data-i18n="donate_monthly">Donazione Mensile</span></button>
+                    <div class="flex p-1 bg-slate-100 rounded-xl mb-8">
+                        <button type="button" onclick="toggleDonationType(this, 'single')"
+                            class="flex-1 py-3 px-4 rounded-lg text-sm font-bold transition-all bg-primary text-white shadow-md" data-i18n="donate_single">Donazione Singola</button>
+                        <button type="button" onclick="toggleDonationType(this, 'monthly')"
+                            class="flex-1 py-3 px-4 rounded-lg text-sm font-semibold transition-all text-slate-500 hover:text-slate-700" data-i18n="donate_monthly">Donazione Mensile</button>
                     </div>
-                    <h3 class="text-lg font-bold mb-4" data-i18n="donate_area_title">Scegli l\'Area di Intervento per la Donazione</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <!-- Area Infanzia -->
-                        <button type="button" onclick="selectArea('childhood')" data-area="childhood"
-                            class="area-btn border-2 border-emeritus-yellow bg-yellow-50 text-blue-900 text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
+                    <h3 class="text-lg font-bold mb-4" data-i18n="donate_area_title">Scegli l'Area di Intervento</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <button type="button" onclick="selectArea(this, 'childhood')"
+                            class="area-btn border-2 border-slate-100 bg-white text-slate-900 text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3 active">
                             <span class="material-symbols-outlined text-primary text-3xl">child_care</span>
                             <div>
-                                <h4 class="font-bold text-lg" data-i18n="area_childhood">Infanzia</h4>
+                                <h4 class="font-bold text-base" data-i18n="area_childhood">Infanzia</h4>
                             </div>
                         </button>
-                        <!-- Area Anziani -->
-                        <button type="button" onclick="selectArea('elderly')" data-area="elderly"
-                            class="area-btn border-2 border-slate-100 dark:border-slate-700 text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
+                        <button type="button" onclick="selectArea(this, 'elderly')"
+                            class="area-btn border-2 border-slate-100 bg-white text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
                             <span class="material-symbols-outlined text-primary text-3xl">elderly</span>
                             <div>
-                                <h4 class="font-bold text-lg" data-i18n="area_elderly">Anziani</h4>
+                                <h4 class="font-bold text-base" data-i18n="area_elderly">Anziani</h4>
                             </div>
                         </button>
-                        <!-- Area Innovazione IT -->
-                        <button type="button" onclick="selectArea('it')" data-area="it"
-                            class="area-btn border-2 border-slate-100 dark:border-slate-700 text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
+                        <button type="button" onclick="selectArea(this, 'it')"
+                            class="area-btn border-2 border-slate-100 bg-white text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
                             <span class="material-symbols-outlined text-primary text-3xl">computer</span>
                             <div>
-                                <h4 class="font-bold text-lg" data-i18n="area_it">Innovazione IT</h4>
+                                <h4 class="font-bold text-base" data-i18n="area_it">Innovazione IT</h4>
                             </div>
                         </button>
-                        <!-- Area Infrastrutture -->
-                        <button type="button" onclick="selectArea('infrastructure')" data-area="infrastructure"
-                            class="area-btn border-2 border-slate-100 dark:border-slate-700 text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
+                        <button type="button" onclick="selectArea(this, 'infrastructure')"
+                            class="area-btn border-2 border-slate-100 bg-white text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
                             <span class="material-symbols-outlined text-primary text-3xl">architecture</span>
                             <div>
-                                <h4 class="font-bold text-lg" data-i18n="area_infrastructure">Infrastrutture</h4>
+                                <h4 class="font-bold text-base" data-i18n="area_infrastructure">Infrastrutture</h4>
                             </div>
                         </button>
                     </div>
                     <div class="relative mb-8">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">â‚¬</span>
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-bold text-xl">€</span>
                         <input id="customAmount"
-                            class="w-full pl-8 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border-none rounded-xl focus:ring-2 focus:ring-primary text-lg font-medium"
-                            placeholder="Altro importo" data-i18n="donate_custom_amount" data-i18n="donate_custom_amount" type="number" />
+                            class="w-full pl-10 pr-4 py-4 bg-slate-50 border-none rounded-xl focus:ring-4 focus:ring-primary/20 text-2xl font-black text-slate-900"
+                            placeholder="Altro importo" type="number" />
                     </div>
                     <!-- Payment Details -->
-                    <div class="space-y-4 border-t border-slate-100 dark:border-slate-700 pt-8">
+                    <div class="space-y-6 border-t border-slate-100 pt-8">
                         <h3 class="text-lg font-bold" data-i18n="donate_payment_details">Dati di Pagamento</h3>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
-                                <label class="text-xs font-bold uppercase text-slate-500" data-i18n="donate_form_name" data-i18n="donate_form_name">Nome</label>
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="donate_form_name">Nome</label>
                                 <input
-                                    class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary"
+                                    class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary"
                                     placeholder="Mario" type="text" />
                             </div>
                             <div class="space-y-1">
-                                <label class="text-xs font-bold uppercase text-slate-500" data-i18n="donate_form_surname" data-i18n="donate_form_surname">Cognome</label>
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="donate_form_surname">Cognome</label>
                                 <input
-                                    class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary"
+                                    class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary"
                                     placeholder="Rossi" type="text" />
                             </div>
                         </div>
                         <div class="space-y-1">
-                            <label class="text-xs font-bold uppercase text-slate-500" data-i18n="donate_form_email" data-i18n="donate_form_email">Email</label>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="donate_form_email">Email</label>
                             <input
-                                class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border-none rounded-lg focus:ring-2 focus:ring-primary"
+                                class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary"
                                 placeholder="mario.rossi@esempio.it" type="email" />
                         </div>
                         <!-- Pay by Bank Transfer Info -->
-                        <div class="bg-blue-50 p-6 rounded-xl space-y-3 mt-4 border border-blue-100">
+                        <div class="bg-primary/5 p-6 rounded-2xl space-y-3 mt-4 border border-primary/20">
                             <div class="flex items-center gap-3 mb-2">
-                                <span class="material-symbols-outlined text-blue-900">account_balance</span>
-                                <span class="text-sm font-bold text-blue-900 uppercase tracking-widest" data-i18n="donate_method_bank"><span data-i18n="donate_method_bank">Metodo: Solo Bonifico</span></span>
+                                <span class="material-symbols-outlined text-primary">account_balance</span>
+                                <span class="text-sm font-black text-slate-900 uppercase tracking-widest" data-i18n="donate_method_bank">Metodo: Solo Bonifico</span>
                             </div>
-                            <p class="text-sm text-blue-800" data-i18n="donate_method_desc">
-                                Le donazioni sono accettate esclusivamente tramite bonifico bancario per azzerare le commissioni e garantire la trasparenza. Dopo aver inviato la tua promessa di donazione, utilizza l\'IBAN indicato in fondo alla pagina per il trasferimento.
+                            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="donate_method_desc">
+                                Le donazioni sono accettate esclusivamente tramite bonifico bancario per azzerare le commissioni e garantire la trasparenza. Dopo aver inviato la tua promessa di donazione, utilizza l'IBAN indicato in fondo alla pagina per il trasferimento.
                             </p>
                         </div>
                     </div>
-                    <button onclick="confirmDonation()" type="button" data-i18n="donate_submit_btn"
-                        class="w-full mt-8 bg-primary text-slate-900 py-4 rounded-xl font-bold text-lg hover:brightness-105 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-widest">
-                        <span class="material-symbols-outlined">send</span> <span data-i18n="donate_submit_btn">Invia Promessa di Donazione</span>
+                    <button onclick="confirmDonation()" type="button"
+                        class="w-full mt-8 bg-primary text-white py-5 rounded-2xl font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-widest" data-i18n="donate_submit_btn">
+                        <span class="material-symbols-outlined">send</span> Invia Promessa
                     </button>
-                    <div
-                        class="mt-6 flex flex-wrap justify-center items-center gap-6 opacity-50 grayscale hover:grayscale-0 transition-all">
+                    <div class="mt-8 flex flex-wrap justify-center items-center gap-6 opacity-40 grayscale">
                         <div class="flex items-center gap-1">
                             <span class="material-symbols-outlined text-sm">verified_user</span>
                             <span class="text-[10px] font-bold uppercase tracking-tighter">SSL Secure</span>
@@ -268,84 +249,63 @@
             </div>
         </div>
     </main>
+
     <section class="max-w-4xl mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-center mb-10" data-i18n="donate_faq_title">Domande Frequenti</h2>
+        <h2 class="text-3xl font-black text-center mb-12 uppercase tracking-tighter" data-i18n="donate_faq_title">Domande Frequenti</h2>
         <div class="space-y-4">
-            <!-- FAQ Item 1 -->
-            <details
-                class="group bg-white dark:bg-slate-800 rounded-xl border border-primary/20 shadow-sm overflow-hidden">
-                <summary
-                    class="flex justify-between items-center p-5 cursor-pointer list-none font-bold text-lg group-hover:bg-primary/5 transition-colors">
+            <details class="group bg-white rounded-2xl border border-primary/10 shadow-sm overflow-hidden">
+                <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg group-hover:bg-primary/5 transition-colors">
                     <span data-i18n="donate_faq_1_q">Le donazioni sono deducibili?</span>
-                    <span
-                        class="material-symbols-outlined transition-transform group-open:rotate-180 text-primary">expand_more</span>
+                    <span class="material-symbols-outlined transition-transform group-open:rotate-180 text-primary">expand_more</span>
                 </summary>
-                <div class="px-5 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="donate_faq_1_a">
-                    SÃ¬, toate le donazioni a EMERITUS sono deducibili o detraibili dalle tasse secondo la normativa
-                    vigente per le organizzazioni non profit. Riceverai automaticamente una ricevuta valida ai fini
-                    fiscali via email subito dopo la tua donazione.
+                <div class="px-6 pb-6 text-slate-600 leading-relaxed text-sm" data-i18n="donate_faq_1_a">
+                    Sì, tutte le donazioni a EMERITUS sono deducibili o detraibili dalle tasse secondo la normativa vigente per le organizzazioni non profit. Riceverai automaticamente una ricevuta valida ai fini fiscali via email subito dopo la tua donazione.
                 </div>
             </details>
-            <!-- FAQ Item 2 -->
-            <details
-                class="group bg-white dark:bg-slate-800 rounded-xl border border-primary/20 shadow-sm overflow-hidden">
-                <summary
-                    class="flex justify-between items-center p-5 cursor-pointer list-none font-bold text-lg group-hover:bg-primary/5 transition-colors">
+            <details class="group bg-white rounded-2xl border border-primary/10 shadow-sm overflow-hidden">
+                <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg group-hover:bg-primary/5 transition-colors">
                     <span data-i18n="donate_faq_2_q">Come vengono utilizzati i fondi?</span>
-                    <span
-                        class="material-symbols-outlined transition-transform group-open:rotate-180 text-primary">expand_more</span>
+                    <span class="material-symbols-outlined transition-transform group-open:rotate-180 text-primary">expand_more</span>
                 </summary>
-                <div class="px-5 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="donate_faq_2_a">
-                    L\'85% di ogni donazione Ã¨ destinato direttamente ai nostri progetti sul campo, come la costruzione
-                    di scuole e cliniche. Il restante 15% copre i costi operativi e di raccolta fondi. Puoi consultare
-                    il nostro Bilancio Sociale annuale per i dettagli completi.
+                <div class="px-6 pb-6 text-slate-600 leading-relaxed text-sm" data-i18n="donate_faq_2_a">
+                    L'85% di ogni donazione è destinato direttamente ai nostri progetti sul campo, come la costruzione di scuole e cliniche. Il restante 15% copre i costi operativi e di raccolta fondi. Puoi consultare il nostro Bilancio Sociale annuale per i dettagli completi.
                 </div>
             </details>
-            <!-- FAQ Item 3 -->
-            <details
-                class="group bg-white dark:bg-slate-800 rounded-xl border border-primary/20 shadow-sm overflow-hidden">
-                <summary
-                    class="flex justify-between items-center p-5 cursor-pointer list-none font-bold text-lg group-hover:bg-primary/5 transition-colors">
+            <details class="group bg-white rounded-2xl border border-primary/10 shadow-sm overflow-hidden">
+                <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg group-hover:bg-primary/5 transition-colors">
                     <span data-i18n="donate_faq_3_q">Posso donare mensilmente?</span>
-                    <span
-                        class="material-symbols-outlined transition-transform group-open:rotate-180 text-primary">expand_more</span>
+                    <span class="material-symbols-outlined transition-transform group-open:rotate-180 text-primary">expand_more</span>
                 </summary>
-                <div class="px-5 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="donate_faq_3_a">
-                    Certamente! Nel modulo di donazione in alto puoi selezionare l\'opzione "Donazione Mensile". Il
-                    sostegno regolare Ã¨ fondamentale perchÃ© ci permette di pianificare i nostri interventi a lungo
-                    termine con maggiore sicurezza ed efficacia.
+                <div class="px-6 pb-6 text-slate-600 leading-relaxed text-sm" data-i18n="donate_faq_3_a">
+                    Certamente! Nel modulo di donazione in alto puoi selezionare l'opzione "Donazione Mensile". Il sostegno regolare è fondamentale perché ci permette di pianificare i nostri interventi a lungo termine con maggiore sicurezza ed efficacia.
                 </div>
             </details>
         </div>
     </section>
-    <section class="max-w-7xl mx-auto px-4 py-16 border-t border-primary/10">
-        <h2 class="text-3xl font-bold text-center mb-10" data-i18n="modal_bank_title">Bonifico Bancario</h2>
-        <div
-            class="max-w-2xl mx-auto bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-primary/10 space-y-6">
-            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
-                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_iban">IBAN</span>
-                <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">RO73 RNCB 0073 1234
-                    5678 9012</span>
+
+    <section class="max-w-7xl mx-auto px-4 py-16 border-t border-slate-200">
+        <h2 class="text-3xl font-black text-center mb-12 uppercase tracking-tighter" data-i18n="modal_bank_title">Bonifico Bancario</h2>
+        <div class="max-w-2xl mx-auto bg-white p-10 rounded-[3rem] shadow-2xl border border-primary/10 space-y-6">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-5">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_iban">IBAN</span>
+                <span class="font-mono text-lg font-black select-all text-slate-900">RO73 RNCB 0073 1234 5678 9012</span>
             </div>
-            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
-                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_bic">BIC/SWIFT</span>
-                <span class="font-mono text-lg font-black select-all text-slate-900 dark:text-white">RNCRDROBU</span>
+            <div class="flex justify-between items-center border-b border-slate-100 pb-5">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_bic">BIC/SWIFT</span>
+                <span class="font-mono text-lg font-black select-all text-slate-900">RNCRDROBU</span>
             </div>
-            <div class="flex justify-between items-center border-b border-primary/5 pb-4">
-                <span class="text-sm font-bold uppercase text-slate-500"
-                    data-i18n="modal_bank_holder">Intestatario</span>
-                <span class="font-bold text-right select-all text-slate-900 dark:text-white text-lg">Lions Club Emeritus
-                    BraÈ™ov</span>
+            <div class="flex justify-between items-center border-b border-slate-100 pb-5">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_holder">Intestatario</span>
+                <span class="font-bold text-right select-all text-slate-900 text-lg">Lions Club Emeritus Brașov</span>
             </div>
             <div class="flex justify-between items-center">
-                <span class="text-sm font-bold uppercase text-slate-500" data-i18n="modal_bank_reason">Causale</span>
-                <span class="italic text-slate-500 select-all" data-i18n="modal_bank_reason_text">Donazione
-                    Liberale</span>
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" data-i18n="modal_bank_reason">Causale</span>
+                <span class="italic text-slate-500 font-medium select-all" data-i18n="modal_bank_reason_text">Donazione Liberale - Lions Emeritus</span>
             </div>
         </div>
     </section>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-slate-900 text-slate-300 py-16 mt-auto">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -364,10 +324,10 @@
                         An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
                     </p>
                     <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
-                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunitÃ  vulnerabili.
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
                     </p>
                     
-                    <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
+                    <h5 class="text-primary font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
                     <div class="flex gap-4">
                         <a href="https://www.facebook.com/LionsClubEmeritusPhilanthropicFoundation/" target="_blank" class="transition-transform hover:scale-110 active:scale-95" title="Facebook">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="w-8 h-8 rounded-full shadow-lg">
@@ -401,7 +361,7 @@
                         <li class="flex items-start gap-4">
                             <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
-                                Matei Basarab 82 bloc B 5<br>Brasov â€“ Romania
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
                             </a>
                         </li>
                         <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
@@ -421,7 +381,7 @@
             
             <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
                 <div class="flex flex-col gap-2 text-center md:text-left">
-                    <p>Â© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
                     <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
                 </div>
                 <div class="flex items-center gap-4 text-sm font-medium">
@@ -434,16 +394,32 @@
     </footer>
 
     <!-- Alert Message Box -->
-    <div id="messageBox" class="fixed bottom-4 right-4 bg-primary text-slate-900 px-6 py-4 rounded-xl shadow-2xl font-bold opacity-0 translate-y-10 transition-all duration-300 z-[100] flex items-center gap-3">
-        <span class="material-symbols-outlined">check_circle</span>
+    <div id="messageBox" class="fixed bottom-4 right-4 bg-slate-900 text-white px-6 py-4 rounded-xl shadow-2xl font-bold opacity-0 translate-y-10 transition-all duration-300 z-[100] flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary">check_circle</span>
         <span id="messageContent">Messaggio...</span>
     </div>
+
+    <!-- Modal Donazione -->
+    <div id="donateModal" class="modal items-center justify-center p-4">
+        <!-- Reusing common modal structure if needed, but this page is already a donation page -->
+    </div>
+
+    <script>
+        function toggleDonationType(btn, type) {
+            const btns = btn.parentElement.querySelectorAll('button');
+            btns.forEach(b => {
+                b.classList.remove('bg-primary', 'text-white', 'shadow-md');
+                b.classList.add('text-slate-500');
+            });
+            btn.classList.add('bg-primary', 'text-white', 'shadow-md');
+            btn.classList.remove('text-slate-500');
+        }
+
+        function selectArea(btn, area) {
+            const btns = document.querySelectorAll('.area-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-

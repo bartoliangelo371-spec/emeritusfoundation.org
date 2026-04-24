@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="light" lang="it">
 <head>
     <meta charset="utf-8" />
@@ -13,11 +13,8 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#facc15",
-                        "emeritus-yellow": "#facc15",
-                        "emeritus-purple": "#6366f1",
-                        "background-light": "#f8fafc",
-                        "background-dark": "#0f172a",
+                        "primary": "#a78bfa",
+                        "emeritus-purple": "#6366f1"
                     }
                 }
             }
@@ -31,24 +28,26 @@
     <script src="js/auth.js" type="module"></script>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pb-12" id="donorDashboardView">
-    <!-- Navbar Superiore -->
-    <nav class="bg-blue-900 text-white shadow-md relative">
+<body class="bg-gray-50 text-slate-900 min-h-screen pb-12 antialiased" id="donorDashboardView">
+    <!-- Navbar Dashboard -->
+    <nav class="bg-slate-900 text-white shadow-xl relative border-b-4 border-primary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex h-16 items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
-                    <span class="text-xl font-bold tracking-tight uppercase" data-i18n="dash_title">Dashboard Donatore</span>
+            <div class="flex h-20 items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-primary/20 rounded-lg">
+                        <span class="material-symbols-outlined text-primary text-3xl block">verified_user</span>
+                    </div>
+                    <span class="text-xl font-black tracking-tighter uppercase" data-i18n="dash_title">Dashboard Donatore</span>
                 </div>
                 <!-- LANGUAGE SELECTOR -->
-                <div class="hidden md:flex space-x-4 text-xs font-bold uppercase tracking-widest mr-4">
+                <div class="hidden md:flex space-x-6 text-[10px] font-black uppercase tracking-widest mr-8">
                     <button onclick="changeLanguage('it')" class="lang-btn hover:text-primary transition">IT</button>
-                    <button onclick="changeLanguage('ro')" class="lang-btn text-blue-300 hover:text-primary transition">RO</button>
-                    <button onclick="changeLanguage('en')" class="lang-btn text-blue-300 hover:text-primary transition">EN</button>
+                    <button onclick="changeLanguage('ro')" class="lang-btn text-slate-500 hover:text-primary transition">RO</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-slate-500 hover:text-primary transition">EN</button>
                 </div>
-                <div class="flex items-center gap-4">
-                    <a href="index.html" class="text-sm text-blue-200 hover:text-white transition hidden md:block" data-i18n="dash_back">Torna al Sito</a>
-                    <button onclick="logoutUser()" class="bg-blue-800 hover:bg-blue-700 px-4 py-2 rounded-lg font-bold text-sm transition flex items-center gap-2">
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-white transition uppercase tracking-widest hidden md:block" data-i18n="dash_back">Torna al Sito</a>
+                    <button onclick="logoutUser()" class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest transition flex items-center gap-2 shadow-lg shadow-primary/20">
                         <span data-i18n="dash_logout">Esci</span> <span class="material-symbols-outlined text-sm">logout</span>
                     </button>
                 </div>
@@ -57,80 +56,89 @@
     </nav>
 
     <!-- Content -->
-    <main class="max-w-7xl mx-auto px-4 mt-8">
+    <main class="max-w-7xl mx-auto px-4 mt-12">
         
         <!-- Welcome Header -->
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-            <div class="flex items-center gap-6">
-                <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-blue-900 border-4 border-yellow-50 shadow-inner">
-                    <span class="material-symbols-outlined text-4xl">person</span>
+        <div class="bg-white rounded-[2.5rem] p-10 shadow-xl border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+            <div class="flex items-center gap-8">
+                <div class="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center text-primary border-4 border-white shadow-inner relative">
+                    <span class="material-symbols-outlined text-5xl">person</span>
+                    <div class="absolute -bottom-1 -right-1 w-8 h-8 bg-green-500 border-4 border-white rounded-full"></div>
                 </div>
                 <div>
-                    <h1 class="text-3xl font-bold text-slate-800 dark:text-white">
-                        <span data-i18n="dash_welcome">Bentornato</span>, <span id="donorName">Donatore</span>!
+                    <h1 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase">
+                        <span data-i18n="dash_welcome">Bentornato</span>, <span id="donorName" class="text-primary">Donatore</span>!
                     </h1>
-                    <p class="text-slate-500 mt-1 flex items-center gap-2">
+                    <p class="text-slate-400 mt-2 flex items-center gap-2 font-medium">
                         <span class="material-symbols-outlined text-sm">mail</span>
-                        <span id="donorEmail">email@example.com</span>
+                        <span id="donorEmail" class="tracking-wide">email@example.com</span>
                     </p>
                 </div>
             </div>
-            <div class="text-center md:text-right">
-                <p class="text-xs uppercase font-bold text-slate-500 tracking-widest mb-1" data-i18n="dash_level">Livello Sostenitore</p>
-                <div class="inline-flex items-center gap-2 bg-yellow-50 text-yellow-800 px-4 py-2 rounded-full font-bold">
+            <div class="text-center md:text-right bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                <p class="text-[10px] uppercase font-black text-slate-400 tracking-[0.2em] mb-2" data-i18n="dash_level">Livello Sostenitore</p>
+                <div class="inline-flex items-center gap-3 bg-white px-6 py-2.5 rounded-full font-black text-sm text-slate-900 shadow-sm border border-slate-100 uppercase tracking-widest">
                     <span class="material-symbols-outlined text-primary text-xl">star</span> <span data-i18n="dash_user_level_gold">Gold Donor</span>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             
             <!-- Col 1: Progetti Finanziati -->
-            <div class="lg:col-span-1 space-y-6">
-                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between h-full">
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-[2rem] p-8 shadow-xl border border-slate-100 flex flex-col justify-between h-full">
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-6">
+                        <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-3 mb-8">
                             <span class="material-symbols-outlined text-primary">analytics</span> <span data-i18n="dash_projects_title">Progetti Correnti</span>
                         </h2>
-                        <div id="projectsProgressContainer" class="space-y-4">
-                            <!-- Progress JS injected here -->
-                            <p class="text-sm text-slate-400" data-i18n="dash_loading">Caricamento in corso...</p>
+                        <div id="projectsProgressContainer" class="space-y-6">
+                            <p class="text-xs font-bold text-slate-400 animate-pulse uppercase tracking-widest" data-i18n="dash_loading">Caricamento...</p>
                         </div>
                     </div>
-                    <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700 text-center">
-                        <a href="donazioni.html" class="w-full inline-block bg-primary text-blue-900 font-bold py-3 rounded-xl hover:brightness-105 transition" data-i18n="dash_new_donation">Nuova Donazione</a>
+                    <div class="mt-12 pt-8 border-t border-slate-50">
+                        <a href="donazioni.html" class="w-full flex items-center justify-center gap-3 bg-primary text-white font-black py-5 rounded-2xl hover:bg-primary/90 transition shadow-xl shadow-primary/10 uppercase text-xs tracking-widest" data-i18n="dash_new_donation">
+                            <span class="material-symbols-outlined text-lg">add_circle</span> Nuova Donazione
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Col 2: Storico Donazioni -->
-            <div class="lg:col-span-2 space-y-6">
-                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100">
-                    <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-6">
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-[2rem] p-8 shadow-xl border border-slate-100 h-full">
+                    <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-3 mb-8">
                         <span class="material-symbols-outlined text-primary">history</span> <span data-i18n="dash_history_title">Storico e Ricevute</span>
                     </h2>
                     
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-200 dark:border-slate-700">
-                                    <th class="pb-3 px-4" data-i18n="dash_th_date">Data</th>
-                                    <th class="pb-3 px-4 text-center" data-i18n="dash_th_amount">Importo</th>
-                                    <th class="pb-3 px-4 text-center" data-i18n="dash_th_status">Stato</th>
+                                <tr class="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">
+                                    <th class="pb-4 px-4" data-i18n="dash_th_date">Data</th>
+                                    <th class="pb-4 px-4 text-center" data-i18n="dash_th_amount">Importo</th>
+                                    <th class="pb-4 px-4 text-center" data-i18n="dash_th_status">Stato</th>
                                 </tr>
                             </thead>
-                            <tbody id="donationsTableBody" class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                            <tbody id="donationsTableBody" class="text-sm font-bold text-slate-700">
                                 <!-- Data injected here via JS -->
                             </tbody>
                         </table>
                     </div>
                     
-                    <div class="mt-6 flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl">
-                        <div class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-slate-400">receipt_long</span>
-                            <span class="text-sm font-semibold text-slate-600" data-i18n="dash_tax_summary_full">Riepilogo Fiscale 2026</span>
+                    <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-slate-50 rounded-[1.5rem] border border-slate-100">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-white rounded-xl shadow-sm">
+                                <span class="material-symbols-outlined text-primary">receipt_long</span>
+                            </div>
+                            <div>
+                                <span class="text-xs font-black text-slate-900 uppercase tracking-widest block" data-i18n="dash_tax_summary_full">Riepilogo Fiscale 2026</span>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Pronto per il download</span>
+                            </div>
                         </div>
-                        <button class="text-sm font-bold text-blue-600 hover:text-blue-800 transition" data-i18n="dash_download_pdf">Scarica PDF</button>
+                        <button class="px-6 py-3 bg-white text-primary text-xs font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-white transition shadow-sm border border-primary/10" data-i18n="dash_download_pdf">
+                            Scarica PDF
+                        </button>
                     </div>
                 </div>
             </div>
@@ -140,6 +148,3 @@
 
 </body>
 </html>
-
-
-

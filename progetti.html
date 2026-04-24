@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 
 <title data-i18n="nav_projects">Progetti | EMERITUS FOUNDATION</title>
@@ -6,33 +6,33 @@
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "primary": "#facc15",
-                    "emeritus-yellow": "#facc15",
-                    "emeritus-purple": "#6366f1"
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#facc15",
+                        "emeritus-yellow": "#facc15",
+                        "emeritus-purple": "#a78bfa"
+                    }
                 }
             }
         }
-    }
-</script>
-<style>
-    body {
-        font-family: 'Lexend', sans-serif;
-    }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
 
-    .hero-gradient {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg');
-        background-size: cover;
-        background-position: center;
-    }
-</style>
-<script src="js/translations.js" defer></script>
-<script src="js/script.js" type="module"></script>
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/WhatsApp Image 2026-02-13 at 14.10.02.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" type="module"></script>
     <script src="js/auth.js" type="module"></script>
 </head>
 
@@ -45,7 +45,7 @@
                 <a href="index.html" class="flex items-center gap-3">
                     <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg overflow-hidden border border-gray-100"><img src="assets/images/emeritus logo.jpeg" alt="Logo Emeritus" class="h-full w-full object-contain"></div>
                     <span
-                        class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase leading-none">EMERITUS</span>
+                        class="text-xl font-bold tracking-tight text-slate-900 uppercase leading-none">EMERITUS</span>
                 </a>
                 <nav class="hidden md:flex items-center gap-10">
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
@@ -126,7 +126,7 @@
             </h1>
             <p class="text-xl md:text-2xl text-emeritus-yellow font-light max-w-2xl mx-auto leading-relaxed opacity-90"
                 data-i18n="proj_page_desc">Dalla gestione della crisi ucraina all'alfabetizzazione digitale: interventi
-                mirati dove serve di piÃ¹.</p>
+                mirati dove serve di più.</p>
         </div>
         <!-- Elemento decorativo inferiore -->
         <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
@@ -140,11 +140,11 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div class="max-w-2xl">
-                    <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter mb-4"
+                    <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-4"
                         data-i18n="projects_title">Interventi Strategici
                     </h2>
                     <p class="text-gray-500 text-lg" data-i18n="projects_desc">Le nostre 5 aree prioritarie: Infanzia,
-                        Terza EtÃ , IT per Giovani, Innovazione Senior, Infrastrutture.</p>
+                        Terza Età, IT per Giovani, Innovazione Senior, Infrastrutture.</p>
                 </div>
                 <div class="w-32 h-2 bg-emeritus-yellow rounded-full"></div>
             </div>
@@ -162,8 +162,8 @@
                             data-i18n="proj_refugee_tag">Emergenza Ucraina</div>
                     </div>
                     <div class="p-10 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-black mb-4 text-blue-900" data-i18n="proj_refugee_title">Centro
-                            Accoglienza BraÈ™ov</h3>
+                        <h3 class="text-2xl font-black mb-4 text-slate-900" data-i18n="proj_refugee_title">Centro
+                            Accoglienza Brașov</h3>
                         <p class="text-gray-600 text-sm mb-8 leading-relaxed" data-i18n="proj_refugee_desc">Gestione di
                             una struttura per 62 donne e bambini rifugiati e bambini con gravi patologie. Cucina
                             professionale, scuola online e supporto psicologico.</p>
@@ -177,7 +177,7 @@
                                 <div class="bg-emeritus-purple h-3 rounded-full progress-bar" style="width: 45%"></div>
                             </div>
                             <button onclick="openDonateModal()"
-                                class="w-full py-4 bg-emeritus-purple text-white rounded-2xl font-black hover:bg-purple-800 transition shadow-lg shadow-purple-100"
+                                class="w-full py-4 bg-emeritus-purple text-white rounded-2xl font-black hover:bg-purple-500 transition shadow-lg shadow-purple-100"
                                 data-i18n="btn_support_refugee">Sostieni i Rifugiati</button>
                         </div>
                     </div>
@@ -191,10 +191,10 @@
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="Training IT">
                         <div class="absolute bottom-6 left-6 bg-white px-4 py-1 rounded-full text-xs font-black text-blue-600 uppercase tracking-widest shadow-lg"
-                            data-i18n="proj_it_tag" data-i18n="ev_3_tag1" data-i18n="ev_3_tag1">Educazione</div>
+                            data-i18n="proj_it_tag">Educazione</div>
                     </div>
                     <div class="p-10 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-black mb-4 text-blue-900" data-i18n="proj_it_title">Training IT per
+                        <h3 class="text-2xl font-black mb-4 text-slate-900" data-i18n="proj_it_title">Training IT per
                             Giovani</h3>
                         <p class="text-gray-600 text-sm mb-8 leading-relaxed" data-i18n="proj_it_desc">Combattere il
                             divario digitale fornendo competenze informatiche e hardware ai giovani svantaggiati per
@@ -233,7 +233,7 @@
                             data-i18n="proj_elderly_tag">Assistenza</div>
                     </div>
                     <div class="p-10 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-black mb-4 text-blue-900" data-i18n="proj_elderly_title">Innovazione
+                        <h3 class="text-2xl font-black mb-4 text-slate-900" data-i18n="proj_elderly_title">Innovazione
                             Senior</h3>
                         <p class="text-gray-600 text-sm mb-8 leading-relaxed" data-i18n="proj_elderly_desc">Tecnologia
                             applicata alla cura degli anziani per migliorare i servizi sanitari, il monitoraggio
@@ -279,7 +279,7 @@
                         An international organization headquartered in Brasov Romania, founded In 2010 according to governmental decree 26/2000.
                     </p>
                     <p class="text-sm leading-relaxed mb-8" data-i18n="footer_desc">
-                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunitÃ  vulnerabili.
+                        Organizzazione non profit dedicata allo sviluppo sostenibile, all'innovazione sociale e al supporto delle comunità vulnerabili.
                     </p>
                     
                     <h5 class="text-emeritus-yellow font-black text-sm uppercase tracking-widest mb-4">Seguici sui Social</h5>
@@ -316,7 +316,7 @@
                         <li class="flex items-start gap-4">
                             <span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">location_on</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=Matei+Basarab+82+bloc+B+5+Brasov+Romania" target="_blank" class="hover:text-white transition-colors leading-relaxed">
-                                Matei Basarab 82 bloc B 5<br>Brasov â€“ Romania
+                                Matei Basarab 82 bloc B 5<br>Brasov – Romania
                             </a>
                         </li>
                         <li class="flex items-center gap-4 border-t border-slate-800 pt-4">
@@ -336,7 +336,7 @@
             
             <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
                 <div class="flex flex-col gap-2 text-center md:text-left">
-                    <p>Â© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
+                    <p>© 2026 EMERITUS FOUNDATION. Tutti i diritti riservati. CF: 90012345678</p>
                     <p class="font-bold text-slate-400" data-i18n="footer_goodstack">Verificati su Goodstack per il Corporate Giving internazionale.</p>
                 </div>
                 <div class="flex items-center gap-4 text-sm font-medium">
@@ -368,17 +368,17 @@
 
                 <div class="grid grid-cols-3 gap-4 mb-10">
                     <button onclick="selectAmount(5)"
-                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">â‚¬5</button>
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€5</button>
                     <button onclick="selectAmount(10)"
-                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">â‚¬10</button>
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€10</button>
                     <button onclick="selectAmount(50)"
-                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">â‚¬50</button>
+                        class="amount-btn border-2 border-gray-100 py-5 rounded-2xl font-black text-xl hover:border-emeritus-yellow hover:bg-yellow-50 transition-all">€50</button>
                 </div>
 
                 <div class="mb-10">
                     <label class="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-3"
                         data-i18n="modal_custom">Cifra
-                        Personalizzata (â‚¬)</label>
+                        Personalizzata (€)</label>
                     <input type="number" id="customAmount" placeholder="Inserisci importo"
                         class="w-full p-6 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-yellow-100 text-3xl font-black text-blue-900">
                 </div>

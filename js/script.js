@@ -25,9 +25,9 @@ function closeDonateModal() {
 function selectAmount(val) {
     selectedAmount = val;
     document.querySelectorAll('.amount-btn').forEach(btn => {
-        btn.classList.remove('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+        btn.classList.remove('bg-primary', 'text-white', 'shadow-lg');
         if (parseInt(btn.innerText.replace('€', '')) === val) {
-            btn.classList.add('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+            btn.classList.add('bg-primary', 'text-white', 'shadow-lg');
         }
     });
     const customAmt = document.getElementById('customAmount');
@@ -37,9 +37,9 @@ function selectAmount(val) {
 function selectArea(area) {
     selectedArea = area;
     document.querySelectorAll('.area-btn').forEach(btn => {
-        btn.classList.remove('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+        btn.classList.remove('bg-primary', 'text-white', 'shadow-lg');
         if (btn.dataset.area === area) {
-            btn.classList.add('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+            btn.classList.add('bg-primary', 'text-white', 'shadow-lg');
         }
     });
 }
@@ -122,10 +122,10 @@ function changeLanguage(lang) {
     });
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('font-bold', 'text-blue-900');
+        btn.classList.remove('font-black', 'text-primary');
         btn.classList.add('text-gray-400');
         if (btn.innerText.toLowerCase() === lang) {
-            btn.classList.add('font-bold', 'text-blue-900');
+            btn.classList.add('font-black', 'text-primary');
             btn.classList.remove('text-gray-400');
         }
     });

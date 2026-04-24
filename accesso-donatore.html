@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="light" lang="it">
 
 <head>
@@ -15,117 +15,125 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#facc15",
-                        "emeritus-yellow": "#facc15",
-                        "emeritus-purple": "#6366f1",
-                        "background-light": "#f8fafc",
-                        "background-dark": "#0f172a",
+                        "primary": "#a78bfa",
+                        "emeritus-purple": "#6366f1"
                     }
                 }
             }
         }
     </script>
-    <style> body { font-family: 'Lexend', sans-serif; } </style>
+    <style> 
+        body { font-family: 'Lexend', sans-serif; } 
+        .auth-card {
+            box-shadow: 0 25px 50px -12px rgba(167, 139, 250, 0.15);
+        }
+    </style>
     <!-- MULTILANGE SCRIPTS -->
     <script src="js/translations.js" defer></script>
     <script src="js/script.js" type="module"></script>
     <!-- AUTH FLOW -->
-    <script src="js/auth.js?v=3" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
-    <div class="absolute top-4 left-4 flex items-center gap-6">
-        <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-primary transition font-semibold">
-            <span class="material-symbols-outlined">arrow_back</span> <span data-i18n="auth_back">Torna alla Home</span>
+<body class="bg-gray-50 text-slate-900 min-h-screen flex flex-col items-center justify-center p-4 antialiased">
+    <div class="absolute top-8 left-8 flex items-center gap-6">
+        <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-primary transition font-bold text-sm uppercase tracking-widest">
+            <span class="material-symbols-outlined text-lg">arrow_back</span> <span data-i18n="auth_back">Torna alla Home</span>
         </a>
     </div>
 
     <!-- LANGUAGE SELECTOR -->
-    <div class="absolute top-4 right-4 flex space-x-4 text-xs font-bold uppercase tracking-widest bg-white dark:bg-slate-800 p-2 rounded-lg shadow-sm">
-        <button onclick="changeLanguage('it')" class="lang-btn hover:text-blue-900 transition">IT</button>
-        <button onclick="changeLanguage('ro')" class="lang-btn text-gray-400 hover:text-blue-900 transition">RO</button>
-        <button onclick="changeLanguage('en')" class="lang-btn text-gray-400 hover:text-blue-900 transition">EN</button>
+    <div class="absolute top-8 right-8 flex space-x-4 text-xs font-black uppercase tracking-widest bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+        <button onclick="changeLanguage('it')" class="lang-btn hover:text-primary transition">IT</button>
+        <button onclick="changeLanguage('ro')" class="lang-btn text-gray-300 hover:text-primary transition">RO</button>
+        <button onclick="changeLanguage('en')" class="lang-btn text-gray-300 hover:text-primary transition">EN</button>
     </div>
 
     <!-- Container Auth -->
-    <div class="w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-700 mt-12 md:mt-0">
-        <!-- HEADER IN COMUNE -->
-        <div class="bg-primary p-8 text-center" id="authHeaderBox">
-            <span class="material-symbols-outlined text-5xl text-blue-900 mb-2">person_check</span>
-            <h2 class="text-2xl font-bold text-blue-900" data-i18n="auth_title">Area Donatore</h2>
-            <p class="text-blue-800/80 text-sm mt-1" data-i18n="auth_subtitle">Accedi per gestire le tue donazioni in modo sicuro.</p>
+    <div class="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 auth-card mt-12 md:mt-0">
+        <!-- HEADER -->
+        <div class="bg-primary p-10 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-50"></div>
+            <div class="relative z-10">
+                <span class="material-symbols-outlined text-6xl text-white mb-4 block">person_check</span>
+                <h2 class="text-3xl font-black text-white uppercase tracking-tighter" data-i18n="auth_title">Area Donatore</h2>
+                <p class="text-white/80 text-sm mt-2 font-medium" data-i18n="auth_subtitle">Gestisci il tuo impatto in sicurezza.</p>
+            </div>
         </div>
 
-        <div class="p-8">
+        <div class="p-10">
             <!-- BOX LOGIN -->
             <div id="loginBox" class="block">
-                <form id="loginForm" class="space-y-5">
+                <form id="loginForm" class="space-y-6">
                     <div>
-                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1" data-i18n="auth_email">Email</label>
-                        <input id="loginEmail" type="email" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900" data-i18n="auth_placeholder_email" placeholder="donor@example.com">
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="auth_email">Email</label>
+                        <input id="loginEmail" type="email" required class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-4 focus:ring-primary/20 text-slate-900 font-medium" placeholder="donor@example.com">
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1" data-i18n="auth_password">Password</label>
-                        <input id="loginPassword" type="password" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900" data-i18n="auth_placeholder_pass" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="auth_password">Password</label>
+                        <input id="loginPassword" type="password" required class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-4 focus:ring-primary/20 text-slate-900 font-medium" placeholder="••••••••">
                     </div>
-                    <button type="submit" class="w-full bg-blue-900 text-white py-3 rounded-xl font-bold hover:bg-blue-800 transition shadow-lg flex items-center justify-center gap-2">
-                        <span data-i18n="auth_login_btn">Accedi</span> <span class="material-symbols-outlined text-sm">login</span>
+                    <button type="submit" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-slate-800 transition shadow-xl flex items-center justify-center gap-3 active:scale-95 transform">
+                        <span data-i18n="auth_login_btn">Accedi</span> <span class="material-symbols-outlined text-xl">login</span>
                     </button>
                 </form>
-                <div class="mt-6 text-center text-sm">
-                    <span class="text-slate-500" data-i18n="auth_no_account">Non hai un account?</span>
-                    <button onclick="toggleAuthMode()" class="text-blue-600 font-bold hover:underline ml-1" data-i18n="auth_register_link">Registrati qui</button>
+                <div class="mt-8 text-center text-sm font-medium">
+                    <span class="text-slate-400" data-i18n="auth_no_account">Non hai un account?</span>
+                    <button onclick="toggleAuthMode()" class="text-primary font-black hover:underline ml-1" data-i18n="auth_register_link">Registrati qui</button>
                 </div>
             </div>
 
             <!-- BOX REGISTRAZIONE -->
             <div id="registerBox" class="hidden">
                 <div id="registerFormWrapper">
-                    <div class="mb-4 bg-yellow-50 p-3 rounded-lg border border-primary/20 flex gap-3 text-sm text-yellow-800">
-                        <span class="material-symbols-outlined">info</span>
-                        <span data-i18n="auth_reg_info">Crea un account personale per scaricare le ricevute fiscali e ricevere aggiornamenti.</span>
+                    <div class="mb-6 bg-primary/5 p-4 rounded-2xl border border-primary/20 flex gap-4 text-xs text-slate-600 leading-relaxed font-medium">
+                        <span class="material-symbols-outlined text-primary">info</span>
+                        <span data-i18n="auth_reg_info">Crea un account personale per scaricare le ricevute fiscali e ricevere aggiornamenti sui progetti.</span>
                     </div>
                     <form id="registerForm" class="space-y-4">
                         <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1" data-i18n="auth_reg_name">Nome Completo</label>
-                            <input id="regName" type="text" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900" data-i18n="auth_placeholder_name" placeholder="Mario Rossi">
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="auth_reg_name">Nome Completo</label>
+                            <input id="regName" type="text" required class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-4 focus:ring-primary/20 text-slate-900 font-medium" placeholder="Mario Rossi">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1" data-i18n="auth_email">Email</label>
-                            <input id="regEmail" type="email" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900" data-i18n="auth_placeholder_email" placeholder="mario.rossi@esempio.it">
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="auth_email">Email</label>
+                            <input id="regEmail" type="email" required class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-4 focus:ring-primary/20 text-slate-900 font-medium" placeholder="mario.rossi@esempio.it">
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1" data-i18n="auth_reg_pass_hint">Crea Password</label>
-                            <input id="regPassword" type="password" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900" data-i18n="auth_placeholder_pass" placeholder="Min. 8 caratteri">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="auth_reg_pass_hint">Password</label>
+                                <input id="regPassword" type="password" required class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-4 focus:ring-primary/20 text-slate-900 font-medium" placeholder="Min. 8 car.">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="auth_reg_pass_confirm">Conferma</label>
+                                <input id="regConfirmPassword" type="password" required class="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-4 focus:ring-primary/20 text-slate-900 font-medium" placeholder="Ripeti">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1" data-i18n="auth_reg_pass_confirm">Conferma Password</label>
-                            <input id="regConfirmPassword" type="password" required class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900" data-i18n="auth_placeholder_pass_confirm" placeholder="Ripeti la password">
-                        </div>
-                        <button type="submit" class="w-full bg-blue-900 text-white mt-4 py-3 rounded-xl font-bold hover:bg-blue-800 transition shadow-lg flex items-center justify-center gap-2">
-                            <span data-i18n="auth_reg_btn">Crea Account</span> <span class="material-symbols-outlined text-sm">person_add</span>
+                        <button type="submit" class="w-full bg-slate-900 text-white mt-4 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-slate-800 transition shadow-xl flex items-center justify-center gap-3 active:scale-95 transform">
+                            <span data-i18n="auth_reg_btn">Crea Account</span> <span class="material-symbols-outlined text-xl">person_add</span>
                         </button>
                     </form>
-                    <div class="mt-6 text-center text-sm">
-                        <span class="text-slate-500" data-i18n="auth_has_account">Hai giÃ  un account?</span>
-                        <button onclick="toggleAuthMode()" class="text-blue-600 font-bold hover:underline ml-1" data-i18n="auth_login_link">Accedi qui</button>
+                    <div class="mt-8 text-center text-sm font-medium">
+                        <span class="text-slate-400" data-i18n="auth_has_account">Hai già un account?</span>
+                        <button onclick="toggleAuthMode()" class="text-primary font-black hover:underline ml-1" data-i18n="auth_login_link">Accedi qui</button>
                     </div>
                 </div>
 
                 <!-- BOX CONFERMA EMAIL -->
                 <div id="emailConfirmationBox" class="hidden text-center py-6">
-                    <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="material-symbols-outlined text-4xl">mark_email_read</span>
+                    <div class="w-24 h-24 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+                        <span class="material-symbols-outlined text-5xl">mark_email_read</span>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-2" data-i18n="auth_check_mail_title">Controlla la tua posta</h3>
-                    <p class="text-slate-500 text-sm mb-6" data-i18n="auth_check_mail_desc">Abbiamo inviato un link di verifica alla tua Email.</p>
-                    <p id="emailConfirmMsg" class="text-xs text-slate-400 bg-slate-50 p-4 rounded-lg" data-i18n="auth_waiting_confirm">Attendendo conferma...</p>
+                    <h3 class="text-2xl font-black text-slate-900 mb-3 uppercase tracking-tighter" data-i18n="auth_check_mail_title">Controlla la tua posta</h3>
+                    <p class="text-slate-500 text-sm mb-8 font-medium leading-relaxed px-4" data-i18n="auth_check_mail_desc">Abbiamo inviato un link di verifica sicuro alla tua Email.</p>
+                    <div class="inline-flex items-center gap-3 px-6 py-3 bg-slate-50 rounded-full border border-slate-100">
+                        <span class="w-2 h-2 bg-primary rounded-full animate-ping"></span>
+                        <p id="emailConfirmMsg" class="text-[10px] font-black text-slate-400 uppercase tracking-widest" data-i18n="auth_waiting_confirm">In attesa di verifica...</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
-
-
-
