@@ -10,8 +10,9 @@ import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.1/fi
 const modal = document.getElementById('donateModal');
 const msgBox = document.getElementById('messageBox');
 const msgContent = document.getElementById('messageContent');
-let selectedAmount = 10;
-let selectedArea = 'childhood';
+// Variabili di stato globali inizializzate
+window.selectedAmount = 10;
+window.selectedArea = 'childhood';
 
 // --- GESTIONE MODALE DONAZIONI ---
 function openDonateModal() {
@@ -27,23 +28,26 @@ function closeDonateModal() {
     if(modal) modal.style.display = 'none'; 
 }
 
-function selectAmount(val) {
-    selectedAmount = val;
+function selectAmount(amount) {
+    window.selectedAmount = amount;
     document.querySelectorAll('.amount-btn').forEach(btn => {
-        btn.classList.remove('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
-        if (parseInt(btn.innerText.replace('€', '')) === val) {
-            btn.classList.add('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+        btn.classList.remove('bg-primary', 'text-white', 'shadow-md');
+        btn.classList.add('bg-slate-50', 'text-slate-600');
+        if (parseInt(btn.innerText) === amount) {
+            btn.classList.remove('bg-slate-50', 'text-slate-600');
+            btn.classList.add('bg-primary', 'text-white', 'shadow-md');
         }
     });
-    const customAmt = document.getElementById('customAmount');
-    if (customAmt) customAmt.value = '';
 }
 
 function selectArea(area) {
-    selectedArea = area;
+    window.selectedArea = area;
+    console.log("Area selezionata:", area);
     document.querySelectorAll('.area-btn').forEach(btn => {
-        btn.classList.remove('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+        btn.classList.remove('active', 'border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
         if (btn.dataset.area === area) {
+            btn.classList.add('active');
+            // Supporto per entrambi gli stili (nuovo e vecchio)
             btn.classList.add('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
         }
     });
@@ -52,7 +56,7 @@ function selectArea(area) {
 // --- SALVATAGGIO DONAZIONE SU FIRESTORE ---
 async function confirmDonation() {
     const custom = document.getElementById('customAmount').value;
-    const finalAmount = custom || selectedAmount;
+    const finalAmount = custom || window.selectedAmount;
     
     const btn = document.querySelector('button[onclick="confirmDonation()"]');
     const originalText = btn.innerHTML;
@@ -70,7 +74,7 @@ async function confirmDonation() {
             userId: user ? user.uid : "guest",
             userEmail: user ? user.email : "anonymous",
             amount: parseFloat(finalAmount),
-            area: selectedArea,
+            area: window.selectedArea,
             status: "pending",
             date: new Date().toISOString(),
             currency: "EUR"
@@ -82,7 +86,7 @@ async function confirmDonation() {
             btn.innerHTML = originalText;
             btn.disabled = false;
             
-            let areaText = window.translations[lang] ? (window.translations[lang][`area_${selectedArea}`] || selectedArea) : selectedArea;
+            let areaText = window.translations[lang] ? (window.translations[lang][`area_${window.selectedArea}`] || window.selectedArea) : window.selectedArea;
             
             let msg = "";
             if(lang === 'it') msg = `Grazie! La tua promessa di donazione (€${finalAmount}) per l'area ${areaText} è stata registrata. Riceverai un'email con i dettagli del bonifico.`;

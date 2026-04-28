@@ -163,28 +163,28 @@
                     </div>
                     <h3 class="text-lg font-bold mb-4" data-i18n="donate_area_title">Scegli l'Area di Intervento</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                        <button type="button" onclick="selectArea(this, 'childhood')"
+                        <button type="button" onclick="selectArea('childhood')" data-area="childhood"
                             class="area-btn border-2 border-slate-100 bg-white text-slate-900 text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3 active">
                             <span class="material-symbols-outlined text-primary text-3xl">child_care</span>
                             <div>
                                 <h4 class="font-bold text-base" data-i18n="area_childhood">Infanzia</h4>
                             </div>
                         </button>
-                        <button type="button" onclick="selectArea(this, 'elderly')"
+                        <button type="button" onclick="selectArea('elderly')" data-area="elderly"
                             class="area-btn border-2 border-slate-100 bg-white text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
                             <span class="material-symbols-outlined text-primary text-3xl">elderly</span>
                             <div>
                                 <h4 class="font-bold text-base" data-i18n="area_elderly">Anziani</h4>
                             </div>
                         </button>
-                        <button type="button" onclick="selectArea(this, 'it')"
+                        <button type="button" onclick="selectArea('it')" data-area="it"
                             class="area-btn border-2 border-slate-100 bg-white text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
                             <span class="material-symbols-outlined text-primary text-3xl">computer</span>
                             <div>
                                 <h4 class="font-bold text-base" data-i18n="area_it">Innovazione IT</h4>
                             </div>
                         </button>
-                        <button type="button" onclick="selectArea(this, 'infrastructure')"
+                        <button type="button" onclick="selectArea('infrastructure')" data-area="infrastructure"
                             class="area-btn border-2 border-slate-100 bg-white text-left p-4 rounded-xl transition-all hover:border-primary/50 flex items-center gap-3">
                             <span class="material-symbols-outlined text-primary text-3xl">architecture</span>
                             <div>
@@ -481,12 +481,21 @@
             });
             btn.classList.add('bg-primary', 'text-white', 'shadow-md');
             btn.classList.remove('text-slate-500');
+            window.donationType = type;
         }
 
-        function selectArea(btn, area) {
+        function selectArea(areaId) {
+            console.log("Selezione area:", areaId);
             const btns = document.querySelectorAll('.area-btn');
-            btns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            btns.forEach(b => {
+                b.classList.remove('active', 'border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+                if (b.dataset.area === areaId) {
+                    b.classList.add('active');
+                    // Compatibilità con i vari stili definiti nei CSS e in script.js
+                    b.classList.add('border-emeritus-yellow', 'bg-yellow-50', 'text-blue-900');
+                }
+            });
+            window.selectedArea = areaId;
         }
     </script>
 </body>
